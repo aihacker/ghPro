@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gpdi.mdata.sys.entity.report.PurchaseParent">
+
+  <update id="updateCodeById" parameterType="map">
+    update t_purchase_parent set code = #{p1} where id = #{p0}
+  </update>
+
+  <select id="getByMd5" parameterType="java.lang.String" resultType="PurchaseParent">
+    select * from t_purchase_parent where md5 = #{value}
+  </select>
+
+  <select id="getFileName" parameterType="java.lang.String" resultType="java.lang.String">
+    select file_name from t_purchase_parent where file_name = #{value}
+  </select>
+
+</mapper>

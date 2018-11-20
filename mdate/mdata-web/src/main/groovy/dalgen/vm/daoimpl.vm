@@ -1,0 +1,24 @@
+/*
+ * @(#) ${entity.name}DaoImpl.java $today
+ * Copyright $today.substring(8) GPDI. All right reserved.
+ */
+package ${config.package}.daoimpl;
+
+import org.springframework.stereotype.Repository;
+import pub.dao.mybatis.MyBatisDao;
+import ${config.package}.dao.${entity.name}Dao;
+import ${config.package}.entity.${entity.name};
+
+/**
+* @author $config.author
+* @version 1.0 $today
+*/
+@Repository
+@SuppressWarnings("unchecked")
+public class ${entity.name}DaoImpl extends MyBatisDao<${entity.name}> implements ${entity.name}Dao {
+
+	public ${entity.name}DaoImpl() {
+		super(${entity.name}.class);
+	}
+
+}

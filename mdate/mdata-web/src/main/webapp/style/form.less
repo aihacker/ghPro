@@ -1,0 +1,263 @@
+
+table.form {
+
+  width: 88%;
+  border: 0;
+  min-width: 660px;
+
+  th, td {
+    padding: 5px 4px 4px 4px;
+  }
+
+  th {
+    width: 20%;
+    text-align: right;
+    padding-right: 7px;
+    font-size: 13px;
+
+    em {
+      color: red;
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 1px;
+      font-style: normal;
+    }
+
+    &.readonly {
+      color: grey;
+
+      em {
+        color: grey;
+      }
+    }
+  }
+
+  td {
+    width: 30%;
+    font-size: 13px;
+
+  }
+
+  label.error {
+    font-weight: normal;
+    color: red;
+    margin-left: 2px;
+    margin-bottom: 0;
+    line-height: 1em;
+  }
+
+  input {
+    font-size: inherit;
+
+    &::-webkit-input-placeholder {
+      color: silver;
+    }
+  }
+
+  select {
+    font-size: inherit;
+  }
+
+  .select {
+    border: solid 1px #95b8e7;
+    border-radius: 5px 5px 5px 5px;
+    background: white;
+    padding: 0 4px 0 0;
+    line-height: 22px;
+    height: 24px;
+    //width: 174px;
+    width: 217px;
+    font-size: 12px;
+
+    &:focus {
+      border-radius: 0;
+    }
+  }
+
+  td[colspan="3"] {
+    .text {
+      width: 88%;
+    }
+
+  }
+
+  option:empty {
+    display: none;
+  }
+
+  //
+  .dropdown-toggle {
+    border: solid 1px #95b8e7;
+    border-radius: 5px 5px 5px 5px;
+    background: white;
+    padding: 0 10px 0 4px;
+    line-height: 22px;
+    height: 24px;
+    width: 217px;
+    font-size: 12px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    b {
+      display: block;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 16px;
+      height: 22px;
+      background: white url('../image/misc/fake-select-down.png') no-repeat 2px top;
+      border: 0;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      //background-color: white;
+    }
+    &[aria-expanded="true"] {
+      b {
+        background-color: transparent;
+        opacity: .4;
+      }
+    }
+  }
+
+  .dropdown-toggle:active,
+  .dropdown-toggle.active {
+    //border: solid 4px red;
+    b {
+      background-color: transparent;
+      opacity: .4;
+    }
+  }
+
+  td.op {
+    & > div {
+      width: 174px;
+      padding: .4em 0 1em 0;
+      text-align: right;
+      white-space: nowrap;
+    }
+  }
+
+  //
+  .unit-input {
+    position: relative;
+    width: 217px;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 2px;
+      top: 1px;
+      width: 18px;
+      height: 22px;
+      z-index: 1;
+      opacity: .6;
+    }
+    &:hover::after {
+      opacity: 1;
+    }
+    &.yuan::after {
+      background: url('../image/misc/yuan.png') no-repeat center center;
+    }
+
+    input {
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+  tr.sep {
+    td {
+      padding: 0;
+    }
+    td::after {
+      content: '';
+      display: block;
+      width: 77%;
+      height: 0px;
+      border: 0.5px solid grey;
+      margin: 1px auto;
+      position: relative;
+      left: 1.4%;
+    }
+  }
+
+  //
+  .date-input {
+    position: relative;
+    display: inline-block;
+
+    a {
+      display: block;
+      position: absolute;
+      left: 198px;
+      top: 1px;
+      width: 18px;
+      height: 22px;
+      z-index: 1;
+      background: #e0ecff url('../image/misc/cal.png') no-repeat center center;
+      opacity: .6;
+      //cursor: pointer;
+      //pointer-events: none;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  //
+
+  &.vertical {
+    th {
+      width: 33%;
+    }
+    td {
+      width: 66%;
+    }
+    .text, .select {
+      width: 100%;
+    }
+
+  }
+
+}
+
+.form {
+  .text {
+    border: 1px solid #95b8e7;
+    border-radius: 5px 5px 5px 5px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 4px;
+    //width: 174px;
+    width: 217px;
+    box-sizing: border-box;
+    font-size: 12px;
+
+    &:focus {
+      border-radius: 0;
+    }
+
+    &.half-wide {
+      width: 105px;
+      &:not(:first-child) {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  textarea.text {
+    height: auto;
+    line-height: 1.4em;
+  }
+}
+
+
+body.popup {
+  table.form {
+    width: 94%;
+    min-width: 200px;
+  }
+}

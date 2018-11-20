@@ -1,0 +1,331 @@
+.clearfix:after {
+    content: "." ;
+    display: block ;
+    height: 0 ;
+    clear: both ;
+    visibility: hidden ;
+}
+.clearfix{ display: inline-block; }
+/* Hides from IE-mac \*/
+*html .clearfix{ height:1%; }
+.clearfix{ display:block; }
+/* End hide from IE-mac \*/
+/*�Զ������*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#pg_header {
+    background: url('../../image/index/header_bg.jpg');
+    height: 77px;
+    ��webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -ms-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto;
+    position: relative;
+}
+
+#header_logo{
+    background: url('../../image/index/logo.png') no-repeat;
+    position: absolute;
+    width: 423px;
+    height: 47px;
+    top: 15px;
+    left: 20px;
+}
+
+
+#div_menu_info {
+    color: white;
+    position: absolute;
+    right: 75px;
+    bottom: 0px;
+    height: 35px;
+    font-size: 13px;
+}
+
+#div_menu_info a {
+    color: white;
+    text-decoration: none;
+    background:url('../../image/index/menu_tab.png') no-repeat;
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    line-height: 40px;
+    text-align: center;
+    text-indent: -10px;
+    position: relative;
+    margin-right: -70px;
+}
+
+#div_menu_info a:nth-child(1){
+    z-index: 998
+}
+#div_menu_info a:nth-child(2){
+    z-index: 997
+}
+#div_menu_info a:nth-child(3){
+    z-index: 996
+}
+#div_menu_info a:nth-child(4){
+    z-index: 995
+}
+#div_menu_info a.on{
+    background:url('../../image/index/menu_tab_on.png') no-repeat;
+    color: #1056ab;
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+}
+
+#div_menu_info a:not(.on):hover {
+    color: #aed8fb;
+}
+
+
+#div_user_info {
+    color: white;
+    position: absolute;
+    right: 25px;
+    top: 13px;
+    color: #aed8fb;
+}
+
+#div_user_info img{
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}
+
+#div_user_info b{
+    color: #ffffff;
+}
+
+#div_user_info a#log_out{
+    color: #25dbf4;
+}
+#div_user_info a#log_out:hover{
+    color: #ffffff;
+}
+
+
+div.hover-select {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1px;
+}
+
+div.hover-select label {
+    cursor: pointer;
+    padding-right: 24px;
+    padding-left: 4px;
+    background: url('../../image/index/updown.gif') no-repeat 60px 6px;
+    z-index: 999;
+}
+
+div.hover-select:hover {
+    text-decoration: none !important;
+    color: black !important;
+    background-color: white;
+}
+
+div.hover-select:hover label {
+    background-position: 60px -24px;
+}
+
+div.hover-select:hover ul {
+    display: block;
+}
+
+div.hover-select ul {
+    display: none;
+    position: absolute;
+    z-index: 998;
+    border: solid 1px gray;
+    border-top: 0;
+    background-color: white;
+    left: -1px;
+    top: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.hover-select ul li {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    height: 24px;
+}
+
+div.hover-select li a {
+    padding: 8px;
+    padding-left: 16px;
+    line-height: 24px;
+    background: url('../../image/index/small-right-arrow.gif') no-repeat 3px center;
+    color: black !important;
+}
+
+#sys_menu {
+    float: right;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+#sys_menu ul {
+    list-style: none;
+}
+
+#sys_menu li {
+    float: left;
+    background: url('../../image/index/menu-btn-bg.png') no-repeat left top;
+    /*cursor: pointer;*/
+    margin-right: 9px;
+    text-align: center;
+}
+
+#sys_menu li:hover {
+    background-image: url('../../image/index/menu-btn-bg-hot.png');
+}
+
+#sys_menu a {
+    display: inline-block;
+    height: 56px;
+    width: 56px;
+    padding-top: 4px;
+    text-decoration: none;
+    color: #6d6d6d;
+}
+
+#sys_menu a span {
+    display: block;
+    line-height: 14px;
+}
+
+/**/
+
+#pg_tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 77px;
+    bottom: 0;
+    width: 100%;
+}
+
+#pg_tabs * {
+    outline: none;
+}
+
+#pg_tabs ul {
+    border: 0;
+    padding-top: 1px;
+    background: #f0f0f0;
+    border-radius: 0;
+    border-bottom: solid 1px #ffffff;
+    height: 36px;
+    padding-left: 15px;
+}
+
+#pg_tabs li a {
+    padding: 6px 8px;
+    font-weight: normal;
+    color: #666666;
+}
+
+
+.ui-tabs-nav li.ui-state-default {
+    background: #f0f0f0;
+}
+
+#pg_tabs li.ui-tabs-active {
+    background: #ffffff;
+    /*padding-bottom: 0;*/
+    /*margin-bottom: 0;*/
+}
+#pg_tabs li.ui-state-active a{
+    color: #1056ab;
+}
+#pg_tabs .ui-tabs-nav li{
+    margin-top: 5px;
+    margin-left: 5px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: rgba(0,0,0,0.2) 0 -1px 5px;
+}
+
+#pg_tabs .ui-icon {
+    background-image: url("../../image/index/ui-icons.png");
+    background-position: -80px -128px;
+    position: relative;
+    top: 6px;
+    right: 4px;
+}
+
+#pg_tabs .ui-tabs-panel {
+    border-radius: 0;
+    background-color: #ffffff;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    /*left: 0;*/
+    top: 36px;
+    /*right: 0;*/
+    bottom: 0;
+    width: 100%;
+    /*margin-bottom: 0;*/
+}
+
+#pg_tabs .ui-tabs-panel iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/**/
+#tabs-home {
+    background: #ffffff;
+    background-image: -webkit-linear-gradient(top,#f0f0f0,#ffffff 5%,#ffffff);
+    background-image: -moz-linear-gradient(top,#f0f0f0,#ffffff 5%,#ffffff);
+    background-image: -o-linear-gradient(top,#f0f0f0,#ffffff 5%,#ffffff);
+    background-image: -ms-linear-gradient(top,#f0f0f0,#ffffff 5%,#ffffff);
+    background-image: linear-gradient(top,#f0f0f0,#ffffff 5%,#ffffff);
+}
+
+#tabs-home em {
+    font-size: 14pt;
+    margin-left: 4px;
+}
+
+ul.my-context-menu {
+    border: solid 1px #979797;
+    padding: 3px;
+    box-shadow: 1px 1px 1px 0 rgba(128, 128, 128, .5);
+    z-index: 999;
+}
+
+ul.my-context-menu li.ui-menu-item {
+    padding: 3px 32px 3px 16px !important;
+    cursor: default;
+}
+
+ul.my-context-menu li.ui-state-focus {
+    font-weight: normal;
+    border: solid 1px #78aee4;
+    background: #d1e2f2;
+    color: windowtext;
+}
+#tabs-home .pading_10{
+    padding: 10px;
+}

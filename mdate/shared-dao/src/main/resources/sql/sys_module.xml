@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gpdi.mdata.sys.entity.system.SysModule">
+    <select id="getParentByRole" resultType="SysModule">
+        select * from sys_module  where parent_id=0 and module_id in(
+        select DISTINCT module_id from sys_role_module  WHERE role_id=#{id})
+    </select>
+    <select id="getParent" resultType="SysModule">
+        select m1.* from sys_module m1 WHERE  parent_id=1 or module_id = 1 order by module_id
+    </select>
+    <select id="getChild" resultType="SysModule" parameterType="java.lang.Integer">
+        SELECT  * FROM  WHERE parent_id=#{id}
+    </select>
+
+    <select id="getRoleMoudleTree" resultType="SysModule" parameterType="java.lang.Integer">
+     SELECT a.* ,b.is_enable from sys_module a ,(SELECT * FROM sys_role_module WHERE role_id=#{roleId}) b
+      WHERE a.module_id=b.module_id
+    </select>
+    <select id="getMoudleByRole"  resultType="SysModule" parameterType="java.lang.Integer">
+          select * from sys_module WHERE module_id in(
+          select DISTINCT module_id from sys_role_module  WHERE role_id=#{id} AND  is_enable=0
+        )
+    </select>
+    <select id="getMoudleByRoleAndParent"  resultType="java.lang.String">
+        SELECT m.module_code FROM sys_module m , sys_role_module r WHERE m.module_id=r.module_id AND r.is_enable=0
+        <if test='list!=null and list.size()>0'>
+            AND r.role_id in
+            <foreach collection="list" open="(" close=")" separator="," item="roleId">
+                #{roleId}
+            </foreach>
+        </if>
+         AND m.parent_id=#{parentId}
+    </select>
+</mapper>

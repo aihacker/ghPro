@@ -1,0 +1,371 @@
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat center center;
+}
+.icon-add_{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-check{
+	background:url('icons/check.png') no-repeat center center;
+}
+.icon-record{
+	background:url('icons/record.png') no-repeat center center;
+}
+.icon-config{
+	background:url('icons/config.png') no-repeat center center;
+}
+.icon-warning{
+	background:url('icons/warning.png') no-repeat center center;
+}
+.icon-clear{
+	background:url('icons/clear.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+.icon-filter{
+	background:url('icons/filter.png') no-repeat center center;
+}
+.icon-man{
+	background:url('icons/man.png') no-repeat center center;
+}
+.icon-lock{
+	background:url('icons/lock.png') no-repeat center center;
+}
+.icon-more{
+	background:url('icons/more.png') no-repeat center center;
+}
+
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}
+
+.icon-large-picture{
+	background:url('icons/large_picture.png') no-repeat center center;
+}
+.icon-large-clipart{
+	background:url('icons/large_clipart.png') no-repeat center center;
+}
+.icon-large-shapes{
+	background:url('icons/large_shapes.png') no-repeat center center;
+}
+.icon-large-smartart{
+	background:url('icons/large_smartart.png') no-repeat center center;
+}
+.icon-large-chart{
+	background:url('icons/large_chart.png') no-repeat center center;
+}
+
+/*自定义*/
+/*首页*/
+.icon-index{
+	background:url('icons/index.png') no-repeat center center;
+}
+/*菜单1*/
+.icon-menu{
+	background:url('icons/menu.png') no-repeat center center;
+}
+/*菜单2*/
+.icon-menu_{
+	background:url('icons/menu_.png') no-repeat center center;
+}
+/*菜单管理*/
+.icon-menu_mng{
+	background:url('icons/menu_mng.png') no-repeat center center;
+}
+/*用户1*/
+.icon-info{
+	background:url('icons/info.png') no-repeat center center;
+}
+/*用户2*/
+.icon-info_{
+	background:url('icons/info_.png') no-repeat center center;
+}
+/*添加*/
+.icon-add{
+	background:url('icons/add.png') no-repeat center center;
+}
+/*审核1*/
+.icon-audit{
+	background:url('icons/audit.png') no-repeat center center;
+}
+/*审核2*/
+.icon-audit_{
+	background:url('icons/audit_.png') no-repeat center center;
+}
+/*取消*/
+.icon-cancel_{
+	background:url('icons/cancel_.png') no-repeat center center;
+}
+/*删除*/
+.icon-delete{
+	background:url('icons/delete.png') no-repeat center center;
+}
+/*刷新*/
+.icon-refresh{
+	background:url('icons/refresh.png') no-repeat center center;
+}
+/*设置*/
+.icon-reset{
+	background:url('icons/reset.png') no-repeat center center;
+}
+/*退货*/
+.icon-return_goods{
+	background:url('icons/return_goods.png') no-repeat center center;
+}
+/*角色管理*/
+.icon-role_mng{
+	background:url('icons/role_mng.png') no-repeat center center;
+}
+/*分割符*/
+.icon-delimitor{
+	background:url('icons/delimitor.png') no-repeat center center;
+}
+/*购物车*/
+.icon-shoppingcart{
+	background:url('icons/shoppingcart.png') no-repeat center center;
+}
+/*库存*/
+.icon-stock{
+	background:url('icons/stock.png') no-repeat center center;
+}
+/*用户*/
+.icon-user{
+	background:url('icons/user.png') no-repeat center center;
+}
+/*销售*/
+.icon-xiaoshou{
+	background:url('icons/xiaoshou.png') no-repeat center center;
+}
+/*商标C*/
+.icon-c_{
+	background:url('icons/c_.png') no-repeat center center;
+}
+/*订单*/
+.icon-order{
+	background:url('icons/order.png') no-repeat center center;
+}
+/*质量*/
+.icon-quality{
+	background:url('icons/quality.png') no-repeat center center;
+}
+/*数据/资料*/
+.icon-data{
+	background:url('icons/data.png') no-repeat center center;
+}
+/*流程*/
+.icon-flow{
+	background:url('icons/flow.png') no-repeat center center;
+}
+/*采集*/
+.icon-collection{
+	background:url('icons/collection.png') no-repeat center center;
+}
+/*药品*/
+.icon-pill{
+	background:url('icons/pill.png') no-repeat center center;
+}
+
+/*GSP*/
+.icon-gsp{
+	background:url('icons/gsp.png') no-repeat center center;
+}
+
+/*list*/
+.icon-list{
+	background:url('icons/list.png') no-repeat center center;
+}
+
+/*upload*/
+.icon-upload{
+	background:url('icons/upload.png') no-repeat center center;
+}
+
+/*rmb*/
+.icon-rmb{
+	background:url('icons/rmb.png') no-repeat center center;
+}
+
+.icon-yuan{
+	background:url('icons/yuan.png') no-repeat center center;
+}
+
+/*unlock*/
+.icon-unlock{
+	background:url('icons/unlock.png') no-repeat center center;
+}
+
+/*select*/
+.icon-select{
+	background:url('icons/select.png') no-repeat center center;
+}
+
+/*重要修改*/
+.icon-i_update{
+	background:url('icons/i_update.png') no-repeat center center;
+}
+
+/*重要确认*/
+.icon-confirm{
+	background:url('icons/confirm.png') no-repeat center center;
+}
+
+/*库存2*/
+.icon-stock_{
+	background:url('icons/stock_.png') no-repeat center center;
+}
+
+/*验货*/
+.icon-stock_ck{
+	background:url('icons/stock_ck.png') no-repeat center center;
+}
+
+/*收货*/
+.icon-received{
+	background:url('icons/received.png') no-repeat center center;
+}
+
+/*入库*/
+.icon-stock_in{
+	background:url('icons/stock_in.png') no-repeat center center;
+}
+
+/*购进退出*/
+.icon-purchase_return{
+	background:url('icons/purchase_return.png') no-repeat center center;
+}
+
+/*购进退出*/
+.icon-purchase_return_out{
+	background:url('icons/purchase_return_out.png') no-repeat center center;
+}
+
+/*上一步*/
+.icon-pre_step{
+	background:url('icons/pre_step.png') no-repeat center center;
+}
+
+/*下一步*/
+.icon-next_step{
+	background:url('icons/next_step.png') no-repeat center center;
+}
+
+/*借调*/
+.icon-allocation{
+	background:url('icons/allocation.png') no-repeat center center;
+}
+
+/*清空*/
+.icon-clear_{
+	background:url('icons/clear_.png') no-repeat center center;
+}
+
+/*查看*/
+.icon-look{
+	background:url('icons/look.png') no-repeat center center;
+}
+
+/*分配*/
+.icon-dispatch{
+	background:url('icons/dispatch.png') no-repeat center center;
+}
+
+/*柜*/
+.icon-cabinet{
+	background:url('icons/cabinet.png') no-repeat center center;
+}
+
+/*剂量*/
+.icon-dosis{
+	background:url('icons/dosis.png') no-repeat center center;
+}
+
+/*冲突*/
+.icon-conflict{
+	background:url('icons/conflict.png') no-repeat center center;
+}
+
+/*价格*/
+.icon-price{
+	background:url('icons/price.png') no-repeat center center;
+}
+
+/*统计*/
+.icon-count{
+	background:url('icons/count.png') no-repeat center center;
+}
+
+/*g*/
+.icon-g{
+	background:url('icons/g.png') no-repeat center center;
+}
+
+/*kg*/
+.icon-kg{
+	background:url('icons/kg.png') no-repeat center center;
+}
+
+.icon-import{
+	background:url('icons/import.png') no-repeat center center;
+}
+
+.icon-export{
+	background:url('icons/export.png') no-repeat center center;
+}
+
+.icon-msg{
+	background:url('icons/msg.png') no-repeat center center;
+}
+
+

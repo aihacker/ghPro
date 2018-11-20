@@ -1,0 +1,922 @@
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100%;
+    background: url("../img/bg.png") no-repeat 50% 50%;
+    background-size: 100% 100%;
+    padding-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #49d9fe;
+}
+
+p {
+    color: #49d9fe;
+}
+
+.clear-float {
+    float: none;
+}
+
+.font-color {
+    color: #49d9fe;
+    font-weight: normal;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+.ml_p10 {
+    margin-left: 10%;
+}
+.ml_p20 {
+    margin-left: 20%;
+}
+.ml20 {
+    margin-left: 20px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+
+.width60 {
+    width: 60% !important;
+}
+
+.width70 {
+    width: 70% !important;
+}
+
+.width80 {
+    width: 80% !important;
+}
+
+.width90 {
+    width: 90% !important;
+}
+
+.width100 {
+    width: 100% !important;
+}
+
+.container {
+    width: 1200px !important;
+}
+
+.headtop {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.navbar-default {
+    background: #0e4c7c;
+    border: none;
+    border-bottom: 1px #49d9fe solid;
+}
+
+.navbar-nav > li {
+    float: left;
+}
+
+.navbar-default .navbar-nav > li > a {
+    background: url("../img/nav.png") no-repeat;
+    background-size: 100% 100%;
+    color: #49d9fe;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-default .navbar-nav > li a:hover {
+    background: url("../img/active.png") no-repeat;
+    background-size: 100% 100%;
+
+    color: #fff;
+}
+
+.navbar-nav > li.acti {
+    background: url("../img/nav.png") no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.navbar-nav > li.acti a {
+    color: #fff;
+    background: url("../img/nav.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.container-body {
+
+    background: url("../img/container-body.png") no-repeat;
+    background-size: 100% 100%;
+    padding: 20px;
+}
+
+.nav-stacked > li + li {
+
+}
+
+.nav-stacked > li {
+    background: #035079;
+    margin-bottom: 4px;
+}
+
+.nav-stacked > li:hover a {
+    background: none;
+    border: solid 1px #ff511c;
+    color: #ff511c;
+}
+
+.nav-stacked > li.acti {
+    background: none;
+    border: solid 1px #ff511c;
+    border-radius: 4px;
+}
+
+.nav-stacked > li.acti a {
+    color: #ff511c;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background: #035079;
+
+}
+
+.dropdown-menu > li > a {
+    color: #49d9fe;
+}
+
+.navbar-default .navbar-nav > .open > a {
+    color: #fff !important;
+    background: #ff511c !important;
+
+}
+
+.main {
+    padding-bottom: 50px;
+    padding-left: 20px;
+    min-height: 420px;
+    background: url("../img/fenge.png") no-repeat left top;
+    background-size: 10px 100%;
+    position: relative;
+}
+
+.main .nav-tabs {
+    border-bottom: 1px solid #ff511c;
+}
+
+.main .nav-tabs > li.active > a {
+    background: #035079;
+    border: 1px solid #ff511c;
+    border-bottom-color: transparent;
+    color: #49d9fe !important;
+}
+
+.main .nav-tabs > li > a {
+    border: none;
+}
+
+.main .nav-tabs > li > a:hover {
+    background: #035079 !important;
+    color: #49d9fe;
+
+}
+
+.main input {
+    background: #045179;
+    border: 1px solid #49d9fe;
+    color: #49d9fe;
+}
+
+.main select {
+    background: #045179;
+    border: 1px solid #49d9fe;
+    color: #49d9fe;
+}
+
+.main .sysm {
+    border: 1px solid #49d9fe;
+    background: #045179;
+    min-height: 80px;
+
+}
+
+table {
+    border: 1px solid #1e659a;
+    border-radius: 5px;
+    color: #49d9fe;
+    text-align: center;
+
+}
+
+table thead {
+    background: #1e659a;
+    border: 1px solid #1e659a;
+
+}
+
+table tbody {
+    border: 1px solid #1e659a;
+    background: #16405f;
+}
+
+table tbody td {
+    border: 1px solid #1e659a;
+}
+
+.foot-yeshu {
+    margin: 30px auto;
+    width: 70%;
+}
+
+.foot-yeshu input {
+    width: 30px;
+    text-align: center;
+}
+
+.foot-yeshu button {
+    border: 1px solid #49d9fe;
+    background: none;
+}
+
+.three-nav {
+    height: auto;
+    border-bottom: 1px solid #0e4c7c;
+}
+
+.three-nav .breadcrumb {
+    background: none;
+    margin: 0;
+}
+
+.three-nav .breadcrumb a:hover {
+    color: #ff511c;
+}
+
+.fill input[type="file"] {
+    opacity: 0;
+}
+
+.canshu .form-control {
+    height: auto;
+    background: none;
+    border: none;
+}
+
+.canshu .form-group label {
+    float: left;
+    margin-top: 10px;
+}
+
+.leixing, .ziduan-con {
+    margin-top: 10%;
+}
+
+.leixing select {
+    border: none;
+
+    padding: 0;
+
+    height: auto;
+    background: #16405f;
+    box-shadow: none;
+
+}
+
+.leixing select > option {
+
+}
+
+.leixing select:focus {
+    box-shadow: none;
+    border: 1px solid #1e659a;
+}
+
+.moxing > li > a:hover {
+    background: none;
+    color: #ff511c;
+}
+
+.chuli {
+    border: 1px solid #ff511c;
+    border-left: transparent;
+    border-right: transparent;
+}
+
+.chuli-con {
+}
+
+.chuli-con-a {
+    float: left;
+    text-align: center;
+    width: 70px !important;
+    height: auto !important;
+    padding-top: 10px;
+    margin-right: 15px;
+}
+
+.chuli-con-a .jiluxuanxiang, .chuli-con-a .ziduanxuanxiang {
+    margin: 0 auto;
+    float: none;
+}
+
+.chuli-con-a p {
+    display: inline-block;
+    color: #fff;
+}
+
+.canvas {
+    min-height: 400px;
+    background: #035079;
+    border-radius: 10px;
+}
+
+.run .panel-heading {
+    color: #49d9fe;
+}
+
+.run .panel-body {
+    background: #035079;
+
+}
+
+.run .panel-body > p {
+    color: #fff;
+}
+
+.canshupeizhi > tbody > tr > td:last-child {
+    width: 7%;
+}
+
+.canshupeizhi > tbody input {
+    width: 100%;
+}
+
+.chuli-con .nav-pills > li > a:hover {
+    background: none;
+    color: red;
+}
+
+/*我的平台*/
+.pingtai {
+    width: 28px;
+    height: 28px;
+    background: url("../img/pingtai.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.wdpt-ico-1 {
+    background-position: left top;
+}
+
+.wdpt-ico-2 {
+    background-position: left -60px;
+}
+
+.wdpt-ico-3 {
+    background-position: left -119px;
+}
+
+.wdpt-ico-4 {
+    background-position: left -180px;
+}
+
+.wdpt-ico-5 {
+    background-position: left -240px;
+}
+
+/*数据源*/
+.shujuyuan {
+    width: 28px;
+    height: 28px;
+    background: url("../img/shujuyuan-ico.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.sjy-ico-1 {
+    background-position: left top;
+}
+
+.sjy-ico-2 {
+    background-position: left -60px;
+}
+
+.sjy-ico-3 {
+    background-position: left -119px;
+}
+
+.sjy-ico-4 {
+    background-position: left -177px;
+}
+
+.sjy-ico-5 {
+    background-position: left -237px;
+}
+
+/*数据清洗-记录选项*/
+.jiluxuanxiang {
+    width: 28px;
+    height: 28px;
+    background: url("../img/jiluxuanxiang-ico.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.jlxx-ico-1 {
+    background-position: left top;
+}
+
+.jlxx-ico-2 {
+    background-position: left -60px;
+}
+
+.jlxx-ico-3 {
+    background-position: left -119px;
+}
+
+.jlxx-ico-4 {
+    background-position: left -177px;
+}
+
+.jlxx-ico-5 {
+    background-position: left -236px;
+}
+
+.jlxx-ico-6 {
+    background-position: left -297px;
+}
+
+.jlxx-ico-7 {
+    background-position: left -358px;
+}
+
+.jlxx-ico-8 {
+    background-position: left -418px;
+}
+
+.jlxx-ico-9 {
+    background-position: left -478px;
+}
+
+.jlxx-ico-10 {
+    background-position: left -537px;
+}
+
+.jlxx-ico-11 {
+    background-position: left -597px;
+}
+
+/*数据模型*/
+.al-math {
+    width: 28px;
+    height: 28px;
+    background: url("../img/al-math.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-left: 21px;
+}
+
+.math-ico-1 {
+    background-position: left top;
+}
+
+.math-ico-2 {
+    background-position: -120.5px 0;
+}
+
+.math-ico-3 {
+    background-position: -241px 0;
+}
+
+/*机器学习*/
+.al-ML {
+    width: 28px;
+    height: 28px;
+    background: url("../img/al-ML.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-left: 21px;
+}
+
+.ML-ico-1 {
+    background-position: left top;
+}
+
+.ML-ico-2 {
+    background-position: -78px 0;
+}
+
+.ML-ico-3 {
+    background-position: -160px 0;
+}
+
+.ML-ico-4 {
+    background-position: -238px 0;
+}
+
+.ML-ico-5 {
+    background-position: -316px 0;
+}
+
+.ML-ico-6 {
+    background-position: -394px 0;
+}
+
+.ML-ico-7 {
+    background-position: -476px 0;
+}
+
+.ML-ico-8 {
+    background-position: -554px 0;
+}
+
+.ML-ico-9 {
+    background-position: -636px 0;
+}
+
+.ML-ico-10 {
+    background-position: -722px 0;
+}
+
+.ML-ico-11 {
+    background-position: -808px 0;
+}
+
+
+/*!*机器学习*!*/
+.al-mcore {
+    width: 28px;
+    height: 28px;
+    background: url("../img/al-mcore.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-left: 21px;
+}
+
+.mcore-ico-1 {
+    background-position: left top;
+}
+
+.mcore-ico-2 {
+    background-position: -102.5px 0;
+}
+
+.mcore-ico-3 {
+    background-position: -205px 0;
+}
+
+.mcore-ico-4 {
+    background-position: -307.5px 0;
+}
+
+.mcore-ico-5 {
+    background-position: -409px 0;
+}
+
+.mcore-ico-6 {
+    background-position: -512.5px 0;
+}
+
+.mcore-ico-7 {
+    background-position: -614px 0;
+}
+
+
+
+
+.ds-icon-rmdb1 {
+    background: url("../img/db1.png") no-repeat;
+}
+
+.ds-icon-rmdb2 {
+    background: url("../img/xml.png") no-repeat;
+}
+
+.ds-icon-rmdb3 {
+    background: url("../img/HDFS.png") no-repeat;
+}
+
+.ds-icon-rmdb4 {
+    background: url("../img/db2.png") no-repeat;
+}
+
+.ds-icon-rmdb5 {
+    background: url("../img/db3.png") no-repeat;
+}
+
+.ds-icon-vi1 {
+    background: url("../img/vi/仪表图@2x.png") no-repeat;
+}
+
+.ds-icon-vi2 {
+    background: url("../img/vi/地图@2x.png") no-repeat;
+}
+
+.ds-icon-vi3 {
+    background: url("../img/vi/散点图@2x.png") no-repeat;
+}
+
+.ds-icon-vi4 {
+    background: url("../img/vi/时序图@2x.png") no-repeat;
+}
+
+.ds-icon-vi5 {
+    background: url("../img/vi/条形图@2x.png") no-repeat;
+}
+
+.ds-icon-vi6 {
+    background: url("../img/vi/气泡图@2x.png") no-repeat;
+}
+
+.ds-icon-vi7 {
+    background: url("../img/vi/直方图@2x.png") no-repeat;
+}
+
+.ds-icon-vi8 {
+    background: url("../img/vi/组合图@2x.png") no-repeat;
+}
+
+.al-icon-vi1 {
+    background: url("../img/vi/keans.png") no-repeat;
+}
+
+/*数据清洗-字段选项*/
+.ziduanxuanxiang {
+    width: 28px;
+    height: 28px;
+    background: url("../img/ziduanxuanxiang-ico.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.zdxx-ico-1 {
+    background-position: left top;
+}
+
+.zdxx-ico-2 {
+    background-position: left -60px;
+}
+
+.zdxx-ico-3 {
+    background-position: left -119px;
+}
+
+.zdxx-ico-4 {
+    background-position: left -177px;
+}
+
+.zdxx-ico-5 {
+    background-position: left -236px;
+}
+
+.zdxx-ico-6 {
+    background-position: left -297px;
+}
+
+.zdxx-ico-7 {
+    background-position: left -358px;
+}
+
+.zdxx-ico-8 {
+    background-position: left -418px;
+}
+
+.zdxx-ico-9 {
+    background-position: left -478px;
+}
+
+.zdxx-ico-10 {
+    background-position: left -537px;
+}
+
+.zdxx-ico-11 {
+    background-position: left -596px;
+}
+
+/*可视化图标*/
+.keshihua {
+    width: 28px;
+    height: 28px;
+    background: url("../img/keshihua-ico.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.ksh-ico-1 {
+    background-position: left top;
+}
+
+.ksh-ico-2 {
+    background-position: left -60px;
+}
+
+.ksh-ico-3 {
+    background-position: left -119px;
+}
+
+.ksh-ico-4 {
+    background-position: left -179px;
+}
+
+.ksh-ico-5 {
+    background-position: left -239px;
+}
+
+.ksh-ico-6 {
+    background-position: left -299px;
+}
+
+.ksh-ico-7 {
+    background-position: left -358px;
+}
+
+.ksh-ico-8 {
+    background-position: left -416px;
+}
+
+.ksh-ico-9 {
+    background-position: left -476px;
+}
+
+.ksh-ico-10 {
+    background-position: left -536px;
+}
+
+.ksh-ico-11 {
+    background-position: left -596px;
+}
+
+.ksh-ico-12 {
+    background-position: left -656px;
+}
+
+.ksh-ico-13 {
+    background-position: left -716px;
+}
+
+.ksh-ico-14 {
+    background-position: left -776px;
+}
+
+.ksh-ico-15 {
+    background-position: left -836px;
+}
+
+/*分析算法*/
+.fenxisuanfa {
+    width: 28px;
+    height: 28px;
+    background: url("../img/fenxisuanfa-ico.png") no-repeat;
+    overflow: hidden;
+    float: left;
+    margin-top: -4px;
+    margin-right: 15px;
+}
+
+.fxsf-ico-1 {
+    background-position: left top;
+}
+
+.fxsf-ico-2 {
+    background-position: left -60px;
+}
+
+.fxsf-ico-3 {
+    background-position: left -119px;
+}
+
+.fxsf-ico-4 {
+    background-position: left -177px;
+}
+
+.fxsf-ico-5 {
+    background-position: left -237px;
+}
+
+.fxsf-ico-6 {
+    background-position: left -297px;
+}
+
+.fxsf-ico-7 {
+    background-position: left -357px;
+}
+.bar_chart{
+    min-height: 500px;
+    border-radius: 5px;
+    background: #045179;
+    color: #fff;
+    border: 1px solid #ff511c;
+    padding-bottom: 10px;
+}
+.bar_chart label{
+    font-weight: normal;
+}
+.bar_chart p{
+    color: #fff;
+}
+.bar_chart .input{
+    background: #2795bc;
+    border: 1px solid #2795bc;
+    display: inline;
+    color: #fff;
+}
+.panl{
+    border-radius: 3px;
+    border: 1px solid #2ea2e6;
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+.color-box{
+    border: 1px solid #2795bc;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-bottom: -5px;
+}
+.color-input{
+    display: inline-block;
+    width: 40%;
+}
+.chart-title-box{
+    border-bottom: transparent;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    float: left;
+    cursor: pointer;
+}
+.chart-title-box-curr{
+    border: 1px solid #ff511c;
+    border-bottom: transparent;
+}
+.ruled_out{
+    border: 1px solid #ff511c;
+    border-radius: 5px;
+    position: relative;
+    min-height: 300px;
+}
+.ruled_out_title{
+    padding: 5px;
+    background: #045179;
+    position: absolute;
+    top: -15px;
+    left: 15px;
+}
+.ruled_out input{
+    background: #2795bc;
+    border: 1px solid #49d9fe;
+}
+
+.ruled_out .well{
+    background: #2795bc;
+    min-height: 100px;
+    border: 1px solid #49d9fe;
+}
+.xuanze{
+    border: 1px solid #37abcd;
+    border-radius: 5px;
+    position: relative;
+    min-height: 300px;
+
+}
+.xuanze button{
+
+}
+.chart-show{
+    border: 1px solid #37abcd;
+    border-radius: 5px;
+    position: relative;
+    min-height: 20px;
+    padding: 20px;
+}
+.chart-show select{
+    background: #2795bc;
+    border: 1px solid #49d9fe;
+    color: #fff;
+}

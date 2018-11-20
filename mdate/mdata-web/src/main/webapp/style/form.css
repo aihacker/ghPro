@@ -1,0 +1,200 @@
+table.form {
+  width: 88%;
+  border: 0;
+  min-width: 660px;
+}
+table.form th,
+table.form td {
+  padding: 5px 4px 4px 4px;
+}
+table.form th {
+  width: 20%;
+  text-align: right;
+  padding-right: 7px;
+  font-size: 13px;
+}
+table.form th em {
+  color: red;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 1px;
+  font-style: normal;
+}
+table.form th.readonly {
+  color: grey;
+}
+table.form th.readonly em {
+  color: grey;
+}
+table.form td {
+  width: 30%;
+  font-size: 13px;
+}
+table.form label.error {
+  font-weight: normal;
+  color: red;
+  margin-left: 2px;
+  margin-bottom: 0;
+  line-height: 1em;
+}
+table.form input {
+  font-size: inherit;
+}
+table.form input::-webkit-input-placeholder {
+  color: silver;
+}
+table.form select {
+  font-size: inherit;
+}
+table.form .select {
+  border: solid 1px #95b8e7;
+  border-radius: 5px 5px 5px 5px;
+  background: white;
+  padding: 0 4px 0 0;
+  line-height: 22px;
+  height: 24px;
+  width: 217px;
+  font-size: 12px;
+}
+table.form .select:focus {
+  border-radius: 0;
+}
+table.form td[colspan="3"] .text {
+  width: 88%;
+}
+table.form option:empty {
+  display: none;
+}
+table.form .dropdown-toggle {
+  border: solid 1px #95b8e7;
+  border-radius: 5px 5px 5px 5px;
+  background: white;
+  padding: 0 10px 0 4px;
+  line-height: 22px;
+  height: 24px;
+  width: 217px;
+  font-size: 12px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+table.form .dropdown-toggle b {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 16px;
+  height: 22px;
+  background: white url('../image/misc/fake-select-down.png') no-repeat 2px top;
+  border: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+table.form .dropdown-toggle[aria-expanded="true"] b {
+  background-color: transparent;
+  opacity: .4;
+}
+table.form .dropdown-toggle:active b,
+table.form .dropdown-toggle.active b {
+  background-color: transparent;
+  opacity: .4;
+}
+table.form td.op > div {
+  width: 174px;
+  padding: .4em 0 1em 0;
+  text-align: right;
+  white-space: nowrap;
+}
+table.form .unit-input {
+  position: relative;
+  width: 217px;
+  display: inline-block;
+}
+table.form .unit-input::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 2px;
+  top: 1px;
+  width: 18px;
+  height: 22px;
+  z-index: 1;
+  opacity: .6;
+}
+table.form .unit-input:hover::after {
+  opacity: 1;
+}
+table.form .unit-input.yuan::after {
+  background: url('../image/misc/yuan.png') no-repeat center center;
+}
+table.form .unit-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+table.form tr.sep td {
+  padding: 0;
+}
+table.form tr.sep td::after {
+  content: '';
+  display: block;
+  width: 77%;
+  height: 0px;
+  border: 0.5px solid grey;
+  margin: 1px auto;
+  position: relative;
+  left: 1.4%;
+}
+table.form .date-input {
+  position: relative;
+  display: inline-block;
+}
+table.form .date-input a {
+  display: block;
+  position: absolute;
+  left: 198px;
+  top: 1px;
+  width: 18px;
+  height: 22px;
+  z-index: 1;
+  background: #e0ecff url('../image/misc/cal.png') no-repeat center center;
+  opacity: .6;
+}
+table.form .date-input a:hover {
+  opacity: 1;
+}
+table.form.vertical th {
+  width: 33%;
+}
+table.form.vertical td {
+  width: 66%;
+}
+table.form.vertical .text,
+table.form.vertical .select {
+  width: 100%;
+}
+.form .text {
+  border: 1px solid #95b8e7;
+  border-radius: 5px 5px 5px 5px;
+  height: 24px;
+  line-height: 22px;
+  padding: 0 4px;
+  width: 217px;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.form .text:focus {
+  border-radius: 0;
+}
+.form .text.half-wide {
+  width: 105px;
+}
+.form .text.half-wide:not(:first-child) {
+  margin-left: 3px;
+}
+.form textarea.text {
+  height: auto;
+  line-height: 1.4em;
+}
+body.popup table.form {
+  width: 94%;
+  min-width: 200px;
+}

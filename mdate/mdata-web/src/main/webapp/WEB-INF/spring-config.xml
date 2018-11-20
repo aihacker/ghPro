@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+        >
+
+    <bean class="com.gpdi.mdata.sys.support.SysPreInitializer" lazy-init="false"/>
+
+    <bean class="com.gpdi.mdata.sys.support.MySysPreInitializer" />
+
+    <context:property-placeholder
+            location="classpath:sys.properties"
+            ignore-resource-not-found="true"/>
+
+    <!-- dao 项目数据源 -->
+    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="jdbcUrl" value="${jdbc_url}"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="lazyInit" value="true"/>
+        <property name="partitionCount" value="1"/>
+        <property name="minConnectionsPerPartition" value="1"/>
+        <property name="maxConnectionsPerPartition" value="32"/>
+        <property name="poolAvailabilityThreshold" value="0"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="transactionRecoveryEnabled" value="false"/>
+        <property name="idleConnectionTestPeriodInMinutes" value="10"/>
+        <property name="connectionTestStatement" value="/* ping */ select 1"/>
+    </bean>
+    <!-- dao 机器人数据源 -->
+    <bean id="dataSource2" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="jdbcUrl" value="${jdbc_url2}"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="lazyInit" value="true"/>
+        <property name="partitionCount" value="1"/>
+        <property name="minConnectionsPerPartition" value="1"/>
+        <property name="maxConnectionsPerPartition" value="32"/>
+        <property name="poolAvailabilityThreshold" value="0"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="transactionRecoveryEnabled" value="false"/>
+        <property name="idleConnectionTestPeriodInMinutes" value="10"/>
+        <property name="connectionTestStatement" value="/* ping */ select 1"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+     <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="txManager2" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource2"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <tx:annotation-driven transaction-manager="txManager2"/>
+    <context:annotation-config/>
+
+    <bean id="sqlSessionFactory" class="pub.dao.mybatis.support.MySqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:/sql/**/*.xml"/>
+        <property name="entityPackages" value="com.gpdi.mdata.sys.entity.**.*"/>
+        <!--<property name="entityPackages" value="com.gpdi.mdata.sys.entity"/>-->
+    </bean>
+    <bean id="sqlSessionFactory2" class="pub.dao.mybatis.support.MySqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource2"/>
+        <property name="mapperLocations" value="classpath*:/sql/**/*.xml"/>
+        <property name="entityPackages" value="com.gpdi.mdata.sys.entity.**.*"/>
+        <!--<property name="entityPackages" value="com.gpdi.mdata.sys.entity"/>-->
+    </bean>
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+    <bean id="sqlSessionTemplate2" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg ref="sqlSessionFactory2"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="jdbcTemplate2" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource2"/>
+    </bean>
+
+    <bean id="generalDao" class="pub.dao.mybatis.GeneralDaoImpl">
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="generalDao2" class="pub.dao.mybatis.GeneralDaoImpl2">
+        <property name="sqlSessionTemplate" ref="sqlSessionTemplate2"/>
+        <property name="dataSource" ref="dataSource2"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate2"/>
+    </bean>
+
+    <context:component-scan base-package="com.gpdi.mdata.sys" name-generator="pub.spring.bean.ClassNameGenerator">
+
+    </context:component-scan>
+
+
+</beans>

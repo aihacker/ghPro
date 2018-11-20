@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mdata:war">
+    <output-path>$PROJECT_DIR$/target/artifacts/mdata_war</output-path>
+    <root id="archive" name="mdata_war.war">
+      <element id="artifact" artifact-name="mdata:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib" />
+      </element>
+    </root>
+  </artifact>
+</component>

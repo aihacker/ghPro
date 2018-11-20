@@ -1,0 +1,50 @@
+/*
+ * @(#) ${entity.name}.java $today
+ * Copyright $today.substring(7) GPDI. All right reserved.
+ */
+package ${config.package}.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.*;
+
+/**
+ * @author $config.author
+ * @version 1.0 $today
+ */
+@Entity
+@Table(name = "$table.name")
+public class $entity.name implements Serializable {
+    /**
+     * $!table.comments
+     */
+    private static final long serialVersionUID = 1L;
+
+#foreach( $field in $entity.fields)
+    // $!table.columns[$foreach.index].comments
+    private $field.type $field.name;
+
+#end
+
+#foreach( $field in $entity.fields)
+#if($field == $entity.idField)
+    @Id
+#end
+    @Column(name = "$table.columns[$foreach.index].name")
+#if($field == $entity.idField && $config.useValueGenerator)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+#end
+    public $field.type ${field.getter}() {
+        return $field.name;
+    }
+
+#end
+
+#foreach( $field in $entity.fields)
+    public void ${field.setter}($field.type $field.name) {
+        this.$field.name = $field.name;
+    }
+
+#end
+}

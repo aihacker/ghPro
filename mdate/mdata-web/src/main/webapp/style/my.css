@@ -1,0 +1,54 @@
+body{
+
+}
+.container{
+
+}
+.width70{
+    width: 70% !important;
+}
+.width40{
+    width: 40% !important;
+}
+
+.mt20{
+    margin-top: 20px;
+}
+.clear-float{
+    float: none;
+}
+/*.my-head{
+    background: url("../image/header-bg2.jpg") no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}*/
+.my-head h3{
+    margin: 1em 0;
+}
+.my-nav{
+    background: #5aa1da;
+
+}
+.my-nav a{
+    color: #fff !important;
+}
+.my-nav .active a{
+    background: #9fca20 !important;
+}
+.my-nav a:hover{
+    background: #428bca !important;
+}
+
+.h30{
+    height: 30px;;
+}
+
+.mg20{
+    margin-right: -20px;
+}
+.mg10{
+    margin-bottom: -10px;
+}
+.mr30{
+    margin-right: 30px;
+}

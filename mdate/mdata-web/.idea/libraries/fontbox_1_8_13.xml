@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="fontbox-1.8.13">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/fontbox-1.8.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

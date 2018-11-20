@@ -1,0 +1,25 @@
+15:11:37.712 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner 77 <init> - SpringJUnit4ClassRunner constructor called with [class com.gpdi.mdata.web.reportform.test.TestDemo6].
+15:11:37.740 INFO  org.springframework.test.context.TestContext 93 <init> - @ContextConfiguration not found for class [class com.gpdi.mdata.web.reportform.test.TestDemo6].
+15:11:37.783 INFO  org.springframework.test.context.TestContextManager 143 retrieveTestExecutionListeners - @TestExecutionListeners is not present for class [class com.gpdi.mdata.web.reportform.test.TestDemo6]: using defaults.
+15:11:38.028 DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner 130 invokeTestMethod - Invoking test method [public void com.gpdi.mdata.web.reportform.test.TestDemo6.saver()]
+15:11:38.050 DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener 83 prepareTestInstance - Performing dependency injection for test context [[TestContext@71075444 testClass = TestDemo6, locations = [null], testInstance = com.gpdi.mdata.web.reportform.test.TestDemo6@4f32a3ad, testMethod = [null], testException = [null]]].
+15:11:38.051 ERROR org.springframework.test.context.TestContextManager 234 prepareTestInstance - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6b695b06] to prepare test instance [com.gpdi.mdata.web.reportform.test.TestDemo6@4f32a3ad] java.lang.IllegalArgumentException: Can not build an ApplicationContext with a NULL 'contextLoader'. Consider annotating your test class with @ContextConfiguration.
+	at org.springframework.util.Assert.notNull(Assert.java:134) ~[spring-core-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.test.context.TestContext.buildApplicationContext(TestContext.java:192) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:233) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:126) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:85) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:231) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:95) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.invokeTestMethod(SpringJUnit4ClassRunner.java:139) [spring-test-2.5.jar:2.5]
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:61) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:54) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:33) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:45) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:52) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
+

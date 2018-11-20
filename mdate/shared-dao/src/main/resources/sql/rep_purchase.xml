@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gpdi.mdata.sys.entity.report.PurchaseContract">
+
+   <!-- 查询所有合同类型-->
+    <select id="getContractType" resultType="java.lang.String">
+        SELECT DISTINCT contract_type_name  FROM t_purchase_contract WHERE contract_type_name IS NOT NULL AND contract_type_name !='' ORDER BY contract_type_name DESC;
+    </select>
+
+    <!--查询所有的经办部门-->
+    <select id="getAllDept" resultType="java.lang.String">
+        SELECT DISTINCT undertake_dept FROM t_purchase_contract WHERE undertake_dept IS NOT NULL AND undertake_dept !='';
+    </select>
+
+    <!--查询所有的采购方式-->
+    <select id="getAllPurchaseWay" resultType="java.lang.String">
+        SELECT DISTINCT purchase_way FROM  t_purchase_contract WHERE purchase_way IS NOT NULL AND purchase_way !='';
+    </select>
+
+    <!--查询所有的领导亲属名称-->
+    <select id="getAllRelatives" resultType="java.lang.String">
+        SELECT DISTINCT kinsfolk_name FROM  t_kinsfolk_business WHERE kinsfolk_name IS NOT NULL AND kinsfolk_name !='';
+    </select>
+</mapper>

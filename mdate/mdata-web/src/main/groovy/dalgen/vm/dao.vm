@@ -1,0 +1,16 @@
+/*
+* @(#) ${entity.name}Dao.java $today
+* Copyright $today.substring(8) GPDI. All right reserved.
+*/
+package ${config.package}.dao;
+
+import ${config.package}.entity.${entity.name};
+import pub.dao.Dao;
+
+/**
+* @author $config.author
+* @version 1.0 $today
+*/
+public interface ${entity.name}Dao extends Dao<$entity.name> {
+
+}

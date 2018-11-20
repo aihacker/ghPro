@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    @author zoe
+    @version 1.0 Jun 17, 2016
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="some_package.entity.TBranchBizRel">
+
+    <sql id="fields">
+        ID, BRANCH_ID, BIZ_TYPE_ID, IS_NET_APPOINT
+    </sql>
+
+    <resultMap id="TBranchBizRelResultMap" type="TBranchBizRel">
+        <id property="id" column="ID"/>
+        <result property="branchId" column="BRANCH_ID"/>
+        <result property="bizTypeId" column="BIZ_TYPE_ID"/>
+        <result property="isNetAppoint" column="IS_NET_APPOINT"/>
+    </resultMap>
+
+    <select id="get" parameterType="Integer" resultType="TBranchBizRel">
+        select * from t_branch_biz_rel where ID = #{value}
+    </select>
+
+    <select id="getAll" parameterType="Integer" resultType="TBranchBizRel">
+        select * from t_branch_biz_rel limit 300
+        <if test="value != null">order by ${value}</if>
+    </select>
+
+    <insert id="insert" parameterType="TBranchBizRel">
+        <selectKey keyProperty="id" resultType="Integer" order="BEFORE">
+            select seq_t_branch_biz_rel.nextval from dual
+        </selectKey>
+        insert into t_branch_biz_rel (<include refid="fields"/>) values(
+               #{id}, #{branchId}, #{bizTypeId}, #{isNetAppoint})
+    </insert>
+
+    <update id="update" parameterType="TBranchBizRel">
+        update t_branch_biz_rel set
+               BRANCH_ID = #{branchId}, BIZ_TYPE_ID = #{bizTypeId}, 
+               IS_NET_APPOINT = #{isNetAppoint}
+         where ID = #{id}
+    </update>
+
+    <delete id="delete" parameterType="list">
+        delete from t_branch_biz_rel where ID in
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator=", " close=")">#{item}</foreach>
+    </delete>
+
+</mapper>

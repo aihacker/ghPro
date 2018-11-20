@@ -1,0 +1,15 @@
+body, td {
+    font-size: 12px;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+table.layout {
+    border: 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table.form table.layout tr td {
+    padding: 0;
+}

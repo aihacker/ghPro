@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring-config.xml</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.json</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>requestDataFilter</filter-name>
+        <filter-class>com.gpdi.mdata.web.app.filter.RequestDataFilter</filter-class><!--安全拦截-->
+    </filter>
+    <filter-mapping>
+        <filter-name>requestDataFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.json</url-pattern>
+        <url-pattern>*.jsp</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.xls</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>urlFilter</filter-name>
+        <filter-class>com.gpdi.mdata.web.app.filter.UrlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>urlFilter</filter-name>
+        <servlet-name>*</servlet-name>
+    </filter-mapping>
+
+
+        <filter>
+            <filter-name>securityFilter</filter-name>
+            <filter-class>com.gpdi.mdata.web.app.filter.SecurityFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>securityFilter</filter-name>
+            <url-pattern>*.html</url-pattern>
+            <url-pattern>*.json</url-pattern>
+            <url-pattern>*.do</url-pattern>
+            <dispatcher>REQUEST</dispatcher>
+            <dispatcher>FORWARD</dispatcher>
+        </filter-mapping>
+
+
+        <listener>
+            <listener-class>com.gpdi.mdata.web.app.listener.AppListener</listener-class>
+        </listener>
+        <listener>
+            <listener-class>com.gpdi.mdata.web.app.listener.SessionListener</listener-class>
+        </listener>
+        <listener>
+            <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+
+
+        <!-- servlets -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>pub.spring.web.DispatcherServletEx</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <multipart-config>
+            <!--30m-->
+            <max-file-size>31457280</max-file-size>
+            <!--5m-->
+            <max-request-size>52428800</max-request-size>
+            <!--1m-->
+            <file-size-threshold>10485760</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.do</url-pattern>
+        <url-pattern>*.json</url-pattern>
+        <url-pattern>*.xls</url-pattern>
+        <url-pattern>*.oa</url-pattern>
+    </servlet-mapping>
+
+
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>app://pub.form</taglib-uri>
+            <taglib-location>/WEB-INF/classes/pub/tld/form.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+
+    <!--log4j配置文件加载 1.x.x版本才需要配置加载-->
+    <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+    <!--&lt;!&ndash;启动一个watchdog线程每1800秒扫描一下log4j配置文件的变化&ndash;&gt;-->
+    <context-param>
+    <param-name>log4jRefreshInterval</param-name>
+    <param-value>5000</param-value>
+    </context-param>
+    <!--&lt;!&ndash;spring log4j监听器&ndash;&gt;-->
+    <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
+</web-app>

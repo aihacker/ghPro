@@ -1,0 +1,74 @@
+2018-08-02 at 11:56:48 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 11:58:11 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 11:58:51 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:03:28 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:03:28 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:03:49 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:05:05 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:08:43 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:36:18 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 44 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:50:36 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 45 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:52:10 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 45 insertData - 插入机器人中间表失败!
+2018-08-02 at 12:52:58 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 45 insertData - 插入机器人中间表失败!
+2018-08-02 at 13:02:30 CST ERROR com.gpdi.mdata.sys.service.reportform.daoexcel.ThreadService 45 insertData - 插入机器人中间表失败!
+2018-10-29 at 11:45:28 CST INFO  org.springframework.test.context.TestContextManager 143 retrieveTestExecutionListeners - @TestExecutionListeners is not present for class [class com.gpdi.mdata.web.reportform.test.TestDemo6]: using defaults.
+2018-10-29 at 11:45:28 CST INFO  org.springframework.beans.factory.xml.XmlBeanDefinitionReader 317 loadBeanDefinitions - Loading XML bean definitions from URL [file:/src/main/webapp/WEB-INF/spring-config.xml]
+2018-10-29 at 11:45:28 CST ERROR org.springframework.test.context.TestContextManager 234 prepareTestInstance - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5f0fd5a0] to prepare test instance [com.gpdi.mdata.web.reportform.test.TestDemo6@4b8d604b] org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from URL [file:/src/main/webapp/WEB-INF/spring-config.xml]; nested exception is java.io.FileNotFoundException: \src\main\webapp\WEB-INF\spring-config.xml (系统找不到指定的路径。)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:252) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:93) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:44) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContext.buildApplicationContext(TestContext.java:198) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:233) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:126) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:85) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:231) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:95) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.invokeTestMethod(SpringJUnit4ClassRunner.java:139) [spring-test-2.5.jar:2.5]
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:61) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:54) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:33) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:45) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:52) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
+Caused by: java.io.FileNotFoundException: \src\main\webapp\WEB-INF\spring-config.xml (系统找不到指定的路径。)
+	at java.io.FileInputStream.open0(Native Method) ~[?:1.8.0_77]
+	at java.io.FileInputStream.open(FileInputStream.java:195) ~[?:1.8.0_77]
+	at java.io.FileInputStream.<init>(FileInputStream.java:138) ~[?:1.8.0_77]
+	at java.io.FileInputStream.<init>(FileInputStream.java:93) ~[?:1.8.0_77]
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:90) ~[?:1.8.0_77]
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:188) ~[?:1.8.0_77]
+	at org.springframework.core.io.UrlResource.getInputStream(UrlResource.java:169) ~[spring-core-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330) ~[spring-beans-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	... 24 more
+
+2018-10-29 at 15:11:37 CST INFO  org.springframework.test.context.TestContext 93 <init> - @ContextConfiguration not found for class [class com.gpdi.mdata.web.reportform.test.TestDemo6].
+2018-10-29 at 15:11:37 CST INFO  org.springframework.test.context.TestContextManager 143 retrieveTestExecutionListeners - @TestExecutionListeners is not present for class [class com.gpdi.mdata.web.reportform.test.TestDemo6]: using defaults.
+2018-10-29 at 15:11:38 CST ERROR org.springframework.test.context.TestContextManager 234 prepareTestInstance - Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6b695b06] to prepare test instance [com.gpdi.mdata.web.reportform.test.TestDemo6@4f32a3ad] java.lang.IllegalArgumentException: Can not build an ApplicationContext with a NULL 'contextLoader'. Consider annotating your test class with @ContextConfiguration.
+	at org.springframework.util.Assert.notNull(Assert.java:134) ~[spring-core-4.3.11.RELEASE.jar:4.3.11.RELEASE]
+	at org.springframework.test.context.TestContext.buildApplicationContext(TestContext.java:192) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContext.getApplicationContext(TestContext.java:233) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:126) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:85) ~[spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:231) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:95) [spring-test-2.5.jar:2.5]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.invokeTestMethod(SpringJUnit4ClassRunner.java:139) [spring-test-2.5.jar:2.5]
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:61) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:54) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:33) [junit-4.11.jar:?]
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:45) [junit-4.11.jar:?]
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:52) [junit-4.11.jar:?]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:160) [junit-4.11.jar:?]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:?]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:?]
+

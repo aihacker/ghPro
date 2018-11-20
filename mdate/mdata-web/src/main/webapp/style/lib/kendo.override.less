@@ -1,0 +1,138 @@
+.k-ghost-splitbar-horizontal {
+    color: #fff;
+    background-color: #95B8E7;
+    border-color: #95B8E7;
+}
+
+.k-splitbar {
+    background-color: #95B8E7;
+}
+
+.k-splitter .k-ghost-splitbar-horizontal, .k-splitter .k-splitbar-horizontal {
+    /*border-width: 0 1px;*/
+    /*background-repeat: repeat-y;*/
+    border-width: 0;
+}
+
+.k-splitter .k-ghost-splitbar-horizontal {
+    width: 5px;
+}
+
+.k-splitter .k-splitbar-horizontal {
+    width: 7px;
+}
+
+.k-splitbar-horizontal-hover:hover {
+    background-color: #95B8E7;
+}
+
+.k-overlay {
+    background-color: #ccc;
+    opacity: .4;
+}
+
+.k-widget.k-window {
+    background: #95B8E7 linear-gradient(to bottom,#a2794d 0,#95B8E7 20%) repeat-x;
+    border: solid 1px #95B8E7;
+    padding: 5px;
+}
+
+.k-header.k-window-titlebar {
+    background: none;
+    color: white;
+    font-size: 12px;
+    line-height: 18px;
+    height: 18px;
+    font-weight: bold;
+    border-bottom: 0;
+    cursor: move;
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
+
+.k-window-title {
+    cursor: move;
+}
+
+.k-window-titlebar .k-window-actions {
+    right: .8em;
+    padding-top: 2px;
+}
+
+.k-window-titlebar .k-window-actions a {
+    padding: 0;
+    border: 0;
+}
+
+.k-i-close {
+    width: 16px;
+    height: 16px;
+    background: url('../../image/app/close.gif') no-repeat;
+}
+
+.k-i-close::before {
+    display: none;
+}
+
+/**/
+.k-i-arrow-60-right:before {
+    color: white;
+}
+
+.k-i-arrow-60-right:hover {
+    background-color: goldenrod;
+    width: 9px;
+    border-radius: 3px;
+}
+
+.k-i-arrow-60-right:hover::before {
+    color: yellow;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+//
+.k-widget.k-notification.k-notification-info {
+  background: #95B8E7 linear-gradient(to bottom,#a2794d 0,#95B8E7 20%) repeat-x;
+  border: solid 1px #95B8E7;
+  padding: 5px;
+
+}
+
+.k-notification-wrap {
+  background: #faf6f2;
+  font-size: 12px;
+  padding: 10px;
+  min-width: 200px;
+  min-height: 60px;
+  box-sizing: border-box;
+  color: black;
+
+  .k-i-info {
+    display: none;
+  }
+
+  .k-i-close {
+    right: 3px;
+    top: 3px;
+    opacity: .5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.k-notification-button .k-notification-wrap {
+  padding-right: 22px;
+}
+
+//
+.k-window-title img.icon,
+.k-window-title i.g-icon {
+  vertical-align: middle;
+  margin-right: 1px;
+  position: relative;
+  top: -2px;
+  left: -1px;
+}

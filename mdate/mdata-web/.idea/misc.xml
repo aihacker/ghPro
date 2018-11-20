@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+    <type id="Spring" />
+  </component>
+  <component name="IdProvider" IDEtalkID="FD09D5657264B79BEFB4D4EF1659C6B3" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="JSX" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/target" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$/..">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="svn://172.16.108.101/BIGDATA/fscontract_analys/06_code" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../.dep">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="svn://172.16.108.101/BIGDATA/fsdbCenter/06_code/.dep" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../pub">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="svn://172.16.108.101/BIGDATA/fscontract_analys/06_code/pub" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../shared-dao">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="svn://172.16.108.101/BIGDATA/fscontract_analys/06_code/shared-dao" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../shared-model">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="svn://172.16.108.101/BIGDATA/fscontract_analys/06_code/shared-model" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>

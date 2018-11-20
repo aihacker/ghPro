@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    @author $config.author
+    @version 1.0 $today
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${config.package}.entity.${entity.name}">
+
+    <sql id="fields">
+        #foreach( $column in $table.columns)
+#if($foreach.index > 0), #end
+#if($foreach.count % 6 == 0)
+    $newline        #end
+$column.name#end
+$newline    </sql>
+
+    <resultMap id="${entity.name}ResultMap" type="$entity.name">
+#foreach( $column in $table.columns)
+#if($column.name == $table.idColumnName)
+        <id property="$entity.fields[$foreach.index].name" column="$column.name"/>
+#elseif($column.name.contains('_'))
+        <result property="$entity.fields[$foreach.index].name" column="$column.name"/>
+#end
+#end
+    </resultMap>
+
+    <select id="get" parameterType="${entity.idField.type}" resultType="$entity.name">
+        select * from $table.name where $table.idColumnName = #{value}
+    </select>
+
+    <select id="getAll" parameterType="${entity.idField.type}" resultType="$entity.name">
+        select * from $table.name limit 300
+        <if test="value != null">order by ${dollar}{value}</if>
+    </select>
+
+    <insert id="insert" parameterType="${entity.name}">
+        <selectKey keyProperty="${entity.idField.name}" resultType="${entity.idField.type}" order="BEFORE">
+            select seq_${table.name}.nextval from dual
+        </selectKey>
+        insert into ${table.name} (<include refid="fields"/>) values(
+               #foreach( $field in $entity.fields)
+#if($foreach.index > 0), #end
+#if($foreach.count % 6 == 0)
+$newline               #end
+#{$field.name}#end)
+    </insert>
+
+    <update id="update" parameterType="${entity.name}">
+        update $table.name set
+               #set($loopCount = 1)
+#foreach( $column in $table.columns)
+#if($column.name != $table.idColumnName)
+#if($loopCount > 1), #end
+#if($loopCount % 3 == 0)
+$newline               #end
+$column.name = #{$entity.fields[$foreach.index].name}#set($loopCount = $loopCount + 1)#end
+#end
+$newline         where $table.idColumnName = #{${entity.idField.name}}
+    </update>
+
+    <delete id="delete" parameterType="list">
+        delete from $table.name where ${table.idColumnName} in
+        <foreach item="item" index="index" collection="list"
+                 open="(" separator=", " close=")">#{item}</foreach>
+    </delete>
+
+</mapper>

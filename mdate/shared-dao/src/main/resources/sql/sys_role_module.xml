@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gpdi.mdata.sys.entity.system.SysRoleModule">
+    <select id="getdata" resultType="SysRoleUser" parameterType="java.util.Map" >
+        SELECT * FROM sys_role_module WHERE module_id=#{id} and rold_id=#{role_id}
+    </select>
+    <update id="updataTree" parameterType="java.util.Map" >
+        UPDATE sys_role_module SET is_enable =1 where module_id  not in
+        <foreach collection="array" item="employeeId" index="index" open="(" close=")" separator=",">
+            #{employeeId}
+        </foreach>
+        AND  role_id =#{roleId};
+
+        UPDATE sys_role_module
+        SET is_enable = 0
+        WHERE module_id in
+        <foreach collection="array" item="employeeId" index="index" open="(" close=")" separator=",">
+            #{employeeId}
+        </foreach>
+        AND  role_id =#{roleId};
+
+    </update>
+</mapper>

@@ -1,0 +1,360 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+h1.title {
+    /*background: window url('../image/titlebg.gif') no-repeat;*/
+    font-size: 14px;
+    padding: 4px;
+    margin: -8px;
+    margin-bottom: 10px;
+    height: 19px;
+}
+
+h1.title div.toolbar {
+    float: right;
+    margin-right: 4%;
+    margin-top: -3px;
+}
+
+h1.title div.toolbar a {
+    font-size: 13px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    overflow: hidden;
+    height: 18px;
+    padding: 4px 3px 0 22px;
+    /*margin: 3px 1px 0 1px;*/
+    line-height: 15px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: windowtext;
+}
+
+.button:hover {
+    border: 1px solid #1087c2;
+    background-color: #addef2;
+    color: #666;
+}
+
+/**/
+/*table show and report show start*/
+.listview {
+    width: 100%;
+    border: 1px solid #d1dfe8;
+    border-top: 1px solid #afcadb;
+    /*background: #d5ecfa url(../image/TableBg.gif) repeat-x;*/
+    background: #d5ecfa;
+}
+
+.listview caption {
+    text-align: left;
+    font-size: 12px;
+    margin: 4px 4px 2px 4px;
+    /*font-style: italic;*/
+    color: darkgray;
+}
+
+.listview th {
+    white-space: nowrap;
+}
+
+.listview td {
+    padding: 2px 2px 2px 5px;
+    border-top: 1px solid #d1dfe8;
+    border-left: 1px solid #d1dfe8;
+    vertical-align: middle;
+    text-align: left;
+    height: 24px;
+    line-height: 20px;
+    word-break: keep-all;
+    white-space: nowrap;
+    color: #666;
+    background-color: #fff;
+}
+
+.listview tr th {
+    height: 30px;
+    border-left: 1px solid #afcadb;
+    border-bottom: 1px solid #afcadb;
+    color: #41290f;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.listview tr td {
+    background-color: #ffffff;
+}
+
+.listview tr:nth-child(even) td {
+    background-color: #f8fbfd;
+}
+
+.listview .tr_focus td {
+    background-color: #fefcec;
+}
+
+.listview td a, .listview td a:visited {
+    color: #4384b1;
+    text-decoration: none;
+}
+
+.listview td a:hover {
+    text-decoration: underline;
+}
+
+.listview td.op {
+    text-align: center;
+    width: 1%;
+    padding-right: 3px;
+}
+
+.listview tr:hover {
+
+}
+
+.listview tr:hover td:first-child {
+    font-weight: bold;
+}
+
+.listview th.check {
+    /*width: 1%;*/
+    width: 30px;
+}
+
+/**/
+
+table.query th {
+    font-weight: normal;
+}
+
+table.query td {
+    padding-right: 1em;
+}
+
+div.pager {
+    text-align: right;
+    margin-top: 12px;
+}
+
+div.pager em {
+    color: #cc3300;
+    font-weight: normal;
+    font-style: normal;
+}
+
+div.pager span.disabled a {
+    cursor: text;
+    color: silver;
+    text-decoration: none;
+}
+
+form {
+    margin-bottom: 1em;
+}
+
+/**/
+.query-pane {
+    padding: 1em;
+    padding-top: 0;
+    padding-bottom: .2em;
+}
+
+.query-pane h1 {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.query-pane table {
+    width: 100%;
+    /*border: solid 1px red;*/
+}
+
+.query-pane th {
+    font-weight: normal;
+    width: 10%;
+    white-space: nowrap;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.query-pane td {
+    width: 35%;
+    padding-top: .3em;
+    padding-bottom: .3em;
+}
+
+.query-pane td input,
+.query-pane td select,
+.query-pane .k-dropdown
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.result-pane {
+    /*float: left;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    padding: 1em;
+    padding-top: 0;
+}
+
+.result-pane th {
+    white-space: nowrap;
+}
+
+body {
+    /*display: flex;*/
+}
+
+.op {
+    text-align: center;
+}
+
+.query-pane .op {
+    margin-top: .6em;
+}
+
+.query-pane .op .k-button {
+    padding: .2em 1.6em;
+    /*padding-left: 1.6em;*/
+    /*padding-right: 1.6em;*/
+    margin: .4em;
+    /*min-width: */
+}
+
+.query-pane .k-textbox {
+    /*line-height: 1.2em;*/
+    height: 2.2em;
+}
+
+.query-pane .k-dropdown-wrap .k-input {
+    height: 1.74em;
+    line-height: 1.74em;
+}
+
+.result-list {
+    border-radius: 4px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.result-list th {
+    padding: .5em .6em .4em .6em;
+    font-weight: normal;
+    border: solid 1px #ccc;
+    background-color: #f5f5f5;
+    /*border-bottom-width: 2px;*/
+    /*font-size: 1.2em;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    /*font-size:*/
+    background: #f7f7f7 repeat-x;
+    background-image: linear-gradient(to bottom,#fff 0,#eee 100%);
+}
+
+.result-list td {
+    line-height: 1.6em;
+    padding: .4em .6em;
+    border: solid 1px #ccc;
+    /*font-size: 1.2em;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    cursor: default;
+}
+
+.result-list tbody tr:nth-child(even) td {
+    background-color: #f5f5f5;
+}
+
+.result-list td.op {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.result-list tbody tr:hover td {
+    background-color: lightcyan;
+}
+
+.check-list th:first-child {
+    width: 3%;
+    text-align: center;
+}
+
+.check-list td:first-child {
+    text-align: center;
+}
+
+#loading {
+
+    /*border-radius: 1em;*/
+    /*padding: 2em;*/
+    box-sizing: border-box;
+    /*width: 10em;*/
+    padding-left: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    /*text-align: center;*/
+    position: absolute;
+    /*left: 50%;*/
+    /*margin-left: -5em;*/
+    /*top: 50%;*/
+    bottom: 0;
+    left: 0;
+    /*margin-top: -2em;*/
+    background: white;
+    /*opacity: .8;*/
+    /*box-shadow: 0 0 1px gray;*/
+    color: darkgray;
+    font-family: 'Microsoft Yahei';
+    font-size: 1em;
+    font-style: italic;
+}
+
+#loading img {
+    /*vertical-align: middle;*/
+    width: 24px;
+    height: 24px;
+}
+
+#loading span {
+    position: relative;
+    top: -6px;
+    /*display: none;*/
+}
+
+.k-overlay {
+    /*opacity: .1;*/
+    background-color: white;
+}
+
+body.middle-wide h1 {
+    font-size: 1.3em;
+    margin: 0 0 .4em .9em;
+    margin-left: 7%;
+    padding-left: .4em;
+}
+
+body.middle-wide .result-list {
+    width: 86%;
+    margin-left: 7%;
+}
+
+.query-pane form {
+    margin: 0;
+}
+
+.query-pane td.op {
+    width: 30%;
+    padding-left: 1em;
+}
+
+.query-pane td.op input {
+    width: auto;
+}

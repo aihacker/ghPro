@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module relativePaths="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../app-server/out/production/.dep"/>
+    <output-test url="file://$MODULE_DIR$/../app-server/out/test/.dep"/>
+    <exclude-output/>
+    <content url="file://$MODULE_DIR$/">
+      <excludeFolder url="file://$MODULE_DIR$/.gradle"/>
+      <excludeFolder url="file://$MODULE_DIR$/build"/>
+    </content>
+    <orderEntry type="sourceFolder" forTests="false"/>
+    <orderEntry type="inheritedJdk"/>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.3/9c8664435dd00c5316a344eea4b86dc46601d416/groovy-2.4.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.3/734d76ea3f49c696e887a1a8da2d39cb84d51fd1/groovy-2.4.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.4.3/4eb65e43585bdf9cc0430abcdc5ac423f70b791d/groovy-sql-2.4.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.4.3/24a327187aa4e3c70931d2db57d98103a79ea2eb/groovy-sql-2.4.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/2bf96b7aa8b611c177d329452af1dc933e14501c/commons-cli-1.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/6c5459816530a1962ac18cd315cc775b1b384329/commons-cli-1.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.sf.json-lib/json-lib/2.4/136743e0d12df4e785e62b48618cee169b2ae546/json-lib-2.4-jdk15.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.1.6.RELEASE/e1ee19a5359f214d65cc18972df8aba17ce1e423/spring-webmvc-4.1.6.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.1.6.RELEASE/74e437c914201b70db2022052bc35611ad4beb9a/spring-webmvc-4.1.6.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.1.6.RELEASE/d5b70acee6ddfab47786c31114c89b895654cb97/spring-orm-4.1.6.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.1.6.RELEASE/ebdb9108a658208523d0398fb0e78b5334c9cf85/spring-orm-4.1.6.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.2.RELEASE/86f6306aa201a69d37e84fa556bd15cf79752591/spring-security-web-4.0.2.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-web/4.0.2.RELEASE/b6a4f6cba083848d7f6db4d27b24d6dfbdc70d23/spring-security-web-4.0.2.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.2.RELEASE/882132ed6a3282493145eb8c05b92c086af1b0f4/spring-security-config-4.0.2.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-config/4.0.2.RELEASE/a3a0b3255f2c5bbc2e9dddff6de90d48677a5003/spring-security-config-4.0.2.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.7.4/b8f38a249116b66d804a5ca2b14a3459b7913a94/jackson-core-2.7.4.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.7.4/ad04ede7e2c7f11a140710aec648375122e4e344/jackson-core-2.7.4-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.7.4/1e9c6f3659644aeac84872c3b62d8e363bf4c96d/jackson-databind-2.7.4.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.7.4/fe8825e43af137edc12f7b54f38eb8bb5ddb3814/jackson-databind-2.7.4-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.7.4/84b2f8e53bd8a077d402bc99d9bce816c2b2d0f9/jackson-annotations-2.7.4.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.7.4/4ea74f3ff5216967ff4f43e53d2102917aab626d/jackson-annotations-2.7.4-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.3.0/7c0e3582a1518b6d8e4e37ce2fc49b7bb6f2040f/mybatis-3.3.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.3.0/349ff1e2ab9a6a346538dc94ed5a57e8babb86d3/mybatis-3.3.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/1.2.3/18f0297b83960f280bacd68e87f9d374813e099e/mybatis-spring-1.2.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/1.2.3/669c2427402163a119cf24fc22ef193aec59d6e1/mybatis-spring-1.2.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.persistence/persistence-api/1.0.2/8a7f96961047da52a53b7347b6a919c6fbc6d7fa/persistence-api-1.0.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.persistence/persistence-api/1.0.2/eb8ae77be88577b23e64ce1e5386e874b08b49cc/persistence-api-1.0.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.servlet.jsp/jsp-api/2.2/5bf0c26ef77df58c7c28be2d9d52246f2b437a54/jsp-api-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.servlet.jsp/jsp-api/2.2/78bc1457a1fc2f8a7037cd2b247062ab3daac212/jsp-api-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/jstl/jstl/1.2/74aca283cd4f4b4f3e425f5820cda58f44409547/jstl-1.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/jstl/jstl/1.2/9c8b347a8c787654e0debd8bde44c51c6dcbfbfe/jstl-1.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.34/46deba4adbdb4967367b013cbc67b7f7373da60a/mysql-connector-java-5.1.34.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.34/240221147d8f9e26b25625bc3c4660cfb8ac92ac/mysql-connector-java-5.1.34-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.jolbox/bonecp/0.8.0.RELEASE/cec24ee9345b3678472bb1b8fdd6aa6b9428beb8/bonecp-0.8.0.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.jolbox/bonecp/0.8.0.RELEASE/f8b6d5414837c881740594109e0400dfb65d4c0b/bonecp-0.8.0.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.sf.jxls/jxls-core/1.0.6/388e49dd1481665385712a5d52ad511f3964b521/jxls-core-1.0.6.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.sf.jxls/jxls-core/1.0.6/f92252304affe6dc47b8dddc28f2cf78bc1722d7/jxls-core-1.0.6-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.2/d7ef6ad7ff0711dd12fe409d62d72d6ed14516e0/log4j-api-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.2/6aa90907dffee988bc5ed910c86243f10b6fd724/log4j-api-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.2/c707664e020218f8529b9a5e55016ee15f0f82ac/log4j-core-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.2/5391b370654942b4d568eab6dfd423402a978556/log4j-core-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.2/afd596adf5086b4f4746254b25a3a4b513f1d6e4/log4j-slf4j-impl-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.2/3671bd57a990df64edd6cc95d52a1c9c96496c10/log4j-slf4j-impl-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.12/8e20852d05222dc286bf1c71d78d0531e177c317/slf4j-api-1.7.12.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.12/58697792617f38bf86d8e26bc004aac505e516a9/slf4j-api-1.7.12-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.12/adef7a9e1263298255fdb5cb107ff171d07c82f3/jcl-over-slf4j-1.7.12.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.12/1f2ab7827a222427f8b8f20ee703fd5c5cfc055e/jcl-over-slf4j-1.7.12-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.lingala.zip4j/zip4j/1.3.2/4ba84e98ee017b74cb52f45962f929a221f3074c/zip4j-1.3.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.lingala.zip4j/zip4j/1.3.2/b2a62723195cf14964e7937f60da7c4daa0f61be/zip4j-1.3.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.univocity/univocity-parsers/1.5.0/eb946435ae7d6e015cb99cae864a91dba6b179d6/univocity-parsers-1.5.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.univocity/univocity-parsers/1.5.0/9a55b7488ac5080612e35978cf296e3f486b3ea3/univocity-parsers-1.5.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.velocity/velocity/1.7/2ceb567b8f3f21118ecdec129fe1271dbc09aa7a/velocity-1.7.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.velocity/velocity/1.7/eb11eb70171ed64842b2e5216d5904e21ed162ac/velocity-1.7-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/ad97fe8faaf01a3d3faacecd58e8fa6e78a973ca/guava-18.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-console/2.2/cb55e0f1455a14034622711d78799d4d33a51128/ureport2-console-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-console/2.2/10fa66646bac78d540c5bb5c5cb404d3f875798c/ureport2-console-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/7e3cecc566df91338c6c67883b89ddd05a17db43/httpclient-4.5.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/c0ecd55724129bbd48850314b4ff8a360d670662/httpclient-4.5.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/postgresql/postgresql/8.2-507.jdbc3/6910c10e3292a1739338349ef9dad42334c0952d/postgresql-8.2-507.jdbc3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-dbcp/commons-dbcp/1.4/30be73c965cc990b153a100aaaaafcf239f82d39/commons-dbcp-1.4.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-dbcp/commons-dbcp/1.4/9b076ff231434d5403be6599a1347019b12c0def/commons-dbcp-1.4-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.6/4572d589699f09d866a226a14b7f4323c6d8f040/commons-pool-1.6.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.6/9376f5559455b8fe1b15308d3ad9c545f6905b1a/commons-pool-1.6-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/junit/junit/4.11/4e031bb61df09069aeb2bffb4019e7a5034a4ee0/junit-4.11.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/junit/junit/4.11/28e0ad201304e4a4abf999ca0570b7cffc352c3c/junit-4.11-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/2.5/af084e37cf532fbdd15da44e400930d0f8fbf52f/spring-test-2.5.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/2.5/a2bbfbf1ac87047202c49c8da06bdb48eaf6ffe0/spring-test-2.5-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.quartz-scheduler/quartz/2.2.1/2bd17ec0c66d0370a932e225f52c23f3dc7cc4ce/quartz-2.2.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.quartz-scheduler/quartz/2.2.1/4e9e3085eb99c52dc368d144bd3bc61e7aab87ad/quartz-2.2.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.microsoft.sqlserver/sqljdbc4/4.0/ecc4bc5c567954cdd1acd3c5985555c8d0355bb0/sqljdbc4-4.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.3/cd0d5510908225f76c5fe5a3f1df4fa44866f81e/commons-net-3.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.3/ccfa0721eae567b3c47cfaf3cca20e2491362bf6/commons-net-3.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/761ea405b9b37ced573d2df0d1e3a4e0f9edc668/commons-collections-3.2.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.1/fa095ef874374e5b2a11f8b06c26a5d68c7cb3a4/commons-collections-3.2.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.5/b0236b252e86419eef20c31a44579d2aee2f0a69/commons-lang-2.5.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.5/bb75ef699b349b6e02d17d41556cebcd755d07ab/commons-lang-2.5-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.sf.ezmorph/ezmorph/1.0.6/1e55d2a0253ea37745d33062852fd2c90027432/ezmorph-1.0.6.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/net.sf.ezmorph/ezmorph/1.0.6/298992280d62b944afd0ae9bfe3329f5487dd434/ezmorph-1.0.6-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/4a4b6d692e17846a9f3da036438a7ac491d3c814/aopalliance-1.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.2.RELEASE/10684511bee0456c5c111bb16b2dee138d33d2d6/spring-security-core-4.0.2.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework.security/spring-security-core/4.0.2.RELEASE/253ad3607b5645731d76f603e8053065c5b2c33e/spring-security-core-4.0.2.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-digester/commons-digester/2.0/3dbd8a76683cd563583a2c78c356ad8b8acf38bf/commons-digester-2.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-digester/commons-digester/2.0/abc81a9857b4d396ec8093f023f42e06b01e975a/commons-digester-2.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-jexl/2.0.1/c2525604804fe60952d4997b443b76760643e8b9/commons-jexl-2.0.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-jexl/2.0.1/dd051a2fc33c59835319094bbb6ff0a5f9b1be0/commons-jexl-2.0.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-fileupload/commons-fileupload/1.3.2/5d7491ed6ebd02b6a8d2305f8e6b7fe5dbd95f72/commons-fileupload-1.3.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-fileupload/commons-fileupload/1.3.2/23996750d5a80dc74dad55633c2a0f3db91462cb/commons-fileupload-1.3.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-core/2.2/66d6b95f9eaeefa5c3e434f9accd129e6441666d/ureport2-core-2.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-core/2.2/a58c4a8a076430c7ec88266cb8ac584fd346bb60/ureport2-core-2.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-font/2.0.1/37dd8608260cfce683b445d2fb36aef1318dad21/ureport2-font-2.0.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.bstek.ureport/ureport2-font/2.0.1/23858dfcc3b1e60f6ce718f4c836799065beffaf/ureport2-font-2.0.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.3/e876a79d561e5c6207b78d347e198c8c4531a5e5/httpcore-4.4.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.3/b972b5dfd2db7d41d76a6fc5445852522a136e2e/httpcore-4.4.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.5.4/39a53e53c38689b59ec1245f807ca4af83d18db4/aspectjweaver-1.5.4.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/c3p0/c3p0/0.9.1.1/302704f30c6e7abb7a0457f7771739e03c973e80/c3p0-0.9.1.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/c3p0/c3p0/0.9.1.1/5a069468419fe3910c80d13a8971fd50ff2c77a6/c3p0-0.9.1.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.6.1/5d3ccc056b6f056dbf0dddfdf43894b9065a8f94/dom4j-1.6.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/dom4j/dom4j/1.6.1/a8e7149359255f43e0e5e3b1837948f9ed5861fb/dom4j-1.6.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils-core/1.8.3/75812698e5e859f2cb587c622c4cdfcd61676426/commons-beanutils-core-1.8.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.antlr/antlr4-runtime/4.5.3/2609e36f18f7e8d593cc1cddfb2ac776dc96b8e0/antlr4-runtime-4.5.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.antlr/antlr4-runtime/4.5.3/bed0a83e6afc677b188994f4652502e80b61e49c/antlr4-runtime-4.5.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.itextpdf/itextpdf/5.5.10/6b7f922b3aeb46d5b23a108430042f371616e768/itextpdf-5.5.10.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.itextpdf/itextpdf/5.5.10/ed208d816520d9919dc3e89a2c0de27b3413a4b7/itextpdf-5.5.10-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-scratchpad/3.16/69d6dda524e38a491b362d0f94ef74a514faf70a/poi-scratchpad-3.16.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-scratchpad/3.16/ad5db4540b25baaa06afdec59149d8bb32db9500/poi-scratchpad-3.16-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/8cae398233e86f0cccc0129709b7d0177fbec8f5/ooxml-schemas-1.3.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/ooxml-schemas/1.3/45df1758cccc4fcf585dedd73a56bfff9a8dea31/ooxml-schemas-1.3-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.3.0/73c49077166faa4c3c0059c5f583d1d7bd1475fe/core-3.3.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.3.0/39d966e052e28fc7d83793b02e0af97ccf955745/core-3.3.0-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-mapper-asl/1.9.11/45d70862fa016993193075a1e8e32a01dcf438e8/jackson-mapper-asl-1.9.11.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-mapper-asl/1.9.11/46b8ea3548fe1202c947025c5b647be3d8cc4d1e/jackson-mapper-asl-1.9.11-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.2/9b69b86d9cf8aabd96ad5cb0f77d7a2cfc6d95c6/commons-beanutils-1.8.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.2/5fb0dc0e78cebef973fe8c881123a37a676460fc/commons-beanutils-1.8.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.5/6c6c702c89bfff3cd9e80b04d668c5e190d588c6/commons-lang3-3.5.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.5/f7d878153e86a1cdddf6b37850e00a9f8bff726f/commons-lang3-3.5-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.11.RELEASE/50a3dfce550bdf9459dfb2c6282aa104b040258e/spring-web-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.11.RELEASE/81b86c6cddc25feecf0bb2e11df3b7e56bafb806/spring-web-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.3.11.RELEASE/642ed7497d327f299caccb930af6b65e229864c4/spring-jdbc-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.3.11.RELEASE/c7fc0081cfe5b5b37146fe250d0e8c8dd1edfb1e/spring-jdbc-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.16/76e20fe22404cc4da55ddfdaaaadee32bbfa3bdd/poi-ooxml-3.16.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.16/b85d1cda3d8189599c58517e53e64cf3dc9caee0/poi-ooxml-3.16-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.04/3386abf821719bc89c7685f9eaafaf4a842f0199/curvesapi-1.04.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/com.github.virtuald/curvesapi/1.04/5c01708d122c6a61e90716e931b58226d8261312/curvesapi-1.04-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.5/2852e6e05fbb95076fc091f6d1780f1f8fe35e0f/commons-io-2.5.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.5/caf033a4a7c37b4a8ff3ea084cba591539b0b69/commons-io-2.5-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-core-asl/1.9.11/e32303ef8bd18a5c9272780d49b81c95e05ddf43/jackson-core-asl-1.9.11.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.codehaus.jackson/jackson-core-asl/1.9.11/e61687a76d77cda609bab7479acbded1f7cceec4/jackson-core-asl-1.9.11-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/stax/stax-api/1.0.1/49c100caf72d658aca8e58bd74a4ba90fa2b0d70/stax-api-1.0.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.3.11.RELEASE/461d0bb58f1de30203d9331adf4b51de9554de5a/spring-aop-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.3.11.RELEASE/1c0868ac3c06872f1fa7d97ebf05ea0e119db67d/spring-aop-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.11.RELEASE/591cc35fd39292adae13f01aa13e978d0bb11936/spring-beans-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.3.11.RELEASE/430d9b461e5bc167ffe8f098e85e0d7284b30d78/spring-beans-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.11.RELEASE/3efec2d7c7469d49108a2b21c3f15831f7297569/spring-context-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.3.11.RELEASE/148a8463bd0746a4ee05c56e2c414b3c5812fcaf/spring-context-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.11.RELEASE/eb30ed093f628279d3aead068fd478fa343f1dad/spring-core-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.3.11.RELEASE/f2c74d02505cc3bbed690261a409d8f5f5a386fc/spring-core-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.3.11.RELEASE/c931ee363d2269f03edfeb83d7d7fe23924ab8a1/spring-tx-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.3.11.RELEASE/2a2abcec95192d6e6cf9e0adf21ef5d9415ad9d1/spring-tx-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.16/ad21c123ee5d6b5b2a8f0d4ed23b3ffe6759a889/poi-3.16.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.16/da13be01502c91f61b531c80e5fc7aaf6c49200c/poi-3.16-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-collections4/4.1/a4cf4688fe1c7e3a63aa636cc96d013af537768e/commons-collections4-4.1.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-collections4/4.1/f305f3aa45a3b208c013ef92328f8f230329f20e/commons-collections4-4.1-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml-schemas/3.16/9828a49307fc6bebfd42185b677d88b6e4994c63/poi-ooxml-schemas-3.16.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.3.11.RELEASE/fca662a2fccdad90ec22b2aaecb021047dcbe249/spring-expression-4.3.11.RELEASE.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.3.11.RELEASE/b97afd9e9960c68fc5d2853e757208151a1d7ba6/spring-expression-4.3.11.RELEASE-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/11fb3d88ae7e3b757d70237064210ceb954a5a04/commons-codec-1.10-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Users/DELL/.gradle/caches/modules-2/files-2.1/org.apache.xmlbeans/xmlbeans/2.6.0/29e80d2dd51f9dcdef8f9ffaee0d4dc1c9bbfc87/xmlbeans-2.6.0.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+      </library>
+    </orderEntry>
+  </component>
+</module>

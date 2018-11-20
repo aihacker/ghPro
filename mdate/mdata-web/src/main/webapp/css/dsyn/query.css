@@ -1,0 +1,220 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+h1.title {
+    background: window url('../image/titlebg.gif') no-repeat;
+    font-size: 12px;
+    padding: 4px;
+    margin: -8px;
+    margin-bottom: 10px;
+    height: 19px;
+}
+
+h1.title div.toolbar {
+    float: right;
+    margin-right: 4%;
+    margin-top: -3px;
+}
+
+h1.title div.toolbar a {
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    overflow: hidden;
+    height: 18px;
+    padding: 4px 3px 0 22px;
+    /*margin: 3px 1px 0 1px;*/
+    line-height: 15px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    color: windowtext;
+}
+
+.button:hover {
+    border: 1px solid #1087c2;
+    background-color: #addef2;
+    color: #666;
+}
+
+a.icon-new {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 2px;
+}
+
+a.icon-save {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 2px;
+}
+
+a.icon-edit {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -147px 2px;
+}
+
+a.icon-delete {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -297px 2px;
+}
+
+a.icon-reflash {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -600px -28px;
+}
+
+a.icon-return {
+    background-image: url(../image/return.png);
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+}
+
+a.icon-export {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -147px -56px;
+}
+
+a.icon-import {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -297px -56px;
+}
+
+a.icon-setup {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -298px -116px;
+}
+
+a.icon-list {
+    background-image: url(../image/yh-icos.gif);
+    background-repeat: no-repeat;
+    background-position: -148px -148px;
+}
+
+/**/
+/*table show and report show start*/
+.listview {
+    width: 100%;
+    border: 1px solid #d1dfe8;
+    border-top: 1px solid #afcadb;
+    background: #d5ecfa url(../image/TableBg.gif) repeat-x;
+}
+
+.listview caption {
+    text-align: left;
+    font-size: 12px;
+    margin: 4px 4px 2px 4px;
+    /*font-style: italic;*/
+    color: darkgray;
+}
+
+.listview th {
+    white-space: nowrap;
+}
+
+.listview td {
+    padding: 2px 2px 2px 5px;
+    border-top: 1px solid #d1dfe8;
+    border-left: 1px solid #d1dfe8;
+    vertical-align: middle;
+    text-align: left;
+    height: 24px;
+    line-height: 20px;
+    word-break: keep-all;
+    white-space: nowrap;
+    /*color: #666;*/
+    background-color: #fff;
+}
+
+.listview tr th {
+    height: 30px;
+    border-left: 1px solid #afcadb;
+    border-bottom: 1px solid #afcadb;
+    color: #41290f;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.listview tr td {
+    background-color: #ffffff;
+}
+
+.listview tr:nth-child(even) td {
+    background-color: #f8fbfd;
+}
+
+.listview .tr_focus td {
+    background-color: #fefcec;
+}
+
+.listview td a, .listview td a:visited {
+    color: #4384b1;
+    text-decoration: none;
+}
+
+.listview td a:hover {
+    text-decoration: underline;
+}
+
+.listview td.op {
+    text-align: center;
+    width: 1%;
+    padding-right: 3px;
+}
+
+.listview tr:hover {
+
+}
+
+.listview tr:hover td:first-child {
+    font-weight: bold;
+}
+
+.listview th.check {
+    /*width: 1%;*/
+    width: 30px;
+}
+
+/**/
+
+table.query th {
+    font-weight: normal;
+}
+
+table.query td {
+    padding-right: 1em;
+}
+
+/*div.pager {
+    text-align: right;
+    margin-top: 12px;
+}*/
+
+div.pager em {
+    color: #cc3300;
+    font-weight: normal;
+    font-style: normal;
+}
+
+div.pager span.disabled a {
+    cursor: text;
+    color: silver;
+    text-decoration: none;
+}
+
+form {
+    margin-bottom: 1em;
+}

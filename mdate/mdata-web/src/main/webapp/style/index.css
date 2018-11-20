@@ -1,0 +1,114 @@
+body {
+    display: flex;
+}
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#splitter-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.splitter {
+    margin: 0;
+    height: 100%;
+}
+
+.ui-state-default {
+    background-color: #1f9bd7
+}
+
+.ui-state-hover {
+    background-color: #1f9bd7
+}
+
+.ui-state-highlight {
+    background-color: #1f9bd7
+}
+
+.ui-state-error {
+    background-color: #eaa
+}
+
+.splitter-bar-vertical {
+    width: 6px;
+    background-image: url(indeximg/vgrabber.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.splitter-bar-vertical-docked {
+    width: 10px;
+    background-image: url(indeximg/vgrabber.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.splitter-bar.ui-state-highlight {
+    opacity: 0.7;
+}
+
+.splitter-iframe-hide {
+    /*visibility: hidden;*/
+    pointer-events: none;
+}
+
+.splitter-pane {
+    overflow: hidden;
+}
+
+/**/
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#LeftPane iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#LeftPane .frameContainer {
+    position: absolute;
+    /*border: solid 1px red;*/
+    left: 0;
+    top: 24px;
+    right: 0;
+    bottom: 0;
+}
+.left-list{
+    padding-top: 5px;
+    border-right: 3px solid #428bca ;
+    height: 100%;
+}
+.left-list .bg-ico{
+    background: url("../image/spark.png") no-repeat 10px;
+    background-size: 25px 25px;
+    text-indent: 2em;
+}
+.left-list .dropdown-menu{
+    position: relative;
+    top: auto;
+    left: auto;
+    border: none;
+    margin: auto;
+    padding: inherit;
+    background: inherit ;
+    float: inherit;
+    box-shadow: none;
+    text-indent: 2em;
+}
+.left-list .dropdown-menu>li>a:hover{
+    background: none;
+}

@@ -1,0 +1,16 @@
+ul.ztree-blue span.ico_close {
+    background: url('../image/folder.gif') no-repeat 0 0!important;
+}
+
+ul.ztree-blue span.ico_open {
+    background: url('../image/folderopen.gif') no-repeat 0 0!important;
+}
+
+ul.ztree-blue li a.curSelectedNode {
+    border: solid 1px transparent;
+    background-color: #87c7e1;;
+    color: white;
+    opacity: 1;
+    /*border: solid 1px #96c1c0;*/
+    /*background-color: #d0eaf2;*/
+}

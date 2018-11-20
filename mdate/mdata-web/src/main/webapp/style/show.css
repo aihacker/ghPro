@@ -1,0 +1,6 @@
+.main table tbody tr td{
+    min-height:30px;
+}
+.zenjia label{
+    color: #333 !important;
+}
