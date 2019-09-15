@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.vote.Voted">
+
+    <!--查询主题-->
+    <select id="getAllVote" resultType="Voted">
+          SELECT v.*,u.avatar as headimg FROM t_user u, t_voted v WHERE v.userid=u.userid AND v.isdel = 1 AND 1=1 ORDER BY v.create_time DESC ;
+        </select>
+
+    <!--查询详细投票主题-->
+    <select id="getVoteById" parameterType="Integer" resultType="Voted">
+          SELECT v.*,u.avatar as headimg FROM t_user u, t_voted v WHERE v.userid=u.userid AND v.isdel = 1 AND 1=1 AND v.id = #{id} ORDER BY v.create_time DESC;
+        </select>
+
+    <!--删除一个投票主题-->
+    <update id="DelVoteById" parameterType="Integer">
+            UPDATE t_voted tvj SET tvj.isdel=2 WHERE tvj.id=#{id};
+        </update>
+
+    <!--修改status-->
+    <update id="UpdateStatus" parameterType="Integer">
+            UPDATE t_voted tv SET tv.status = 2 WHERE tv.id = #{id};
+        </update>
+
+    <!-- FIND_IN_SET(v.deptid, query_dept_child(query_dept_company_id2(#{deptid}))) > 0 -->
+    <select id="xlkai_getVotes" parameterType="wxgh.param.common.vote.VoteQuery" resultType="Voted">
+        SELECT v.*,
+        (SELECT COUNT(j.userid) FROM t_voted_join j
+        WHERE v.id = j.voted_id AND j.userid = #{userid}) AS userVote,
+        u.avatar AS headimg
+        FROM t_voted v
+        JOIN t_user u ON v.userid = u.userid
+        LEFT JOIN t_voted_user vu ON v.id = vu.votedid
+        where v.type=#{voteType} AND (vu.userid=1 OR vu.userid= #{userid})
+
+        <if test="status != null">
+            AND v.status = #{status}
+        </if>
+        <if test="userid != null and isUser">
+            AND v.userid = #{userid}
+        </if>
+        ORDER BY v.create_time DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+    <select id="xlkai_getVoted" parameterType="wxgh.param.common.vote.VoteQuery" resultMap="xlkai_votedMap">
+        SELECT v.*,
+        (SELECT COUNT(j.userid) FROM t_voted_join j WHERE v.id = j.voted_id AND j.userid = #{userid}) AS userVote,
+        u.avatar AS headimg,
+        o.id AS o_id,
+        o.voteId AS o_voteId,
+        o.options AS o_options,
+        o.ticketNum AS o_ticketNum,
+        o.create_time AS o_time,
+        o.isdel AS o_del
+        FROM t_voted v
+        JOIN t_voted_option o ON v.id = o.voteId
+        JOIN t_user u ON v.userid = u.userid
+        WHERE v.id = o.voteId
+        <if test="status != null">
+            AND v.status = #{status}
+        </if>
+        <if test="userid != null and isUser">
+            AND v.userid = #{userid}
+        </if>
+        ORDER BY v.create_time DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <insert id="xlkai_addVoted" parameterType="Voted" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_voted (theme, create_time, end_time, username, userid, type, status, isdel, effective_time, start_time, deptid)
+        VALUES (#{theme}, #{createTime}, #{endTime}, #{userName}, #{userid}, #{type}, #{status}, #{isdel}, #{effectiveTime}, #{startTime}, #{deptid})
+    </insert>
+
+    <resultMap id="xlkai_votedMap" type="Voted">
+        <id column="id" property="id"/>
+        <result column="theme" property="theme"/>
+        <result column="create_time" property="createTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="username" property="userName"/>
+        <result column="userid" property="userid"/>
+        <result column="type" property="type"/>
+        <result column="status" property="status"/>
+        <result column="isdel" property="isdel"/>
+        <result column="userVote" property="userVote"/>
+        <result column="headimg" property="headimg"/>
+        <result column="effective_time" property="effectiveTime"/>
+        <collection property="voteOptions" resultMap="xlkai_optionsMap"></collection>
+    </resultMap>
+
+    <resultMap id="xlkai_optionsMap" type="VoteOption">
+        <id column="o_id" property="id"/>
+        <result column="o_voteId" property="voteid"/>
+        <result column="o_options" property="options"/>
+        <result column="o_ticketNum" property="ticketNum"/>
+        <result column="o_time" property="createTime"/>
+        <result column="o_del" property="isdel"/>
+    </resultMap>
+
+    <select id="getList" parameterType="wxgh.param.common.vote.QueryVoted" resultType="Voted">
+        SELECT * FROM t_voted
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+        ORDER BY `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.common.vote.QueryVoted">
+        SELECT  count(*) FROM t_voted
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_voted WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="shenhe" parameterType="wxgh.param.common.vote.QueryVoted" >
+        UPDATE  t_voted
+        <set>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="getOne" parameterType="Integer" resultType="Voted">
+        SELECT  * FROM  t_voted where `id` = #{VALUE}
+    </select>
+
+    <select id="applyListRefresh" parameterType="wxgh.param.common.vote.QueryVoted" resultType="Voted">
+        SELECT * FROM t_voted
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+        ORDER BY `id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" parameterType="wxgh.param.common.vote.QueryVoted" resultType="Voted">
+        SELECT * FROM t_voted
+        <where>
+            <if test="voteOldestId != null">
+                `id` &lt; #{voteOldestId}
+            </if>
+
+            <if test="status != null">
+                AND `status` = #{status}
+            </if>
+        </where>
+        ORDER BY `id` DESC limit 0, 15
+    </select>
+
+</mapper>

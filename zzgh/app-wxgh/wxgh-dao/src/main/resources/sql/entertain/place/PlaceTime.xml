@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.place.PlaceTime">
+
+    <sql id="xlkai_whereSql">
+        <where>
+            <if test="siteId != null">
+                site_id = #{siteId}
+            </if>
+            <if test="cateId != null">
+                AND cate_id = #{cateId}
+            </if>
+            <if test="week != null">
+                AND week = #{week}
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_getTimes" parameterType="wxgh.param.entertain.place.TimeParam" resultType="PlaceTime">
+        SELECT * FROM t_place_time
+        <include refid="xlkai_whereSql"/>
+        ORDER BY start_time
+    </select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.female.FemaleMama">
+
+    <sql id="whereSql">
+        <where>
+            <if test="id != null">
+                 id = #{id}
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_getRecords" parameterType="wxgh.param.common.female.FemaleMamaAdminQuery" resultType="FemaleMama">
+        SELECT * FROM t_female_mama
+        <include refid="whereSql"/>
+        ORDER BY add_time DESC
+        <if test="pageIs">
+            limit #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="xlkai_counts" parameterType="wxgh.param.common.female.FemaleMamaAdminQuery" resultType="int">
+        SELECT COUNT(*) FROM t_female_mama
+        <include refid="whereSql"/>
+    </select>
+
+    <update id="xlkai_upates" parameterType="wxgh.entity.common.female.FemaleMama">
+        UPDATE t_female_mama
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="cover != null">
+                cover = #{cover},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                AND id= #{id}
+            </if>
+        </where>
+    </update>
+
+</mapper>

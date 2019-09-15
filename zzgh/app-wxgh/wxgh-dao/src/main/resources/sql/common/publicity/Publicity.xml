@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.publicity.Publicity">
+
+    <select id="getPublicitys" resultType="Publicity" parameterType="wxgh.param.common.publicity.QueryPublicity">
+        SELECT * FROM t_publicity
+        <if test="id !=null">
+            <where>
+                `id` = #{id}
+            </where>
+        </if>
+        ORDER BY `top` DESC, `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_publicity WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="updatePublicity" parameterType="wxgh.data.common.publicity.PublicityData">
+        UPDATE t_publicity SET `name` = #{name}, `content` = #{content}, `time` = #{time} WHERE `id` = #{id}
+    </update>
+
+    <update id="setTop" parameterType="wxgh.data.common.publicity.PublicityData">
+        UPDATE t_publicity SET  `top` = #{top} WHERE `id` = #{id}
+    </update>
+
+    <select id="queryPublicity" parameterType="wxgh.param.common.publicity.QueryPublicity" resultType="Publicity">
+        SELECT * FROM t_publicity WHERE `name` LIKE CONCAT('%','${name}', '%') AND  `content` LIKE CONCAT('%','${content}', '%')
+    </select>
+
+    <insert id="addPublicity" parameterType="wxgh.data.common.publicity.PublicityData">
+       INSERT INTO t_publicity (`name`, `content`,`time`, `type`,`picture`) VALUES (#{name}, #{content}, #{time}, #{type},#{picture})
+   </insert>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.common.publicity.QueryPublicity">
+        SELECT count(*) FROM t_publicity
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="applyListRefresh" resultType="Publicity" parameterType="wxgh.param.common.publicity.QueryPublicity">
+        SELECT * FROM t_publicity
+        <where>
+            <if test="type != null">
+                type = #{type}
+            </if>
+        </where>
+        ORDER BY `id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" resultType="Publicity" parameterType="wxgh.param.common.publicity.QueryPublicity">
+        SELECT * FROM t_publicity
+        <where>
+            <if test="publicityOldestId != null">
+                id &lt; #{publicityOldestId}
+            </if>
+
+            <if test="type != null">
+                AND type = #{type}
+            </if>
+        </where>
+        ORDER BY `id` DESC limit 0, 15
+    </select>
+
+</mapper>

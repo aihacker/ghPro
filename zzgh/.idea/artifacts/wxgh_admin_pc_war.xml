@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wxgh-admin-pc:war">
+    <output-path>$PROJECT_DIR$/app-wxgh/wxgh-admin-pc/target</output-path>
+    <root id="archive" name="wxgh-admin-pc.war">
+      <element id="artifact" artifact-name="wxgh-admin-pc:war exploded" />
+    </root>
+  </artifact>
+</component>

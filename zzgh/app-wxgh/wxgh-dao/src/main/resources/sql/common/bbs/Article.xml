@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.Article">
+
+    <select id="getAllArticle" parameterType="Integer" resultType="Article">
+      SELECT a.*,(select COUNT(*) from t_comment c,t_user u WHERE c.user_id = u.userid AND  c.isdel = '1' AND c.atl_id = a.atl_id) as commNum from t_article a
+      WHERE a.isdel = '1' AND FIND_IN_SET(a.deptid, query_dept_child(query_dept_company_id2(#{deptid}))) > 0
+      ORDER BY a.status DESC,a.create_time DESC;
+   </select>
+
+    <select id="getArticleById" parameterType="Integer" resultType="Article">
+       SELECT a.*, u.`name` AS userName FROM t_article a
+       JOIN t_user u ON a.user_id = u.userid
+       where a.atl_id=#{atlId};
+   </select>
+    <update id="updateArtile" parameterType="Integer">
+        UPDATE t_article SET t_article.isdel = '2' WHERE  t_article.atl_id = #{atlId};
+    </update>
+    <!--推送-->
+    <update id="updateStatus" parameterType="Integer">
+        UPDATE t_article set t_article.status = '1' WHERE t_article.atl_id = #{atlId};
+    </update>
+    <!--取消推送-->
+    <update id="updateBackStatus" parameterType="Integer">
+        UPDATE t_article SET t_article.status = '0' WHERE  t_article.atl_id = #{atlId};
+    </update>
+
+    <sql id="whereSql">
+        <where>
+            <if test="deptid != null">
+                deptid != #{deptid}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="searchKey != null">
+                AND (atl_name LIKE '%${searchKey}%' OR atl_content LIKE '%${searchKey}%')
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_listArticles" parameterType="wxgh.param.common.bbs.ArticleParam" resultType="Article">
+        SELECT * FROM t_article
+        <include refid="whereSql"/>
+        ORDER BY type,create_time DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="xlkai_countArticles" parameterType="wxgh.param.common.bbs.ArticleParam" resultType="Integer">
+        SELECT COUNT(*) FROM t_article
+        <include refid="whereSql"/>
+    </select>
+
+</mapper>

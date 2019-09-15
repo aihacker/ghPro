@@ -1,0 +1,101 @@
+body{
+    background: #e8e8e8;
+}
+#adminBtn{
+    width: 25px;
+    height: 25px;
+    background: url("../../../image/common/vote/del.png") no-repeat center;
+    background-size: 100% 100%;
+    display: block;
+    position: absolute;
+    right: 10px;
+    margin-top: -13px;
+    color: transparent;
+    top:50%;
+}
+li{
+    background: #FFFFFF;
+}
+.vote_content ul li .title{
+    margin-top: 10px;
+    width:100%;
+    height: 50px;
+    display: block;
+}
+.vote_content ul li .title .headimg{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    float: left;
+}
+.vote_content ul li .title .user_Name{
+    margin-left: 15px;
+    float: left;
+}
+.vote_content ul li .title .ongoing{
+    text-align: center;
+    width: 80px;
+    line-height: 25px;
+    background: #5754ff;
+    color: #FFFFFF;
+    float:right;
+    margin-right: 10px;
+}
+.vote_content ul li .themeName{
+    font-size: 16px;
+    color: #000;
+    font-family: Arial;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.vote_content ul li .option_content{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+.vote_content ul li .option_content span{
+    font-size: 0.8em;
+    color: #929292;
+}
+.vote_content ul li .option_content .num{
+    float: right;
+    margin-right: 15px;
+}
+.vote_content ul li .option{
+    margin-top: 15px;
+    width: 100%;
+}
+.vote_content ul li .option p{
+    padding-left: 35px;
+    background: #eaeeef;
+    margin-bottom: 2px;
+    line-height: 35px;
+    color: #888989;
+}
+.vote_content ul li .option .radio_option{
+    float:left;
+    line-height: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+.vote_content ul li .option p span {
+    float: right;
+    line-height: 35px;
+    height: 35px;
+    margin-right: 10px;
+
+}
+.vote_content ul li .success{
+    margin: 0px auto;
+}
+.vote_content ul li .success input{
+    line-height: 50px;
+    color: #FFFFFF;
+    width: 100%;
+    background: #1088C0;
+    border: none;
+    position: absolute;
+    bottom: 0px;
+    border-radius: 5px;
+}

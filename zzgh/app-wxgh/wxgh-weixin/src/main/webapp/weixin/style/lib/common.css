@@ -1,0 +1,139 @@
+body,
+button,
+li,
+ul,
+div {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: 500;
+    list-style: none;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.padding-right-5 {
+    padding-right: 5px;
+}
+
+.xlkai-button {
+    display: inline-block;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding-left: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 16px;
+}
+
+.xlkai-header {
+    height: 45px;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#08A8F4), to(#1088C0));
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 45px;
+    font-size: 1.1em;
+}
+
+.xlkai-header h3 {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-weight: normal;
+    display: inline-block;
+}
+
+/**
+ * 进度框
+ */
+
+.ui-loading-wrap {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    text-align: center;
+    height: 40px;
+}
+
+.ui-loading {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url(../../image/xlkai/loading_sprite_white.png);
+    -webkit-background-size: auto 20px;
+    -webkit-animation: am-rotate 1s steps(12) infinite;
+}
+
+.ui-loading-bright {
+    width: 37px;
+    height: 37px;
+    display: block;
+    background-image: url(../../image/xlkai/loading_sprite_white.png);
+    -webkit-background-size: auto 37px;
+    -webkit-animation: am-rotate2 1s steps(12) infinite;
+}
+
+.ui-loading-wrap .ui-loading {
+    margin: 10px;
+}
+
+.ui-loading-block {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    background: transparent;
+}
+
+.ui-loading-block .ui-loading-cnt {
+    width: 130px;
+    height: 110px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.ui-loading-block .ui-loading-bright {
+    margin: 18px 0 8px;
+}
+
+.ui-loading-block.show {
+    display: -webkit-box;
+    display: box;
+}
+
+@-webkit-keyframes am-rotate {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -240px 0;
+    }
+}
+
+@-webkit-keyframes am-rotate2 {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -444px 0;
+    }
+}

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourPropagate">
+
+    <select id="getPropagates" resultType="FourPropagate" parameterType="wxgh.param.four.QueryPropagateParam">
+        SELECT p.*, d.name AS deptName, pt.name AS fpName, fpc.name AS fpcName, m.`name` AS marketing
+        FROM t_four_propagate p
+        JOIN t_dept d ON p.dept_id = d.id
+        JOIN t_four_project pt ON p.fp_id = pt.id
+        JOIN t_four_project_content fpc ON p.fpc_id = fpc.id
+        JOIN t_marketing m ON m.`id` = p.`mid`
+        <where>
+            <if test="status != null">
+                p.status = #{status}
+            </if>
+            <if test="id != null">
+                AND p.id = #{id}
+            </if>
+        </where>
+
+        ORDER BY p.`id` DESC
+
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <update id="shenhe" parameterType="wxgh.data.FpShenheData">
+        UPDATE t_four_propagate SET `status` = #{status} WHERE `id` = #{id}
+    </update>
+
+    <select id="xlkai_getPropagate" parameterType="wxgh.param.four.PropagateParam" resultType="FourPropagate">
+        <if test="deviceStatus == 1">
+            SELECT p.*, d.name AS deptName, pt.name AS fpName, fpc.name AS fpcName, m.`name` AS marketing
+            FROM t_four_propagate p
+            JOIN t_dept d ON p.dept_id = d.id
+            JOIN t_four_project pt ON p.fp_id = pt.id
+            JOIN t_four_project_content fpc ON p.fpc_id = fpc.id
+            JOIN t_marketing m ON m.`id` = p.`mid`
+        </if>
+        <if test="deviceStatus == 2">
+            SELECT p.id,p.numb, p.remark, p.budget, p.status, p.suggest,p.device_status, p.userid, p.apply_time, p.mid,
+            p.unit, p.de_id,p.add_is,
+            fd.brand, fd.model_name,
+            d.name AS deptName, pt.name AS fpName, fpc.name AS fpcName, m.`name` AS marketing
+            FROM t_four_propagate p
+            JOIN t_dept d ON p.dept_id = d.id
+            JOIN t_four_details fd on fd.id = p.de_id
+            JOIN t_four_project pt ON fd.fp_id = pt.id
+            JOIN t_four_project_content fpc ON fd.fpc_id = fpc.id
+            JOIN t_marketing m ON m.`id` = p.`mid`
+        </if>
+        <where>z
+            <if test="userid != null">
+                p.userid = #{userid}
+            </if>
+            <if test="status != null">
+                AND p.status = #{status}
+            </if>
+            <if test="deviceStatus != null">
+                AND p.device_status = #{deviceStatus}
+            </if>
+            <if test="id != null">
+                AND p.id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.four.PropagateParam">
+        SELECT count(*)
+        FROM t_four_propagate p
+        JOIN t_dept d ON p.dept_id = d.id
+        JOIN t_four_project pt ON p.fp_id = pt.id
+        JOIN t_four_project_content fpc ON p.fpc_id = fpc.id
+        JOIN t_marketing m ON m.`id` = p.`mid`
+        <where>
+            <if test="status != null">
+                p.`status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="applyListRefresh" resultType="FourPropagate" parameterType="wxgh.param.four.QueryPropagateParam">
+        SELECT p.*, d.name AS deptName, pt.name AS fpName, fpc.name AS fpcName, m.`name` AS marketing
+        FROM t_four_propagate p
+        JOIN t_dept d ON p.dept_id = d.id JOIN t_four_project pt ON p.fp_id = pt.id JOIN
+        t_four_project_content fpc ON p.fpc_id = fpc.id JOIN t_marketing m ON m.`id` = p.`mid`
+        <where>
+            <if test="status != null">
+                p.status = #{status}
+            </if>
+        </where>
+        ORDER BY p.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" resultType="FourPropagate" parameterType="wxgh.param.four.QueryPropagateParam">
+        SELECT p.*, d.name AS deptName, pt.name AS fpName, fpc.name AS fpcName, m.`name` AS marketing
+        FROM t_four_propagate p
+        JOIN t_dept d ON p.dept_id = d.id
+        JOIN t_four_project pt ON p.fp_id = pt.id
+        JOIN t_four_project_content fpc ON p.fpc_id = fpc.id
+        JOIN t_marketing m ON m.`id` = p.`mid`
+        <where>
+            <if test="fourOldestId != null">
+                p.id &lt; #{fourOldestId}
+            </if>
+
+            <if test="status != null">
+                p.status = #{status}
+            </if>
+        </where>
+        ORDER BY p.`id` DESC limit 0, 15
+    </select>
+
+    <update id="updateOne" parameterType="wxgh.entity.four.FourPropagate">
+        UPDATE t_four_propagate
+        <set>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="fpId != null">
+                fp_id = #{fpId},
+            </if>
+            <if test="fpcId != null">
+                fpc_id = #{fpcId},
+            </if>
+            <if test="brand != null">
+                brand = #{brand},
+            </if>
+            <if test="modelName != null">
+                model_name = #{modelName},
+            </if>
+            <if test="numb != null">
+                model_name = #{numb},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="budget != null">
+                budget = #{budget},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="deviceStatus != null">
+                device_status = #{deviceStatus},
+            </if>
+            <if test="userid != null">
+                userid = #{userid},
+            </if>
+            <if test="applyTime != null">
+                apply_time = #{applyTime},
+            </if>
+            <if test="mid != null">
+                mid = #{mid},
+            </if>
+            <if test="suggest != null">
+                suggest = #{suggest}
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+</mapper>

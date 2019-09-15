@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.female.FemaleLessonJoin">
+
+    <!--   -->
+    <select id="getDataWX" parameterType="wxgh.param.common.female.QueryFemaleLessonJoin" resultType="FemaleLessonJoin">
+        SELECT  tflj.*, tu.name AS username, tu.avatar AS avatar, twd.name AS deptname
+        FROM  t_female_lesson_join tflj
+        JOIN  t_user tu ON  tu.userid = tflj.userid
+        JOIN t_dept twd ON  twd.id = tu.deptid
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="fid != null">
+                AND `fid` = #{fid}
+            </if>
+            <if test="indexID != null">
+                AND `id` &lt; #{indexID}
+            </if>
+        </where>
+        ORDER BY id DESC
+        <if test="!isAll">
+            limit 0, 8
+        </if>
+    </select>
+
+</mapper>

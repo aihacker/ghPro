@@ -1,0 +1,41 @@
+.ui-pagination-div {
+	width: 100%;
+	border: 1px solid gainsboro;
+	border-radius: 4px;
+	padding: 2px 10px;
+	text-align: right;
+}
+
+.ui-pagination {
+	font-size: 14px;
+	color: #777;
+	line-height: 20px;
+}
+
+.ui-pagination span:first-child,
+.ui-pagination .pagination-input-div,
+.ui-pagination .pagination-operation {
+	display: inline-block;
+	padding: 0 5px;
+}
+
+.ui-pagination span:first-child {
+	line-height: 30px;
+}
+
+.ui-pagination .pagination-input-div {}
+
+.ui-pagination .pagination-operation {}
+
+.pagination-input-div input {
+	width: 40px;
+	text-align: center;
+}
+
+.pagination-operation .fa {
+	margin: 2px;
+}
+
+.pagination-operation span.fa{
+	cursor: pointer;
+}

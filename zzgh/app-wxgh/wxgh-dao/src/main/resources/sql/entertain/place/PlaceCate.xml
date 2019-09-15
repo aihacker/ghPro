@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.place.PlaceCate">
+
+    <select id="getData" resultType="PlaceCate" parameterType="wxgh.param.entertain.place.PlaceCateParam">
+        SELECT * FROM t_place_cate
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateData" parameterType="wxgh.param.entertain.place.PlaceCateParam">
+        UPDATE t_place_cate
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="info != null">
+                info = #{name},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="imgPath != null">
+                img_path = #{imgPath}
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+</mapper>

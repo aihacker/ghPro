@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.WorkGroup">
+
+    <!--
+
+
+    -->
+    <select id="xlkai_getWork" parameterType="wxgh.param.union.innovation.work.WorkQuery" resultType="WorkGroup">
+        SELECT w.* , d.name AS dept_name FROM t_work_group w
+        LEFT JOIN t_dept d ON w.dept_id = d.id
+        <where>
+            <if test="status != null">
+                w.status = #{status}
+            </if>
+            <if test="id != null">
+                AND w.id = #{id}
+            </if>
+            <if test="name != null">
+                AND w.name LIKE #{name}
+            </if>
+            <if test="innovateId != null">
+                AND innovate_id = #{innovateId}
+            </if>
+            <if test="userid != null">
+                AND userid = #{userid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addWorkGroup" parameterType="wxgh.data.union.innovation.work.WorkGroupData">
+        INSERT INTO t_work_group (`name`, `dept_id`, `address`, `status`, `head_img`, `info`) VALUES (#{name}, #{deptId}, #{address}, #{status}, #{headImg}, #{info});
+    </insert>
+
+    <!--  -->
+    <select id="getWorkGroups" resultType="WorkGroup" parameterType="wxgh.param.union.innovation.work.WorkQuery">
+        SELECT w.*, d.name AS deptName FROM t_work_group w
+        LEFT JOIN t_dept d ON w.dept_id = d.id
+        ORDER BY w.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_work_group WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="updateWorkGroup" parameterType="wxgh.data.union.innovation.work.WorkGroupData">
+        UPDATE t_work_group SET `name` = #{name}, `address` = #{address}, `status` = #{status}, `info` = #{info} WHERE `id` = #{id}
+    </update>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkQuery">
+        SELECT count(*) FROM t_work_group
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <update id="xlkai_editWork" parameterType="WorkGroup">
+        UPDATE t_work_group
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="headImg != null">
+                head_img = #{headImg},
+            </if>
+            <if test="info != null">
+                info = #{info},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourAllDetails">
+
+    <select id="get_market_four_details" parameterType="wxgh.param.four.FourAllDetailsParam" resultType="wxgh.entity.four.FourAllDetails">
+
+        SELECT fad.*,fp.name AS fpName
+        FROM  t_four_all_details fad
+        JOIN t_four_details f ON f.fp_id = fad.fp_id AND f.mid = fad.m_id
+        JOIN t_four_project fp ON fp.id = fad.fp_id
+        <where>
+            <if test="mid != null">
+                fad.m_id = #{mid}
+            </if>
+            <if test="fpid != null">
+               AND fad.fp_id = #{fpid}
+            </if>
+        </where>
+        GROUP BY fad.`fp_id`,fad.m_id
+    </select>
+
+</mapper>

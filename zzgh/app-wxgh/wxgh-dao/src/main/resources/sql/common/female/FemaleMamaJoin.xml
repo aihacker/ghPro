@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.female.FemaleMamaJoin">
+
+    <select id="getData" parameterType="FemaleMamaJoin" resultType="FemaleMamaJoin">
+        SELECT * FROM t_female_mama_join
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="mid != null">
+               AND mid = #{mid}
+            </if>
+            <if test="dateStr != null">
+               AND date_format(`date`,'%Y-%m-%d') = #{dateStr}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <select id="getDataWX" parameterType="wxgh.param.common.female.QueryFemaleMamaJoin" resultType="FemaleMamaJoin">
+        SELECT tfmj.*, tfm.cover AS cover, tfm.name AS name
+        FROM t_female_mama_join tfmj
+        JOIN t_female_mama tfm ON tfm.id = tfmj.mid
+        <where>
+            <if test="id != null">
+                tfmj.id = #{id}
+            </if>
+            <if test="userid != null">
+                AND tfmj.userid = #{userid}
+            </if>
+            <if test="indexID != null">
+                AND tfmj.id &lt; #{indexID}
+            </if>
+        </where>
+        ORDER BY tfmj.id DESC
+        <if test="!isAll">
+            limit 0, 8
+        </if>
+    </select>
+
+</mapper>

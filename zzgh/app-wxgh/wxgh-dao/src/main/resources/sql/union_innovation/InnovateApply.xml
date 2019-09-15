@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.InnovateApply">
+
+    <update id="updateApply" parameterType="InnovateApply">
+        UPDATE t_innovate_apply
+        <set>
+            <if test="applyStep != null">
+                apply_step = #{applyStep},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="auditIdea != null">
+                audit_idea = #{auditIdea},
+            </if>
+            <if test="adminUserid != null">
+                admin_userid = #{adminUserid},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <sql id="xlkai_where">
+        <where>
+            <if test="applyType != null">
+                apply_type = #{applyType}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="userid != null">
+                AND userid = #{userid}
+            </if>
+            <if test="deptid != null">
+                AND FIND_IN_SET(deptid, query_dept_child(#{deptid})) > 0
+            </if>
+            <if test="applyStep != null">
+                AND apply_step = #{applyStep}
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_getApplys" parameterType="wxgh.param.union.innovation.QueryApply" resultType="InnovateApply">
+        select * from t_innovate_apply
+        <include refid="xlkai_where"/>
+        ORDER BY add_time DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="xlkai_getCounts" parameterType="wxgh.param.union.innovation.QueryApply" resultType="int">
+        select count(*) from t_innovate_apply
+        <include refid="xlkai_where"/>
+    </select>
+
+    <!--
+
+    -->
+    <select id="get_applys" resultType="InnovateApply" parameterType="wxgh.param.union.innovation.QueryApply">
+        SELECT a.*, d.name AS deptName, u.name AS userName, ad.title AS title, ad.advice AS advice, ad.add_time AS
+        addtime, ad.type AS aType
+        FROM t_innovate_apply a
+        LEFT JOIN t_dept d ON a.deptid = d.id
+        JOIN t_user u ON u.userid = a.userid
+        JOIN t_innovate_advice ad ON ad.pid = a.id
+        <where>
+            a.apply_step = 1 AND a.apply_type = 4
+            <if test="status != null">
+                AND a.status = #{status}
+            </if>
+        </where>
+
+        ORDER BY a.`id` DESC
+
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+</mapper>

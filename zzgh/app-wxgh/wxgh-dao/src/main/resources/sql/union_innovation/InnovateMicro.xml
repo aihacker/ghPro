@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.InnovateMicro">
+
+    <!--
+
+    -->
+    <select id="getOne" resultType="InnovateMicro" parameterType="wxgh.param.union.innovation.QueryInnovateMicro">
+        SELECT im.*,u.`name` AS username, wr.`content` AS content, ia.`audit_time` AS auditTime, ia.`audit_idea` AS
+        auditIdea, ia.`status` AS applyStatus, wd.name AS deptname
+        from t_innovate_micro im
+        JOIN t_innovate_apply ia ON ia.id = im.pid
+        JOIN t_user u ON u.userid = ia.userid
+        JOIN t_work_result wr ON wr.work_id = ia.id
+        LEFT JOIN t_dept wd ON wd.`id` = im.`deptid`
+        <where>
+            <if test="id != null">
+                im.`id` = #{id}
+            </if>
+            <if test="adviceId != null">
+                AND im.advice_id = #{adviceId}
+            </if>
+            <if test="pid != null">
+                AND im.`pid` = #{pid}
+            </if>
+            AND wr.`work_type` = 3
+            AND ia.apply_step = 1
+        </where>
+    </select>
+
+    <!--
+
+
+    -->
+    <select id="getList" resultType="InnovateMicro" parameterType="wxgh.param.union.innovation.QueryInnovateMicro">
+        SELECT im.*, wr.`content` AS content, ia.`audit_time` AS auditTime, ia.`audit_idea` AS auditIdea, ia.`status`
+        AS applyStatus, wd.name AS deptname
+        from t_innovate_micro im
+        JOIN t_innovate_apply ia ON ia.id = im.pid
+        JOIN t_work_result wr ON wr.work_id = ia.id
+        LEFT JOIN t_dept wd ON wd.`id` = im.`deptid`
+        <where>
+            <if test="id != null">
+                im.`id` = #{id}
+            </if>
+            <if test="status != null">
+                AND ia.`status` = #{status}
+            </if>
+            AND wr.`work_type` = 3
+            AND ia.apply_step = 1
+        </where>
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <!--
+
+    -->
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.union.innovation.QueryInnovateMicro">
+        SELECT count(*)
+        from t_innovate_micro im
+        JOIN t_innovate_apply ia ON ia.id = im.pid
+        JOIN t_work_result wr ON wr.work_id = ia.id
+        LEFT JOIN t_dept wd ON wd.`id` = im.`deptid`
+        <where>
+            <if test="status != null">
+                AND ia.`status` = #{status}
+            </if>
+            AND wr.`work_type` = 3
+            AND ia.apply_step = 1
+        </where>
+    </select>
+
+    <!--
+
+    -->
+    <update id="updateMicro" parameterType="InnovateMicro">
+        UPDATE t_innovate_micro im
+        JOIN t_innovate_apply ia ON ia.`id` = im.`pid`
+        JOIN t_user u ON u.`userid` = ia.`userid`
+        -- JOIN t_work_result wr ON wr.`work_id` = ia.`id`
+        LEFT JOIN t_dept wd ON wd.`id` = im.`deptid`
+        <set>
+            <if test="name != null">
+                im.`name` = #{name},
+            </if>
+            <if test="point != null">
+                im.`point` = #{point},
+            </if>
+            <if test="behave != null">
+                im.`behave` = #{behave},
+            </if>
+            <if test="team != null">
+                im.`team` = #{team},
+            </if>
+            <if test="type != null">
+                im.`type` = #{type},
+            </if>
+            <if test="cate2 != null">
+                im.`cate_2` = #{cate2},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                im.`id` = #{id}
+            </if>
+        </where>
+    </update>
+
+    <!--
+
+
+    -->
+    <select id="xlkai_getInfos" parameterType="wxgh.param.union.innovation.InnovateApplyQuery"
+            resultType="wxgh.data.union.innovation.work.MicroInfo">
+        SELECT a.userid,u.name as username,d.name,
+        m.id,m.team,m.cate_2 as cate,m.name as resultName,m.point,m.behave,m.add_time as applyTime,
+        r.content,r.type,r.work_type,r.work_id
+        from t_innovate_apply a
+        join t_innovate_micro m on m.pid = a.id
+        LEFT join t_dept d on a.deptid = d.id
+        join t_user u on a.userid = u.userid
+        join t_work_result r on (r.work_id = a.id and r.work_type=a.apply_type)
+        <where>
+            <if test="deptid != null">
+                FIND_IN_SET(a.deptid, query_dept_child(query_dept_company_id(#{deptid}))) > 0
+            </if>
+            <if test="applyType != null">
+                AND a.apply_type = #{applyType}
+            </if>
+            <if test="status != null">
+                AND a.status = #{status}
+            </if>
+            <if test="applyStep != null">
+                AND a.apply_step = #{applyStep}
+            </if>
+            <if test="userid != null">
+                AND a.userid = #{userid}
+            </if>
+        </where>
+        ORDER BY a.audit_time ASC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourDetails">
+
+    <select id="xlkai_getDetails" parameterType="wxgh.param.four.FourAllDetailsParam" resultType="FourDetails">
+        SELECT f.*, d.name AS deptName,
+        fp.name AS fpName,
+        fpc.name AS fpcName,
+        m.name AS marketName
+        FROM t_four_details f
+        JOIN t_dept d ON f.dept_id = d.id
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id=f.mid
+        <where>
+            <if test="thedeptid != null">
+                FIND_IN_SET(f.dept_id, query_dept_child(#{thedeptid}))
+            </if>
+            <if test="deptId != null">
+                AND FIND_IN_SET(f.dept_id, query_dept_by_userdept(#{deptId}))
+            </if>
+            <if test="depts != null">
+                AND f.dept_id IN
+                <foreach collection="depts" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="id != null">
+                AND f.id = #{id}
+            </if>
+            <if test="status != null">
+                AND f.status = #{status}
+            </if>
+        </where>
+        ORDER BY f.buy_time
+        <if test="isLimit">
+            LIMIT #{startPage}, #{totalPage}
+        </if>
+    </select>
+
+    <insert id="addFD" parameterType="wxgh.data.four.FourDetailsData">
+        INSERT  INTO t_four_details (`dept_id`,`fpro_id`, `fp_id`, `fpc_id`, `brand`, `model_name`, `numb`, `remark`, `buy_time`, `condit`, `time`)
+        VALUES (#{deptId}, #{fproId}, #{fpId}, #{fpcId}, #{brand}, #{modelName}, #{numb}, #{remark}, #{buyTime}, #{condit}, #{time})
+    </insert>
+
+    <select id="getFDs" resultType="FourDetails" parameterType="wxgh.param.four.FourDetailsParam">
+        SELECT fd.*, wd.name AS deptName, fpro.name AS fpName, fpc.name AS fpcName, fprt.status AS status
+        FROM t_four_details fd
+        JOIN t_dept wd ON wd.id = fd.dept_id
+        JOIN t_four_project fpro ON fpro.id = fd.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = fd.fpc_id
+        JOIN t_four_propagate fprt ON fprt.id = fd.fpro_id
+        ORDER BY fd.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.four.FourDetailsParam">
+        SELECT  count(*)
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+    </select>
+
+    <delete id="delFD" parameterType="Integer">
+        DELETE FROM t_four_details where `id` = #{VALUE}
+    </delete>
+
+    <select id="getdeptStrList" resultType="FourDetails">
+        SELECT dept_str from t_four_details  WHERE dept_str IS NOT NULL GROUP BY dept_str
+    </select>
+
+    <!-- AND m.`deptid` = #{deptId} -->
+    <select id="zzj_getList" parameterType="wxgh.param.four.FourDetailsParam" resultType="FourDetails">
+        SELECT f.*, d.name AS deptName, fp.name AS fpName, fpc.name AS fpcName, m.name AS marketName
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        <where>
+            <if test="deptId != null">
+                AND FIND_IN_SET(m.deptid, query_dept_child(#{deptId})) > 0
+            </if>
+            <if test="id != null">
+                AND f.id = #{id}
+            </if>
+            <if test="deptStr != null">
+                AND f.`dept_str` = #{deptStr}
+            </if>
+            <if test="mid != null">
+                AND f.`mid` = #{mid}
+            </if>
+            <if test="search != null">
+                AND CONCAT(fpc.`name`,f.`brand`,f.`model_name`) LIKE concat('%', #{search}, '%')
+            </if>
+            <if test="fpcName != null">
+                AND fpc.`name` = #{fpcName}
+            </if>
+            <if test="brand != null">
+                AND f.`brand` = #{brand}
+            </if>
+            <if test="condit != null">
+                AND f.`condit` = #{condit}
+            </if>
+            <if test="condStr != null">
+                AND f.`cond_str` = #{condStr}
+            </if>
+            <if test="status != null">
+                AND f.status = #{status}
+            </if>
+            <!--<choose>
+                <when test="typeName != null">
+                    <if test="fpcName != null">
+                        AND fpc.`name` = #{typeName}
+                    </if>
+                    <if test="brand != null">
+                        AND f.`brand` = #{typeName}
+                    </if>
+                    <if test="condit != null">
+                        AND  f.`condit` = #{typeName}
+                    </if>
+                    <if test="condStr != null">
+                        AND f.`cond_str` = #{typeName}
+                    </if>
+                </when>
+            </choose>-->
+        </where>
+        /*GROUP BY f.`fpc_id`, f.`fp_id`, f.`brand`*/
+        <choose>
+            <when test="type == 1">
+                ORDER BY fpc.`name`
+            </when>
+            <when test="type == 2">
+                ORDER BY f.`brand`
+            </when>
+            <when test="type == 3">
+                ORDER BY f.`condit`
+            </when>
+            <when test="type == 4">
+                ORDER BY f.`cond_str`
+            </when>
+            <otherwise>
+                ORDER BY f.buy_time
+            </otherwise>
+        </choose>
+        <if test="isLimit">
+            LIMIT #{startPage}, #{totalPage}
+        </if>
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="zzj_getListWithMarketing" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="FourDetails">
+        SELECT f.*, d.name AS deptName, fp.name AS fpName, fpc.name AS fpcName, SUM(f.numb) AS collecting
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        JOIN t_four_all_details ad ON ad.`fp_id` = fp.`id`
+        <where>
+            <if test="deptId != null">
+                AND m.`deptid` = #{deptId}
+            </if>
+            <if test="id != null">
+                AND f.id = #{id}
+            </if>
+            <if test="deptStr != null">
+                AND f.`dept_str` = #{deptStr}
+            </if>
+            <if test="mid != null">
+                AND f.`mid` = #{mid}
+            </if>
+            <if test="fpcName != null">
+                AND fpc.`name` = #{fpcName}
+            </if>
+            <if test="fpID != null">
+                AND ad.`fp_id` = #{fpID}
+            </if>
+            <if test="status != null">
+                AND f.status = #{status}
+            </if>
+        </where>
+        GROUP BY fpc.`name`
+        <choose>
+            <when test="type == 1">
+                ORDER BY fpc.`name`
+            </when>
+            <when test="type == 2">
+                ORDER BY f.`brand`
+            </when>
+            <when test="type == 3">
+                ORDER BY f.`condit`
+            </when>
+            <when test="type == 4">
+                ORDER BY f.`cond_str`
+            </when>
+        </choose>
+        <if test="isLimit">
+            LIMIT #{startPage}, #{totalPage}
+        </if>
+    </select>
+    <select id="getMarketName" parameterType="wxgh.param.four.FourDetailsParam" resultType="FourDetails">
+        SELECT m.name AS marketName
+        FROM t_four_details f
+        JOIN t_marketing m ON m.id = f.mid
+        <where>
+            <if test="mid != null">
+                f.mid = #{mid}
+            </if>
+        </where>
+        GROUP BY f.`mid`
+    </select>
+    <select id="get_market_four" parameterType="wxgh.param.four.FourDetailsParam" resultType="FourDetails">
+
+        SELECT f.*,fp.name AS fpName
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_marketing m ON m.id = f.mid
+        <where>
+            <if test="mid != null">
+                f.mid = #{mid}
+            </if>
+        </where>
+        GROUP BY f.`fp_id`
+    </select>
+
+    <select id="get_per_four_project" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="FourDetails">
+        SELECT f.*, fpc.name AS fpcName,m.name as marketName
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        <where>
+
+            <if test="mid != null">
+                f.mid = #{mid}
+            </if>
+            <if test="fpID != null">
+                AND f.fp_id = #{fpID}
+            </if>
+            <if test="status != null">
+                AND f.status = #{status}
+            </if>
+        </where>
+        GROUP BY f.`fpc_id`
+    </select>
+
+    <select id="getTaizhangNumb" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="FourDetails">
+        SELECT f.*, d.name AS deptName, fp.name AS fpName, fpc.name AS fpcName, SUM(f.numb) AS collecting
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        JOIN t_four_all_details ad ON ad.`fp_id` = fp.`id`
+        GROUP BY fpc.`name`
+        ORDER BY fp.`name`
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getTaizhangList" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="FourDetails">
+        SELECT f.*, d.name AS deptName, fp.name AS fpName, fpc.name AS fpcName
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        JOIN t_four_all_details ad ON ad.`fp_id` = fp.`id`
+        <where>
+            <if test="fpcName != null">
+                fpc.`name` = #{fpcName}
+            </if>
+        </where>
+    </select>
+
+    <select id="getTaizhangCount" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="int">
+        SELECT SUM(f.numb)
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        JOIN t_four_all_details ad ON ad.`fp_id` = fp.`id`
+        <where>
+            <if test="fpcName != null">
+                fpc.`name` = #{fpcName}
+            </if>
+            <if test="condit != null">
+                AND f.`condit` = #{condit}
+            </if>
+        </where>
+    </select>
+
+    <sql id="xlkai_getFourList_where">
+        <where>
+            <if test="deptid != null">
+                m.deptid = #{deptid}
+            </if>
+            <if test="mid != null">
+                AND f.mid = #{mid}
+            </if>
+            <if test="fpid != null">
+                AND f.fp_id = #{fpid}
+            </if>
+            <if test="fpcName != null">
+                AND fpc.name = #{fpcName}
+            </if>
+            <if test="brand != null">
+                AND f.brand = #{brand}
+            </if>
+            <if test="condit != null">
+                AND f.condit = #{condit}
+            </if>
+            <if test="belong != null">
+                AND f.cond_str = #{belong}
+            </if>
+            <if test="searchKey != null">
+                AND (fpc.name LIKE #{searchKey} OR f.brand LIKE #{searchKey})
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_getFourList" parameterType="wxgh.param.four.FourListParam" resultType="FourDetails">
+        SELECT f.*, d.name AS deptName, fp.name AS fpName, fpc.name AS fpcName,m.name as marketName
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        <include refid="xlkai_getFourList_where"/>
+        ORDER BY fpc.name
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="xlkai_getFourListCount" parameterType="wxgh.param.four.FourListParam" resultType="int">
+        SELECT COUNT(*)
+        FROM t_four_details f
+        JOIN t_four_project fp ON fp.id = f.fp_id
+        JOIN t_four_project_content fpc ON fpc.id = f.fpc_id
+        JOIN t_marketing m ON m.id = f.mid
+        JOIN t_dept d ON d.id = m.deptid
+        <include refid="xlkai_getFourList_where"/>
+    </select>
+
+    <update id="xlkai_updateFourDetails" parameterType="FourDetails">
+        UPDATE t_four_details
+        <set>
+            <if test="fpId != null">
+                fp_id = #{fpId},
+            </if>
+            <if test="fpcId != null">
+                fpc_id = #{fpcId},
+            </if>
+            <if test="brand != null">
+                brand = #{brand},
+            </if>
+            <if test="modelName != null">
+                model_name = #{modelName},
+            </if>
+            <if test="numb != null">
+                numb = #{numb},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="buyTime != null">
+                buy_time = #{buyTime},
+            </if>
+            <if test="condit != null">
+                condit = #{condit},
+            </if>
+            <if test="condStr != null">
+                cond_str = #{condStr},
+            </if>
+            <if test="unit != null">
+                unit = #{unit},
+            </if>
+            <if test="imgs != null">
+                imgs = #{imgs},
+            </if>
+            <if test="mid != null">
+                mid = #{mid},
+            </if>
+            <if test="planUpdate != null">
+                plan_update = #{planUpdate},
+            </if>
+            <if test="usefulLife != null">
+                useful_life = #{usefulLife},
+            </if>
+            <if test="repairCount != null">
+                repair_count = #{repairCount},
+            </if>
+            <if test="priceSource != null">
+                price_source = #{priceSource},
+            </if>
+            <if test="price != null">
+                price = #{price}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="groupDetailByListIn" parameterType="wxgh.param.four.FourDetailsParam"
+            resultType="wxgh.data.four.DetailInfo">
+        select
+        <choose>
+            <when test="type == 1">
+                pc.name
+            </when>
+            <when test="type == 2">
+                d.brand
+            </when>
+            <when test="type == 3">
+                d.condit
+            </when>
+            <when test="type == 4">
+                d.cond_str
+            </when>
+        </choose>
+        as name,sum(d.numb) as numb, d.unit,d.price,d.price_source,d.model_name,d.remark
+        from t_four_details d
+        join t_marketing m on m.id = d.mid
+        join t_four_project_content pc on d.fpc_id = pc.id
+        <where>
+            <if test="idList != null">
+                d.`id` IN
+                <foreach item="id" index="index" collection="idList" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+            <if test="status != null">
+                AND d.status = #{status}
+            </if>
+        </where>
+        <if test="type == 1">
+            group by pc.name order by pc.name
+        </if>
+        <if test="type == 2">
+            group by d.brand order by d.brand
+        </if>
+        <if test="type == 3">
+            group by d.condit order by d.condit
+        </if>
+        <if test="type == 4">
+            group by d.cond_str order by d.cond_str
+        </if>
+
+    </select>
+</mapper>

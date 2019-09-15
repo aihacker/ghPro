@@ -1,0 +1,101 @@
+.ui-nav,
+#navLeft,
+#navLeft .panel,
+#navLeft .panel-default>.panel-heading,
+.panel-body .list-group-item {
+    background-color: #181d20;
+    color: #848788;
+}
+
+.ui-nav,
+#navLeft,
+#navLeft .panel-body {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.ui-nav {
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+#navLeft {
+}
+
+#navLeft .panel {
+    border-radius: 0;
+    border: none;
+}
+
+#navLeft .panel-title a {
+    font-size: 16px;
+}
+
+.panel-body .list-group .list-group-item {
+    padding-left: 25px;
+}
+
+.panel-body .list-group-item:first-child {
+    border-radius: 0;
+}
+
+.panel-body .list-group-item,
+#navLeft .panel-heading {
+    border: none;
+    padding: 0;
+    height: 38px;
+    line-height: 38px;
+}
+
+#navLeft .panel-heading a {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#navLeft .panel-heading a span.fa:last-child{
+    float: right;
+    margin-top: 8px;
+}
+
+.panel-body .list-group-item a {
+    color: #848788;
+    font-size: 15px;
+}
+
+#navLeft a:hover,
+#navLeft a:focus {
+    text-decoration: none;
+}
+
+#navLeft a:hover {
+    color: #fff;
+}
+
+.ui-main {
+    padding: 0;
+    background-color: #fff;
+}
+
+.ui-main nav.navbar,
+.ui-main div.panel,
+.ui-main ol.breadcrumb {
+    margin-bottom: 0;
+}
+
+.ui-main div.panel {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.embed-responsive-16by9.ui-iframe {
+    padding-bottom: 0;
+}
+.panel-body .list-group-item.open{
+    background-color: #d95043;
+}
+.panel-body .list-group-item.open a{
+    color:#fff;
+}

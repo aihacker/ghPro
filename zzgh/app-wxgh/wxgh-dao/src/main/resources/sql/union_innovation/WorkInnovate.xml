@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.WorkInnovate">
+
+    <select id="xlkai_getInnovatePK" parameterType="Integer" resultType="WorkInnovate">
+        SELECT * FROM t_work_innovate WHERE id = #{id}
+    </select>
+
+    <select id="xlkai_getInnovate" parameterType="wxgh.param.union.innovation.work.WorkInnovateQuery" resultType="WorkInnovate">
+        SELECT wi.*,  u.name AS userName FROM t_work_innovate wi
+        JOIN t_user u ON u.userid = wi.user_id
+        <where>
+            <if test="userid != null">
+                wi.user_id = #{userid}
+            </if>
+            <if test="status != null">
+                AND wi.status = #{status}
+            </if>
+            <if test="id != null">
+                AND  wi.`id` = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getWorkInnovates" resultType="WorkInnovate" parameterType="wxgh.param.union.innovation.work.WorkInnovateQuery" >
+        SELECT wi.*, u.name AS userName
+        FROM t_work_innovate wi
+        JOIN t_user u ON u.userid = wi.user_id
+        <where>
+            <if test="status != null">
+                wi.`status` = #{status}
+            </if>
+            <if test="id != null">
+                AND  wi.`id` = #{id}
+            </if>
+        </where>
+        ORDER BY `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <update id="shenhe" parameterType="wxgh.data.union.innovation.work.JiShenheData">
+        UPDATE t_work_innovate SET `status` = #{status} WHERE `id` = #{id}
+    </update>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_work_innovate where `id` = #{VALUE}
+    </delete>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkInnovateQuery">
+        SELECT  count(*) FROM t_work_innovate
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="applyListRefresh" resultType="WorkInnovate" parameterType="wxgh.param.union.innovation.work.WorkInnovateQuery" >
+        SELECT wi.*, u.name AS userName
+        FROM t_work_innovate wi
+        JOIN t_user u ON u.userid = wi.user_id
+        <where>
+            <if test="status != null">
+                wi.`status` = #{status}
+            </if>
+        </where>
+        ORDER BY wi.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" resultType="WorkInnovate" parameterType="wxgh.param.union.innovation.work.WorkInnovateQuery" >
+        SELECT wi.*, u.name AS userName
+        FROM t_work_innovate wi
+        JOIN t_user u ON u.userid = wi.user_id
+        <where>
+            <if test="jobOldestId != null">
+                wi.`id` &lt; #{jobOldestId}
+            </if>
+
+            <if test="status != null">
+                AND wi.`status` = #{status}
+            </if>
+        </where>
+        ORDER BY wi.`id` DESC limit 0, 15
+    </select>
+
+</mapper>

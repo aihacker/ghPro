@@ -1,0 +1,39 @@
+.td-ver{
+    vertical-align: middle !important;
+}
+/*.hui-help-detail{*/
+    /*display: none;*/
+/*}*/
+.hui-help-detail ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.hui-disease-li ul li{
+    line-height: 30px;
+}
+.hui-disease-li ul li span{
+    margin-left: 10px;
+    display: inline-block;
+}
+.hui-place-li ul li{
+    margin-bottom: 15px;
+}
+.hui-place-li input[type=radio]{
+    margin-left: 20px;
+    margin-right: 6px;
+}
+.hui-place-li .form-control{
+    width:340px;
+}
+/*****10月8号CSS****/
+.hui-navbar-part2{
+    font-size: 19px !important;
+}
+.hui-sidebar-img1{
+    float: left;
+}
+.hui-sidebar-img2{
+    float: right;
+    margin-top: 7px;
+}

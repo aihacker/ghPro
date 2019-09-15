@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.suggest.UserSuggest">
+
+
+    <!--查詢所有建議-->
+    <select id="getAllSuggest" resultType="UserSuggest">
+        SELECT us.* , (select COUNT(*) from t_suggest_comm sc,t_user u WHERE sc.user_id = u.userid AND  sc.isdel = '1' AND us.id = sc.sug_id) as commNum FROM t_user_suggest us WHERE 1=1 ORDER BY us.create_time DESC ;
+    </select>
+
+    <!--查詢所有已審核通過建議-->
+    <select id="getAllPassSuggest" resultType="UserSuggest">
+        SELECT us.* , (select COUNT(*) from t_suggest_comm sc,t_user u WHERE sc.user_id = u.userid AND  sc.isdel = '1' AND us.id = sc.sug_id) as commNum FROM t_user_suggest us WHERE us.status = 0 ORDER BY us.create_time DESC;
+    </select>
+
+    <!--查詢所有未通過-->
+    <select id="getAllNotSuggest" resultType="UserSuggest">
+        SELECT us.* , (select COUNT(*) from t_suggest_comm sc,t_user u WHERE sc.user_id = u.userid AND  sc.isdel = '1' AND us.id = sc.sug_id) as commNum FROM t_user_suggest us WHERE us.status = 2 ORDER BY us.create_time DESC;
+    </select>
+
+    <!--查詢詳細信息-->
+    <select id="getSuggestDetail" parameterType="Integer" resultType="UserSuggest">
+        SELECT us.* FROM  t_user_suggest us WHERE us.id = #{id} ;
+    </select>
+
+    <!--建議審核通過-->
+    <update id="AuditPass" parameterType="Integer">
+        UPDATE t_user_suggest SET t_user_suggest.status = 1 WHERE t_user_suggest.id = #{id};
+    </update>
+
+    <!--建議審核不通過-->
+    <update id="AuditNotPass" parameterType="Integer">
+        UPDATE t_user_suggest SET t_user_suggest.status = 2 WHERE t_user_suggest.id = #{id};
+    </update>
+    
+    <select id="xlkai_getSuggests" parameterType="wxgh.param.common.suggest.UserSuggestQuery" resultType="UserSuggest">
+        SELECT * FROM t_user_suggest
+        <where>
+            <if test="deptid != null">
+                deptid != #{deptid}
+            </if>
+            <if test="cateId != null">
+                AND cate_id = #{cateId}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+    <!-- JOIN t_dept d ON d.deptid = s.deptid -->
+    <select id="xlkai_getOneSuggest" parameterType="Integer" resultType="UserSuggest">
+        SELECT s.*,sc.name AS cateName, u.name AS username, u.avatar FROM t_user_suggest s
+        JOIN t_user u ON s.userid = u.userid
+         JOIN t_suggest_cate sc ON sc.id = s.cate_id
+        WHERE s.id = #{id}
+    </select>
+
+    <select id="getSuggests" parameterType="wxgh.param.common.suggest.UserSuggestQuery" resultType="UserSuggest">
+        SELECT us.*, sc.name AS cateName, u.name AS userName, wd.name AS deptname
+        FROM t_user_suggest us
+        JOIN t_suggest_cate sc ON sc.id = us.cate_id
+        JOIN t_user u ON u.userid = us.userid
+        JOIN t_dept wd ON wd.id = us.deptid
+        <where>
+            <if test="cateId != null">
+                us.cate_id = #{cateId}
+            </if>
+            <if test="status != null">
+                AND us.status = #{status}
+            </if>
+        </where>
+        ORDER BY us.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getOneSuggest" parameterType="Integer" resultType="UserSuggest">
+        SELECT us.*, sc.name AS cateName, u.name AS userName, wd.name AS deptname
+        FROM t_user_suggest us
+        JOIN t_suggest_cate sc ON sc.id = us.cate_id
+        JOIN t_user u ON u.userid = us.userid
+        JOIN t_dept wd ON  wd.id = us.deptid
+        WHERE us.id = #{VALUE}
+    </select>
+
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.common.suggest.UserSuggestQuery">
+        SELECT count(*) FROM t_user_suggest
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <update id="shenhe" parameterType="wxgh.param.common.suggest.UserSuggestQuery">
+        UPDATE t_user_suggest
+        <set>
+
+            <if test="status != null">
+                status = #{status},
+            </if>
+
+        </set>
+        <where>
+            <if test="id != null">
+                `id` = #{id}
+            </if>
+        </where>
+    </update>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_user_suggest WHERE `id` = #{VALUE}
+    </delete>
+
+    <select id="applyListRefresh" parameterType="wxgh.param.common.suggest.UserSuggestQuery" resultType="UserSuggest">
+        SELECT us.*, sc.name AS cateName, u.name AS userName, wd.name AS deptname
+        FROM t_user_suggest us
+        JOIN t_suggest_cate sc ON sc.id = us.cate_id
+        JOIN t_user u ON u.userid = us.userid
+        LEFT JOIN t_dept wd ON wd.id = us.deptid
+        <where>
+            <if test="cateId != null">
+                us.cate_id = #{cateId}
+            </if>
+            <if test="status != null">
+                AND us.status = #{status}
+            </if>
+            <if test="userid != null">
+                AND us.userid = #{userid}
+            </if>
+        </where>
+        ORDER BY us.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" parameterType="wxgh.param.common.suggest.UserSuggestQuery" resultType="UserSuggest">
+        SELECT us.*, sc.name AS cateName, u.name AS userName, wd.name AS deptname
+        FROM t_user_suggest us
+        JOIN t_suggest_cate sc ON sc.id = us.cate_id
+        JOIN t_user u ON u.userid = us.userid
+        JOIN t_dept wd ON wd.id = us.deptid
+        <where>
+            <if test="userSuggestOldestId != null">
+                us.id &lt; #{userSuggestOldestId}
+            </if>
+
+            <if test="status != null">
+                AND us.status = #{status}
+            </if>
+            <if test="userid != null">
+                AND us.userid = #{userid}
+            </if>
+        </where>
+        ORDER BY us.`id` DESC limit 0, 15
+    </select>
+
+</mapper>

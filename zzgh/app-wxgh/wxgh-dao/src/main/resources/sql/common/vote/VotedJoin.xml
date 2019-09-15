@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.vote.VotedJoin">
+
+    <select id="xlkai_getJoin" parameterType="wxgh.param.common.vote.VoteJoinQuery" resultType="VotedJoin">
+        SELECT * FROM t_voted_join
+        <where>
+            <if test="votedId != null">
+                voted_id = #{votedId}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="userid != null">
+                AND userid = #{userid}
+            </if>
+        </where>
+    </select>
+
+</mapper>

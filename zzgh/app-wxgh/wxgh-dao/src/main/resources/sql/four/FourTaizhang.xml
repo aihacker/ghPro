@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourTaizhang">
+
+    <select id="getTaizhangs" resultType="FourTaizhang" >
+        SELECT ft.*, fp.name AS fpname, fpc.name AS fpcname, fpr.remark AS remark FROM t_four_taizhang ft JOIN t_four_project fp ON fp.id = ft.fp_id JOIN t_four_project_content fpc ON fpc.id = ft.fpc_id JOIN t_four_propagate fpr  ON  fpr.fp_id = ft.fp_id
+   </select>
+
+    <select id="checkTaizhang" parameterType="wxgh.param.four.QueryTaizhangParam" resultType="Integer">
+        SELECT COUNT(*) FROM t_four_taizhang Where `fp_id` = #{fpid} AND `fpc_id` = #{fpcid}
+    </select>
+
+
+    <update id="updateCount" parameterType="wxgh.data.four.FourTaizhangData">
+        UPDATE t_four_taizhang SET `numb` = `numb` + #{numb},
+
+        <trim suffixOverrides=",">
+            <if test="status0 != null">
+                `status0` = `status0` + #{numb},
+            </if>
+            <if test="status1 != null">
+                `status1` = `status1` + #{numb},
+            </if>
+            <if test="status2 != null">
+                `status2` = `status2` + #{numb}
+            </if>
+        </trim>
+
+        Where `fp_id` = #{fpId} AND `fpc_id` = #{fpcId}
+    </update>
+
+    <insert id="addTaizhang" parameterType="wxgh.data.four.FourTaizhangData" >
+        INSERT INTO t_four_taizhang (`fp_id`, `fpc_id`, `numb`, `status0`, `status1`, `status2`, `time`, `remark`)
+        VALUES (#{fpId}, #{fpcId}, #{numb}, #{status0}, #{status1}, #{status2}, #{time}, #{remark})
+    </insert>
+
+</mapper>

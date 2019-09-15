@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="app-wxgh" target="1.8" />
+      <module name="common-libs" target="1.8" />
+      <module name="common-pub" target="1.8" />
+      <module name="common-weixin" target="1.8" />
+      <module name="demo-excel" target="1.8" />
+      <module name="wxgh-admin-pc" target="1.8" />
+      <module name="wxgh-admin-wx" target="1.8" />
+      <module name="wxgh-dao" target="1.8" />
+      <module name="wxgh-entity" target="1.8" />
+      <module name="wxgh-pub" target="1.8" />
+      <module name="wxgh-service" target="1.8" />
+      <module name="wxgh-weixin" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

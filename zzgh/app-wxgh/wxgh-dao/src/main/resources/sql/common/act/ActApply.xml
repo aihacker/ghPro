@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.ActApply">
+
+    <select id="xlkai_getApply" parameterType="wxgh.param.common.act.ActApplyQuery" resultType="ActApply">
+        SELECT a.*, d.name AS deptName, u.name AS userName FROM t_act_apply a
+        JOIN t_dept d ON a.deptid = d.id JOIN t_user u ON u.userid = a.userid
+        <where>
+            <if test="userid != null">
+                a.userid = #{userid}
+            </if>
+            <if test="status != null">
+                AND a.status = #{status}
+            </if>
+            <if test="deptid != null">
+                AND a.deptid = #{deptid}
+            </if>
+            <if test="id != null">
+                AND a.id = #{id}
+            </if>
+        </where>
+
+        ORDER BY a.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+
+    </select>
+
+    <update id="xlkai_editApply" parameterType="ActApply">
+        UPDATE t_act_apply
+        <set>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="auditIdea != null">
+                audit_idea = #{auditIdea},
+            </if>
+            <if test="auditCost != null">
+                audit_cost = #{auditCost},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="auditUserid != null">
+                audit_userid = #{auditUserid},
+            </if>
+            <if test="address != null">
+                address = #{address}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_act_apply WHERE `id` = #{VALUE}
+    </delete>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.common.act.ActApplyQuery">
+        SELECT  count(*) FROM t_act_apply
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="applyListRefresh" parameterType="wxgh.param.common.act.ActApplyQuery" resultType="ActApply">
+        SELECT a.*, d.name AS deptName, u.name AS userName FROM t_act_apply a
+        JOIN t_dept d ON a.deptid = d.id JOIN t_user u ON u.userid = a.userid
+        <where>
+            <if test="status != null">
+                a.`status` = #{status}
+            </if>
+        </where>
+        ORDER BY a.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" parameterType="wxgh.param.common.act.ActApplyQuery" resultType="ActApply">
+        SELECT a.*, d.name AS deptName, u.name AS userName FROM t_act_apply a
+        JOIN t_dept d ON a.deptid = d.id JOIN t_user u ON u.userid = a.userid
+        <where>
+            <if test="actOldestId != null">
+                a.`id` &lt; #{actOldestId}
+            </if>
+
+            <if test="status != null">
+                AND a.`status` = #{status}
+            </if>
+        </where>
+        ORDER BY a.`id` DESC limit 0, 15
+    </select>
+
+</mapper>

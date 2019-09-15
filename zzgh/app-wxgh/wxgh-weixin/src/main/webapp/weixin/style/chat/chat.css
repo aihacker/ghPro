@@ -1,0 +1,256 @@
+#chatBottom {
+    height: 44px;
+}
+
+#chatBottom .mui-icon-plus {
+    font-size: 30px;
+}
+
+#chatInput {
+    margin-bottom: 0;
+    padding: 5px 0px 5px 8px;
+    min-height: 35px;
+    height: 0;
+    margin-top: 8px;
+    overflow-y: hidden;
+}
+
+#sendBtn {
+    padding: 5px 12px 6px;
+    top: 9px;
+}
+
+.ui-msg-list {
+    padding: 0px 8px;
+    width: 100%;
+    height: 100%;
+    background-color: #efeff4;
+}
+
+.ui-msg-item {
+    padding: 5px 0;
+    margin: 10px 0;
+}
+
+.ui-msg-main {
+    display: flex;
+}
+
+.ui-right .ui-msg-main {
+    justify-content: flex-end;
+}
+
+.ui-msg-item .ui-user-head {
+    width: 44px;
+    height: 44px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid gainsboro;
+    padding: 1px;
+}
+
+.ui-right .ui-msg-body {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.ui-right .ui-msg-body small {
+    text-align: right;
+}
+
+.ui-msg-item .ui-msg-time {
+    margin-bottom: 0;
+    font-size: 12px;
+    min-height: 20px;
+}
+
+.ui-msg-body {
+    margin-left: 5px;
+    width: 65%;
+}
+
+.ui-msg-body small {
+    font-size: 13px;
+    display: block;
+}
+
+.ui-msg-bg {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    padding: 4px 6px;
+    font-size: 16px;
+    min-height: 32px;
+    display: inline-block;
+    word-break: break-word;
+    min-width: 40px;
+}
+
+.ui-left .ui-msg-bg {
+    background-color: #5eb95e;
+    color: #fff;
+}
+
+.ui-right .ui-msg-bg {
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+}
+
+.ui-msg-bg img {
+    width: 100%;
+}
+
+#otherDiv .mui-table-view-cell {
+    padding: 5px 10px;
+    border: none;
+}
+
+#otherDiv .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+#otherDiv .mui-grid-view.mui-grid-9 .mui-table-view-cell > a:not(.mui-btn) {
+    padding: 0;
+}
+
+#otherDiv .mui-slider-item .mui-table-view {
+    background-color: #f7f7f7;
+}
+
+#otherDiv .mui-slider-item .mui-table-view-cell img {
+    width: 80%;
+}
+
+#voiceDiv {
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    position: relative;
+    top: 6px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+#voiceDiv:focus,
+#voiceDiv:active {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.ui-act-item img {
+    width: 100%;
+    max-height: 150px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    min-height: 100px;
+}
+
+.ui-act-item {
+    margin: 15px 10px;
+}
+
+.ui-act-item .ui-act-body {
+    background-color: #fff;
+    margin: 4px;
+    padding: 8px 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.ui-img-body {
+    width: 100%;
+    max-height: 160px;
+    overflow: hidden;
+}
+
+.ui-location-body {
+    display: flex;
+}
+
+.ui-right .ui-location-body {
+    justify-content: flex-end;
+}
+
+.ui-location-bg {
+    width: 100%;
+}
+
+.ui-location-body img {
+    width: 65px;
+    height: 65px;
+    padding: 4px;
+}
+
+.ui-right .ui-location-txt {
+    margin-right: 5px;
+}
+
+.ui-left .ui-location-txt {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.ui-left .ui-location-txt h5 {
+    text-align: left;
+    color: #fff;
+}
+
+.ui-right .ui-location-txt h5 {
+    text-align: right;
+}
+
+.ui-right .ui-location-txt span {
+    text-align: right;
+}
+
+.mui-popover .mui-scroll-wrapper {
+    bottom: 37px;
+}
+
+.ui-popover-btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#sendLocationBtn {
+    height: 35px;
+    width: 95%;
+    line-height: 25px;
+    margin-bottom: 4px;
+}
+
+.ui-right .ui-msg-bg.ui-voice {
+    padding: 0 5px 0 18px;
+}
+
+.ui-left .ui-msg-bg.ui-voice {
+    padding: 0 18px 0 5px;
+}
+
+.ui-msg-bg .ui-voice-img {
+    width: 25px;
+    margin-top: 4px;
+}
+
+.ui-msg-body .ui-voice-time {
+    position: relative;
+    bottom: 6px;
+    display: inline-block;
+}
+
+.ui-left .ui-voice-time {
+    left: 8px;
+}
+
+.ui-right .ui-voice-time {
+    right: 8px;
+}
+
+.ui-right .ui-msg-bg {
+    float: right;
+    margin-right: 8px;
+}

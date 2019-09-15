@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourProjectContent">
+
+
+    <insert id="addProjectContent" parameterType="wxgh.data.four.FourProjectContentData">
+        INSERT INTO  t_four_project_content (`fp_id`, `name`) VALUES (#{fpId}, #{name})
+    </insert>
+
+    <select id="xlkai_getContents" parameterType="wxgh.param.four.ProjectContentParam"
+            resultType="FourProjectContent">
+        SELECT * FROM t_four_project_content
+        <where>
+            <if test="projectId != null">
+                fp_id = #{projectId}
+            </if>
+            <if test="name != null">
+                AND name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <update id="xlkai_updateContent" parameterType="FourProjectContent">
+        UPDATE t_four_project_content
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="fpId != null">
+                fp_id = #{fpId},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

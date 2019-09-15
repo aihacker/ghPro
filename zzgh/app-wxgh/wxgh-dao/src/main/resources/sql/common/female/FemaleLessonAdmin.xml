@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.female.FemaleLesson">
+
+    <sql id="whereSql">
+        <where>
+            <if test="id != null">
+                 id= #{id}
+            </if>
+        </where>
+    </sql>
+
+    <select id="xlkai_getRecords" parameterType="wxgh.param.common.female.FemaleLessonAdminQuery" resultType="FemaleLesson">
+        SELECT * FROM t_female_lesson
+        <include refid="whereSql"/>
+        ORDER BY add_time DESC
+        <if test="pageIs">
+            limit #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="xlkai_counts" parameterType="wxgh.param.common.female.FemaleLessonAdminQuery" resultType="int">
+        SELECT COUNT(*) FROM t_female_lesson
+        <include refid="whereSql"/>
+    </select>
+
+    <update id="xlkai_upates" parameterType="wxgh.entity.common.female.FemaleLesson">
+        UPDATE t_female_lesson
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="cover != null">
+                cover = #{cover},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime}
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                AND id= #{id}
+            </if>
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.PartyArticle">
+
+    <select id="getdata" resultType="PartyArticle" parameterType="wxgh.param.party.PartyArticleParam">
+        SELECT * FROM t_party_article
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateData" parameterType="wxgh.param.party.PartyArticleParam">
+        UPDATE t_party_article
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="briefInfo != null">
+                brief_info = #{briefInfo},
+            </if>
+            <if test="img != null">
+                img = #{img},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="content != null">
+                content = #{content}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <select id="getPartys" resultType="PartyArticle" parameterType="wxgh.param.party.PartyParam">
+        SELECT p.*, g.name AS partyGroup
+        FROM t_party_article p
+        JOIN admin a ON a.admin = p.userid
+        JOIN t_party_group g ON g.id = a.deptid
+        <where>
+            <if test="type != null">
+                p.`type` = #{type}
+            </if>
+        </where>
+        ORDER BY p.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="getParty" resultType="PartyArticle" parameterType="wxgh.param.party.PartyParam">
+        SELECT p.*, g.name AS partyGroup
+        FROM t_party_article p
+        JOIN admin a ON a.admin = p.userid
+        JOIN t_party_group g ON g.id = a.deptid
+        <where>
+            <if test="id != null">
+                p.`id` = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="refresh" resultType="PartyArticle" parameterType="wxgh.param.party.PartyParam">
+        SELECT p.*, g.name AS partyGroup
+        FROM t_party_article p
+        JOIN admin a ON a.admin = p.userid
+        JOIN t_party_group g ON g.id = a.deptid
+        <where>
+            <if test="type != null">
+                p.`type` = #{type}
+            </if>
+        </where>
+        ORDER BY p.`id` DESC limit 0, 10
+
+    </select>
+
+    <select id="getMore" resultType="PartyArticle" parameterType="wxgh.param.party.PartyParam">
+        SELECT p.*, g.name AS partyGroup
+        FROM t_party_article p
+        JOIN admin a ON a.admin = p.userid
+        JOIN t_party_group g ON g.id = a.deptid
+        <where>
+            <if test="oldId != null">
+                p.`id` &lt; #{oldId}
+            </if>
+            <if test="type != null">
+                AND p.`type` = #{type}
+            </if>
+        </where>
+        ORDER BY p.`id` DESC limit 0, 10
+    </select>
+
+    <update id="partyArticle" parameterType="wxgh.entity.party.PartyArticle">
+        UPDATE t_party_article
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="briefInfo != null">
+                brief_info = #{briefInfo},
+            </if>
+            <if test="img != null">
+                img = #{img},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="content != null">
+                content = #{content}
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+</mapper>

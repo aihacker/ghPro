@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.race.RaceJoin">
+
+    <sql id="querySql">
+        <where>
+            <if test="userid != null">
+                userid = #{userid}
+            </if>
+            <if test="raceId != null">
+                AND race_id = #{raceId}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </sql>
+
+    <select id="xlkai_queryJoin" parameterType="wxgh.param.union.race.RaceJoinQuery" resultType="RaceJoin">
+        SELECT * FROM t_race_join
+        <include refid="querySql"/>
+    </select>
+
+    <select id="xlkai_queryCount" parameterType="wxgh.param.union.race.RaceJoinQuery" resultType="int">
+        SELECT COUNT(*) FROM t_race_join
+        <include refid="querySql"/>
+    </select>
+
+</mapper>

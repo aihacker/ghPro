@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.InnovateAdvice">
+
+    <!--
+ LEFT JOIN t_dept wd ON wd.`deptid` = iap.`deptid` AND wd.`deptid` = iad.`deptid`
+     <if test="deptId != null">
+                AND iap.`deptid` != #{deptId}
+            </if>
+     -->
+    <select id="getList" resultType="InnovateAdvice" parameterType="wxgh.param.union.innovation.QueryInnovateAdvice">
+        SELECT iad.*, iap.`add_time` AS applyTime, iap.`audit_idea` AS auditIdea, iap.`audit_time` AS auditTime,
+        iap.`status` AS status, u.`avatar` AS avatar, u.`name` AS username
+        FROM t_innovate_advice iad
+        JOIN t_innovate_apply iap ON iap.`id` = iad.`pid`
+        JOIN t_user u ON u.`userid` = iap.`userid`
+
+        <where>
+            <if test="userid != null">
+                iap.`userid` = #{userid}
+            </if>
+            <if test="status != null">
+                AND iap.`status` = #{status}
+            </if>
+
+            AND iap.`apply_step` = 1
+        </where>
+        ORDER BY iap.`id` DESC
+        <if test="pageIs">
+            limit #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <!--
+
+    -->
+    <select id="getOne" resultType="InnovateAdvice" parameterType="wxgh.param.union.innovation.QueryInnovateAdvice">
+        SELECT iad.*, ia.`audit_time` AS auditTime, u.`name` AS username, ia.`audit_idea` AS auditIdea, ia.`status`
+        AS applyStatus, wd.name AS deptname
+        from t_innovate_advice iad
+        JOIN t_innovate_apply ia ON ia.id = iad.pid
+        JOIN t_user u ON u.`userid` = ia.`userid`
+        LEFT JOIN t_dept wd ON wd.`id` = iad.`deptid`
+        <where>
+            <if test="id != null">
+                iad.`id` = #{id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getList2" resultType="InnovateAdvice" parameterType="wxgh.param.union.innovation.QueryInnovateAdvice">
+        SELECT iad.*, ia.`audit_time` AS auditTime, ia.`audit_idea` AS auditIdea, ia.`status`
+        AS applyStatus, wd.name AS deptname
+        from t_innovate_advice iad
+        JOIN t_innovate_apply ia ON ia.id = iad.pid
+        JOIN t_dept wd ON wd.`id` = iad.`deptid`
+        <where>
+            <if test="id != null">
+                iad.`id` = #{id}
+            </if>
+            <if test="status != null">
+                AND ia.`status` = #{status}
+            </if>
+            AND ia.apply_step = 1
+        </where>
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.union.innovation.QueryInnovateAdvice">
+        SELECT count(*)
+        from t_innovate_advice iad
+        JOIN t_innovate_apply ia ON ia.id = iad.pid
+        JOIN t_dept wd ON wd.`id` = iad.`deptid`
+        <where>
+            <if test="status != null">
+                AND ia.`status` = #{status}
+            </if>
+            AND ia.apply_step = 1
+        </where>
+    </select>
+
+    <update id="updateIntegerAdvice" parameterType="wxgh.param.union.innovation.QueryInnovateAdvice">
+        UPDATE t_innovate_advice
+        <set>
+            <if test="title != null">
+                `title` = #{title},
+            </if>
+            <if test="showType != null">
+                `type` = #{showType},
+            </if>
+            <if test="deptId != null">
+                `deptid` = #{deptId},
+            </if>
+            <if test="advice != null">
+                `advice` = #{advice},
+            </if>
+        </set>
+        WHERE `id` = #{id}
+    </update>
+
+    <select id="xlkai_getInfos" parameterType="wxgh.param.union.innovation.InnovateApplyQuery"
+            resultType="wxgh.data.union.innovation.work.AdviceInfo">
+        SELECT a.userid,u.name as username,d.name,
+        m.id,m.title, m.type as adviceType,m.advice,m.see_numb,m.zan_numb,m.add_time as applyTime
+        from t_innovate_apply a
+        join t_innovate_advice m on m.pid = a.id
+        join t_dept d on a.deptid = d.id
+        join t_user u on a.userid = u.userid
+        <where>
+            <if test="deptid != null">
+                FIND_IN_SET(a.deptid, query_dept_child(query_dept_company_id(#{deptid}))) > 0
+            </if>
+            <if test="applyType != null">
+                AND a.apply_type = #{applyType}
+            </if>
+            <if test="status != null">
+                AND a.status = #{status}
+            </if>
+            <if test="applyStep != null">
+                AND a.apply_step = #{applyStep}
+            </if>
+            <if test="userid != null">
+                AND a.userid = #{userid}
+            </if>
+        </where>
+        ORDER BY a.audit_time ASC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+</mapper>

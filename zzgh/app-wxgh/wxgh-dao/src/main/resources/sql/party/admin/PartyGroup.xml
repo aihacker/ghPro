@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.party.PartyGroup">
+
+    <select id="getGroups" parameterType="wxgh.entity.party.party.PartyGroup" resultType="PartyGroup">
+                SELECT g.* FROM t_party_group g
+        </select>
+
+    <update id="xlkai_updateGroup" parameterType="PartyGroup">
+        UPDATE t_party_group
+        <set>
+            <if test="avatar != null">
+                avatar = #{avatar},
+            </if>
+            <if test="groupInfo != null">
+                group_info = #{groupInfo}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

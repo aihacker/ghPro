@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.party.PartyUser">
+
+    <select id="getGroups" resultType="PartyUser" parameterType="wxgh.entity.party.party.PartyUser">
+                SELECT pu.*, pg.name AS groupName
+                FROM t_party_user pu
+                JOIN t_party_group pg ON pu.`groupid` = pg.`id`
+                GROUP BY pu.`groupid`
+        </select>
+    <select id="getNations" resultType="PartyUser" parameterType="wxgh.entity.party.party.PartyUser">
+                SELECT pu.*
+                FROM t_party_user pu
+                GROUP BY pu.`nation`
+        </select>
+    <select id="getUserList" parameterType="wxgh.param.party.PartyParam" resultType="PartyUser">
+        SELECT pu.*, pg.name AS groupName, u.mobile AS mobile , u.name AS username, u.avatar
+        FROM t_party_user pu
+        JOIN t_party_group pg ON pu.`groupid` = pg.`id`
+        JOIN t_user u ON pu.`userid` = u.`userid`
+        <where>
+            <if test="nation != null">
+                pu.`nation` = #{nation}
+            </if>
+            <if test="IsRepublican != null">
+                AND pu.`is_republican` = #{IsRepublican}
+            </if>
+            <if test="groupId != null">
+                AND pu.`groupid` = #{groupId}
+            </if>
+            <if test="searchKey != null">
+                AND (u.name LIKE concat('%', #{searchKey}, '%') OR u.mobile LIKE concat('%', #{searchKey}, '%'))
+            </if>
+        </where>
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="getOne" parameterType="wxgh.param.party.PartyParam" resultType="PartyUser">
+        SELECT pu.*, pg.name AS groupName, u.mobile AS mobile , u.name AS username
+        FROM t_party_user pu
+        JOIN t_party_group pg ON pu.`groupid` = pg.`id`
+        JOIN t_user u ON pu.`userid` = u.`userid`
+        <where>
+            <if test="id != null ">
+                pu.`id` = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getCount" parameterType="wxgh.param.party.PartyParam" resultType="int">
+        SELECT COUNT(*)
+        FROM t_party_user pu
+        JOIN t_party_group pg ON pu.`groupid` = pg.`id`
+        JOIN t_user u ON pu.`userid` = u.`userid`
+        <where>
+            <if test="nation != null">
+                pu.`nation` = #{nation}
+            </if>
+            <if test="IsRepublican != null">
+                AND pu.`is_republican` = #{IsRepublican}
+            </if>
+            <if test="groupId != null">
+                AND pu.`groupid` = #{groupId}
+            </if>
+            <if test="searchKey != null">
+                AND (u.name LIKE concat('%', #{searchKey}, '%') OR u.mobile LIKE concat('%', #{searchKey}, '%'))
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete_party_user" parameterType="Integer">
+        DELETE FROM t_party_user where `id` = #{VALUE}
+    </delete>
+
+    <update id="update_party_user" parameterType="PartyUser">
+        UPDATE t_party_user
+        <set>
+            <if test="scores != null">
+                scores = #{scores},
+            </if>
+            <if test="groupId !=null">
+                groupid = #{groupId},
+            </if>
+            <if test="nativePlace != null">
+                native_place = #{nativePlace},
+            </if>
+            <if test="nation != null">
+                nation = #{nation},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="identificationNum != null">
+                identification_num = #{identificationNum},
+            </if>
+            <if test="inDate != null">
+                in_date = #{inDate},
+            </if>
+            <if test="isRepublican != null">
+                is_republican = #{isRepublican},
+            </if>
+            <if test="zhuanzhengDate != null">
+                zhuanzheng_date = #{zhuanzhengDate},
+            </if>
+            <if test="education != null">
+                education = #{education},
+            </if>
+            <if test="company != null">
+                company = #{company},
+            </if>
+            <if test="workDate != null">
+                work_date = #{workDate},
+            </if>
+            <if test="retiredDate !=null">
+                retired_date = #{retiredDate},
+            </if>
+            <if test="familyPlace != null">
+                family_place = #{familyPlace},
+            </if>
+            <if test="ccpdepart != null">
+                ccpdepart = #{ccpdepart},
+            </if>
+            <if test="avatarURL != null">
+                avatar_url = #{avatarURL},
+            </if>
+            <if test="position != null">
+                `position` = #{position},
+            </if>
+            <if test="isNew !=null">
+                is_new = #{isNew},
+            </if>
+            <if test="remark !=null">
+                remark = #{remark}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <insert id="addUser" parameterType="wxgh.entity.party.party.PartyUser">
+        INSERT  INTO t_party_user (`userid`,`password`, `scores`, `groupid`, `native_place`, `nation`, `sex`, `birthday`, `identification_num`, `in_date`, `is_republican`,`zhuanzheng_date`,`education`,`company`,`work_date`,`retired_date`,`family_place`,`ccpdepart`,`avatar_url`,`position`,`is_new`,`remark`)
+        VALUES (#{userId}, #{password}, #{scores}, #{groupId}, #{nativePlace}, #{nation}, #{sex}, #{birthday}, #{identificationNum}, #{inDate}, #{isRepublican},#{zhuanzhengDate},#{education},#{company},#{workDate},#{retiredDate},#{familyPlace},#{ccpdepart},#{avatarURL},#{position},#{isNew},#{remark})
+    </insert>
+
+    <select id="queryUserList" parameterType="wxgh.param.party.PartyParam" resultType="PartyUser">
+        SELECT pu.*, pg.name AS groupName, u.`avatar`AS avatar, u.name AS username
+        FROM t_party_user pu
+        JOIN t_party_group pg ON pu.`groupid` = pg.`id`
+        JOIN t_user u ON u.`userid` = pu.`userid`
+        <where>
+            <if test="name != null">
+                u.`name` LIKE concat('%', #{name}, '%')
+            </if>
+        </where>
+        limit 0 , 10
+    </select>
+
+</mapper>

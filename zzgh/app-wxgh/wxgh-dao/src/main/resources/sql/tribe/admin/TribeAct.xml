@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.tribe.TribeAct">
+
+    <update id="updateData" parameterType="TribeAct">
+        UPDATE t_tribe_act
+        <set>
+            <if test="theme != null">
+                theme = #{theme},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="lng != null">
+                lng = #{lng},
+            </if>
+            <if test="lat != null">
+                lat = #{lat},
+            </if>
+            <if test="leader != null">
+                leader = #{leader},
+            </if>
+            <if test="linkman != null">
+                linkman = #{linkman},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="totalNumber != null">
+                total_number = #{totalNumber},
+            </if>
+            <if test="coverImg != null">
+                coverImg = #{coverImg},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="deptid != null">
+                deptid = #{deptid},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="crossPoint != null">
+                cross_point = #{crossPoint}
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <select id="sheheTribeAct" parameterType="wxgh.param.tribe.admin.TribeActParam" resultType="TribeAct">
+        SELECT ta.*, u.name AS username, u.mobile AS mobile, d.deptname AS deptname
+        FROM t_tribe_act ta
+        JOIN t_user u ON ta.leader = u.userid
+        JOIN t_weixin_dept d ON d.deptid = u.deptid
+        <where>
+            <if test="status != null">
+                ta.status = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>

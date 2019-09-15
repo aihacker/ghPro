@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket.xsd"
+       default-lazy-init="true">
+
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorParameter" value="true"/>
+        <property name="ignoreAcceptHeader" value="true"/>
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+                <entry key="xls" value="application/vnd.ms-excel"/>
+            </map>
+        </property>
+        <property name="defaultContentType" value="text/html"/>
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
+
+    <bean id="jsonView" class="pub.spring.web.mvc.view.JsonView">
+        <property name="singleValueAsDirectResult" value="true"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="viewResolvers">
+            <list>
+                <bean class="pub.spring.web.mvc.view.ResourceViewResolver">
+                    <property name="prefix" value="/WEB-INF/view/"/>
+                    <!--<property name="suffix" value=".jsp"/>-->
+                </bean>
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <ref bean="jsonView"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="pub.spring.web.mvc.controller.HandlerAdapter">
+    </bean>
+
+    <bean id="handlerMapping" class="pub.spring.web.mvc.controller.RequestHandlerMapping">
+    </bean>
+
+    <bean class="pub.spring.web.JsonHandlerExceptionResolver"/>
+
+    <bean id="chatHandler" class="wxgh.wx.sys.websocket.ChatHandler" lazy-init="false"/>
+    <websocket:handlers>
+        <websocket:mapping path="/chat/chat.do" handler="chatHandler"/>
+        <websocket:handshake-interceptors>
+            <bean class="wxgh.wx.sys.websocket.ChatInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
+
+    <context:component-scan base-package="wxgh.**.web"
+                            name-generator="pub.spring.bean.ClassNameGenerator"/>
+</beans>

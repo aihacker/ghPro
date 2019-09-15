@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.WorkUser">
+
+    <select id="xlkai_getWorkUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery" resultType="WorkUser">
+        SELECT * FROM t_work_user
+        <where>
+            <if test="userid != null">
+                userid = #{userid}
+            </if>
+            <if test="workId != null">
+                AND work_id = #{workId}
+            </if>
+            <if test="workType != null">
+                AND w.work_type = #{workType}
+            </if>
+        </where>
+    </select>
+
+    <insert id="xlkai_addUsers" parameterType="List">
+        INSERT INTO t_work_user (name, userid, user_type, type_name, status, work_id, work_type)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name}, #{item.userid}, #{item.userType}, #{item.typeName}, #{item.status}, #{item.workId},
+            #{item.workType})
+        </foreach>
+    </insert>
+
+    <sql id="whereSql">
+        <where>
+            <if test="status != null">
+                w.status = #{status}
+            </if>
+            <if test="workId != null">
+                AND w.work_id = #{workId}
+            </if>
+            <if test="workType != null">
+                AND w.work_type = #{workType}
+            </if>
+        </where>
+    </sql>
+
+    <!--
+        JOIN t_dept wd ON wd.`deptid` = u.`department`
+    -->
+    <select id="xlkai_countUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery" resultType="Integer">
+        select count(*) FROM t_work_user w
+        JOIN t_user u ON w.userid = u.userid
+
+        <include refid="whereSql"/>
+    </select>
+
+    <!--
+
+
+    -->
+    <select id="xlkai_getUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery" resultType="WorkUser">
+        SELECT w.*, u.avatar AS userImg, wd.`name` AS deptname FROM t_work_user w
+        JOIN t_user u ON w.userid = u.userid
+        LEFT JOIN t_dept wd ON wd.`id` = u.`deptid`
+        <include refid="whereSql"/>
+        ORDER BY w.user_type DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getUserListByWgid" parameterType="Integer">
+        SELECT * FROM t_work_user WHERE `work_id` = #{VALUE} limit 20
+    </select>
+
+    <select id="getWorkUsers" resultType="WorkUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery">
+        SELECT wu.*, wg.name AS wgName FROM t_work_user wu JOIN t_work_group wg ON wg.id = wu.work_id
+        ORDER BY wu.`id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM  t_work_user WHERE `id` = #{VALUE}
+    </delete>
+
+    <!--
+
+
+    -->
+    <select id="getRaceUser" resultType="WorkUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery">
+        SELECT wu.*,  u.avatar AS userImg, wd.name AS deptname,
+        FROM t_work_user wu
+        JOIN t_innovate_race ir ON ir.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = ir.apply_id
+        LEFT  JOIN t_dept wd ON wd.id = ia.deptid
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 1
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+    <!--
+
+
+    -->
+    <select id="getShopUser" resultType="WorkUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery">
+        SELECT wu.*, wd.name AS deptname, u.avatar AS userImg
+        FROM t_work_user wu
+        JOIN t_innovate_shop isp ON isp.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = isp.apply_id
+        LEFT JOIN t_dept wd ON wd.id = ia.deptid
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 2
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+    <!--
+
+
+    -->
+    <select id="getMicroUser" resultType="WorkUser" parameterType="wxgh.param.union.innovation.work.WorkUserQuery">
+        SELECT wu.*, wd.name AS deptname, u.avatar AS userImg
+        FROM t_work_user wu
+        JOIN t_innovate_micro im ON im.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = im.pid
+        LEFT JOIN t_dept wd ON wd.id = ia.deptid
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 3
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+    <!--
+         JOIN t_dept wd ON wd.deptid = ia.deptid
+    -->
+    <select id="getRaceUserCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkQuery">
+        SELECT count(*)
+        FROM t_work_user wu
+        JOIN t_innovate_race ir ON ir.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = ir.apply_id
+
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 1
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+    <!--
+          JOIN t_dept wd ON wd.deptid = ia.deptid
+    -->
+    <select id="getShopUserCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkQuery">
+        SELECT count(*)
+        FROM t_work_user wu
+        JOIN t_innovate_shop isp ON isp.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = isp.apply_id
+
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 2
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+    <!--
+         JOIN t_dept wd ON wd.deptid = ia.deptid
+    -->
+    <select id="getMicroUserCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkQuery">
+        SELECT count(*)
+        FROM t_work_user wu
+        JOIN t_innovate_micro im ON im.id = wu.work_id
+        JOIN t_innovate_apply ia ON ia.id = im.pid
+
+        JOIN t_user u ON u.userid = wu.userid
+        WHERE wu.`work_type` = 3
+        <if test="start != null and num != null">
+            limit #{start}, #{num}
+        </if>
+    </select>
+
+</mapper>

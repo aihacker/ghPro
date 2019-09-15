@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.nanhai.place.NanHaiPlace">
+
+    <select id="xlkai_getAllPlace" parameterType="wxgh.param.entertain.place.PlaceParam" resultMap="xlkai_getPlaceMap">
+        SELECT p.*,
+        s.id AS s_id,
+        s.start_time, s.end_time, s.admin_id, s.week, s.user_numb
+        FROM t_nanhai_place p
+        JOIN t_nanhai_place_schedule s ON p.id = s.pid
+        <where>
+            <if test="city != null">
+                p.city = #{city}
+            </if>
+            <if test="province != null">
+                AND p.province = #{province}
+            </if>
+            <if test="typeInt != null">
+                AND p.type_int = #{typeInt}
+            </if>
+            <if test="placeType != null">
+                AND p.place_type = #{placeType}
+            </if>
+            <if test="geohash != null">
+                AND p.geohash LIKE #{geohash}
+            </if>
+            <if test="id != null">
+                AND p.id = #{id}
+            </if>
+        </where>
+        ORDER BY s.week
+    </select>
+
+    <resultMap id="xlkai_getPlaceMap" type="NanHaiPlace">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="lat" property="lat"/>
+        <result column="lng" property="lng"/>
+        <result column="url" property="url"/>
+        <result column="address" property="address"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="phone" property="phone"/>
+        <result column="postcode" property="postcode"/>
+        <result column="type_name" property="typeName"/>
+        <result column="place_type" property="placeType"/>
+        <result column="geohash" property="geohash"/>
+        <result column="price" property="price"/>
+        <association property="schedules" resultMap="xlkai_getScheduleMap"/>
+    </resultMap>
+
+    <resultMap id="xlkai_getScheduleMap" type="NanHaiPlaceSchedule">
+        <id column="s_id" property="id"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="admin_id" property="adminId"/>
+        <result column="week" property="week"/>
+        <result column="user_numb" property="userNumb"/>
+    </resultMap>
+
+    <select id="xlkai_getPlace" parameterType="wxgh.param.entertain.place.PlaceParam" resultType="NanHaiPlace">
+        SELECT * FROM t_nanhai_place
+        <where>
+            <if test="city != null">
+                city = #{city}
+            </if>
+            <if test="province != null">
+                AND province = #{province}
+            </if>
+            <if test="typeInt != null">
+                AND FIND_IN_SET(#{typeInt}, type_int) > 0
+            </if>
+            <if test="placeType != null">
+                AND place_type = #{placeType}
+            </if>
+            <if test="geohash != null">
+                AND geohash LIKE #{geohash}
+            </if>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="isAd != null">
+                AND is_id = #{isAd}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <update id="xlkai_updatePlace" parameterType="NanHaiPlace">
+        UPDATE t_nanhai_place
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="lat != null">
+                lat = #{lat},
+            </if>
+            <if test="lng != null">
+                lng = #{lng},
+            </if>
+            <if test="url != null">
+                url = #{url},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="province != null">
+                province = #{province},
+            </if>
+            <if test="city != null">
+                city = #{city},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="typeInt != null">
+                type_int = #{typeInt},
+            </if>
+            <if test="typeName != null">
+                type_name = #{typeName},
+            </if>
+            <if test="placeType != null">
+                place_type = #{placeType},
+            </if>
+            <if test="geohash != null">
+                geohash = #{geohash},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="isAd != null">
+                is_ad = #{idAd},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="info != null">
+                info = #{info},
+            </if>
+            <!--<if test="postcode != null">
+                 postcode = #{postcode},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime},
+            </if>-->
+        </set>
+        <if test="id != null">
+            WHERE id = #{id}
+        </if>
+    </update>
+
+    <insert id="addPlace" parameterType="NanHaiPlace">
+        INSERT INTO t_nanhai_place (`title`, `lat`, `lng`, `url`, `address`, `province`, `city`, `phone`, `postcode`,
+        `type_name`, `place_type`, `geohash`, `price`)
+        VALUES (#{title},
+        #{lat},#{lng},#{url},#{address},#{province},#{city},#{phone},#{postcode},#{typeName},#{placeType}, #{geohash},
+        #{price})
+    </insert>
+
+    <delete id="delPlace" parameterType="Integer">
+        DELETE FROM t_nanhai_place WHERE `id` = #{VALUE}
+    </delete>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.entertain.place.PlaceParam">
+        SELECT  count(*) FROM t_nanhai_place
+    </select>
+
+</mapper>

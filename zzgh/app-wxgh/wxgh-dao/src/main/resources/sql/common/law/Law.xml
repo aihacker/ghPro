@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.law.Law">
+
+    <sql id="xlkai_fields">
+        name, time, id, sort_id
+    </sql>
+
+    <select id="xlkai_getLaw" resultType="Law">
+        SELECT
+        <include refid="xlkai_fields"/>
+        FROM t_law
+        ORDER BY sort_id ASC
+    </select>
+
+    <select id="getLaws" resultType="Law" parameterType="wxgh.param.common.law.QueryLaw">
+        SELECT * FROM t_law ORDER BY `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <update id="updateSortId" parameterType="wxgh.data.common.law.LawData">
+        update t_law SET  `sort_id` = #{sortId} WHERE `id` = #{id}
+    </update>
+
+    <select id="getLaw" resultType="Law" parameterType="Integer">
+        SELECT * FROM t_law WHERE  `id` = #{VALUE};
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_law WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="updateLaw" parameterType="wxgh.data.common.law.LawData">
+        UPDATE t_law SET `name` = #{name}, `content` = #{content}, `time` = #{time}, `url` = #{url} WHERE `id` = #{id}
+    </update>
+
+    <insert id="addLaw" parameterType="wxgh.data.common.law.LawData">
+        INSERT INTO  t_law (`name`, `content`, `time`, `url`) VALUES (#{name}, #{content}, #{time}, #{url})
+    </insert>
+
+    <select id="queryLaw" parameterType="wxgh.param.common.law.QueryLaw" resultType="Law">
+        SELECT * FROM t_law WHERE `name` LIKE CONCAT('%','${name}', '%') AND  `content` LIKE CONCAT('%','${content}', '%')
+    </select>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.common.law.QueryLaw">
+        SELECT count(*) FROM t_law
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+        </where>
+    </select>
+
+</mapper>

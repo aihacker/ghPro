@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.innovation.WorkResult">
+
+    <sql id="querySql">
+        <where>
+            <if test="id != null">
+                wr.id = #{id}
+            </if>
+            <if test="workType != null">
+                AND wr.work_type = #{workType}
+            </if>
+            <if test="status != null">
+                AND ia.`status` = #{status}
+            </if>
+            <if test="userid != null">
+                AND ia.`userid` = #{userid}
+            </if>
+            <if test="deptid != null">
+                AND FIND_IN_SET(ia.deptid, query_dept_child(#{deptid})) > 0
+            </if>
+            <if test="nodeptid != null">
+                AND ia.deptid != #{nodeptid}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getResult1" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, ir.race_name AS itemName, ia.`status` AS status, ia.`audit_idea` AS auditIdea, ia.`id` AS applyId
+        FROM t_work_result wr
+        JOIN t_innovate_race ir ON ir.id = wr.work_id
+        JOIN t_innovate_apply ia ON ia.id = ir.apply_id
+        <include refid="querySql"/>
+        AND ia.`apply_step` = 1
+        ORDER BY wr.add_time DESC
+        <if test="isPage">
+            LIMIT #{start}, #{total}
+        </if>
+    </select>
+
+    <select id="getResult2" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, ins.`item_name` AS itemName, ins.`team_name` AS teamName, ia.`status` AS status , ia.`audit_idea`
+        AS auditIdea, ia.`id` AS applyId
+        FROM t_work_result wr
+        JOIN t_innovate_shop ins ON ins.id = wr.work_id
+        JOIN t_innovate_apply ia ON ia.id = ins.apply_id
+        <include refid="querySql"/>
+        AND ia.`apply_step` = 1
+        ORDER BY wr.`orderid` ASC, wr.add_time DESC
+        <if test="isPage">
+            LIMIT #{start}, #{total}
+        </if>
+    </select>
+
+    <select id="getResult3" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, im.`name` AS itemName, im.`team` AS teamName, ia.`status` AS status , ia.`audit_idea` AS auditIdea,
+        ia.`id` AS applyId, im.id AS miId
+        FROM t_work_result wr
+        JOIN t_innovate_apply ia ON ia.id = wr.work_id
+        JOIN t_innovate_micro im ON im.pid = ia.id
+        <include refid="querySql"/>
+        AND ia.`apply_step` = 1
+        ORDER BY wr.add_time DESC
+        <if test="isPage">
+            LIMIT #{start}, #{total}
+        </if>
+    </select>
+
+    <select id="getOne1" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, ir.race_name AS itemName FROM t_work_result wr
+        JOIN t_innovate_apply ia ON ia.id = wr.work_id
+        JOIN t_innovate_race ir ON ir.apply_id = ia.id
+        <where>
+            <if test="id != null">
+                wr.id = #{id}
+            </if>
+        </where>
+    </select>
+    <select id="getOne2" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, ins.`item_name` AS itemName, ins.`team_name` AS teamName FROM t_work_result wr
+        JOIN t_innovate_apply ia ON ia.id = wr.work_id
+        JOIN t_innovate_shop ins ON ins.apply_id = ia.id
+        <where>
+            <if test="id != null">
+                wr.id = #{id}
+            </if>
+        </where>
+    </select>
+    <select id="getOne3" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultType="WorkResult">
+        SELECT wr.*, im.`name` AS itemName, im.`team` AS teamName FROM t_work_result wr
+        JOIN t_innovate_apply ia ON ia.id = wr.work_id
+        JOIN t_innovate_micro im ON im.pid = ia.id
+        <where>
+            <if test="id != null">
+                wr.id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="xlkai_getResult" parameterType="wxgh.param.union.innovation.work.WorkResultQuery" resultMap="xlkai_getResultMap">
+        SELECT * FROM t_work_result
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+        ORDER BY add_time DESC
+        <if test="isPage">
+            LIMIT #{start}, #{total}
+        </if>
+    </select>
+
+    <resultMap id="xlkai_getResultMap" type="WorkResult">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="type" column="type"/>
+        <result property="addTime" column="add_time"/>
+        <result property="innovateId" column="innovate_id"/>
+        <result property="adminId" column="admin_id"/>
+        <result property="headImg" column="headImg"/>
+
+        <association property="workInnovate" column="innovate_id"
+                     select="wxgh.entity.union.innovation.WorkInnovate.xlkai_getInnovatePK">
+        </association>
+    </resultMap>
+
+    <select id="getResultShows" resultType="WorkResult" parameterType="wxgh.param.union.innovation.work.WorkResultQuery">
+        SELECT wr.*, wi.project_name AS innovateName FROM t_work_result wr
+        JOIN t_work_innovate wi ON wi.id = wr.innovate_id
+        ORDER BY wr.`id` DESC
+        <if test="starts != null">
+            <if test="num != null">
+                limit #{starts}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM t_work_result WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="updateResultShow" parameterType="wxgh.data.union.innovation.ResultShowData">
+        UPDATE t_work_result SET `content` = #{content}, `add_time` = #{time} WHERE `id` = #{id}
+    </update>
+
+    <select id="queryResultShow" parameterType="wxgh.param.union.innovation.QueryResultShow" resultType="WorkResult">
+        SELECT * FROM t_work_result WHERE `name` LIKE CONCAT('%','${name}', '%') AND  `content` LIKE CONCAT('%','${content}', '%')
+    </select>
+
+    <insert id="addResultShow" parameterType="wxgh.data.union.innovation.ResultShowData">
+        INSERT INTO t_work_result (`name`, `content`,`add_time`, `type`, `innovate_id`) VALUES (#{name}, #{content}, #{time}, #{type}, #{innovateId})
+    </insert>
+
+    <select id="getCount" resultType="Integer" parameterType="wxgh.param.union.innovation.work.WorkResultQuery">
+        SELECT  count(*) FROM t_work_result
+    </select>
+
+    <update id="updateResult" parameterType="wxgh.param.union.innovation.work.WorkResultQuery">
+        UPDATE t_work_result
+        <set>
+            <if test="content != null">
+                `content` = #{content}
+            </if>
+        </set>
+        <where>
+            <if test="workId != null">
+                `work_id` = #{workId}
+            </if>
+            <if test="workType != null">
+                AND `work_type` = #{workType}
+            </if>
+        </where>
+    </update>
+
+</mapper>

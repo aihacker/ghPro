@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.nanhai.place.NanHaiPlaceYuyue">
+
+    <sql id="placeWhereSql">
+        <where>
+            <if test="id != null">
+                p.id = #{id}
+            </if>
+            <if test="week">
+                AND y.date_id >= #{startWeek} AND y.date_id &lt;= #{endWeek}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getList" parameterType="wxgh.param.entertain.place.PlaceParam" resultType="NanHaiPlaceYuyue">
+        SELECT y.*, u.mobile,
+        u.`name` AS userName, d.`name` AS deptName, s.`name` AS siteName, p.`title` AS placeTitle,
+        t.`start_time` AS startTime, t.`end_time` AS endTime, t.`week` AS week , pc.name AS cateName
+        FROM t_nanhai_place_yuyue y
+        JOIN t_nanhai_place_time t ON t.`id` = y.`time_id`
+        JOIN t_user u ON u.`userid` = y.`userid`
+        JOIN t_dept d ON d.`id` = u.`deptid`
+        JOIN t_nanhai_place_site s ON s.`id` = y.`site_id`
+        JOIN t_nanhai_place p ON p.`id` = s.`place_id`
+        JOIN t_nanhai_place_cate pc ON pc.`id` = s.`cate_id`
+        <include refid="placeWhereSql"/>
+        ORDER BY y.`id`
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+
+    <select id="getCount" parameterType="wxgh.param.entertain.place.PlaceParam" resultType="int">
+        SELECT COUNT(*)
+        FROM t_nanhai_place_yuyue y
+        JOIN t_user u ON u.`userid` = y.`userid`
+        JOIN t_dept d ON u.`deptid` = d.`id`
+        JOIN t_nanhai_place_site s ON s.`id` = y.`site_id`
+        JOIN t_nanhai_place p ON p.`id` = s.`place_id`
+        JOIN t_nanhai_place_cate pc ON pc.`id` = s.`cate_id`
+        JOIN t_nanhai_place_time t ON t.`id` = y.`time_id`
+        <include refid="placeWhereSql"/>
+    </select>
+
+    <delete id="delYuyue" parameterType="Integer">
+        DELETE FROM t_nanhai_place_yuyue where `id` = #{VALUE}
+    </delete>
+</mapper>

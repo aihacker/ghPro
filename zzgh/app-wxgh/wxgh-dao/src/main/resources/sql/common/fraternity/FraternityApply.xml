@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.fraternity.FraternityApply">
+
+    <sql id="xlkai_applyWhere">
+        <where>
+            <if test="userid != null">
+                user_id = #{userid}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+            <if test="step != null">
+                AND step = #{step}
+            </if>
+        </where>
+        ORDER BY `id` DESC
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </sql>
+
+    <select id="xlkai_getApply" parameterType="wxgh.param.common.fraternity.ApplyParam" resultType="FraternityApply">
+        SELECT fa.*, wd.name AS deptName
+        FROM t_fraternity_apply fa
+        LEFT JOIN t_dept wd ON wd.id = fa.dept_id
+        <include refid="xlkai_applyWhere"/>
+    </select>
+
+    <update id="xlkai_updateApply" parameterType="FraternityApply">
+        UPDATE t_fraternity_apply
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="nation != null">
+                nation = #{nation},
+            </if>
+            <if test="birth != null">
+                birth = #{birth},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="resume != null">
+                resume = #{resume},
+            </if>
+            <if test="category != null">
+                category = #{category},
+            </if>
+            <if test="work != null">
+                work = #{work},
+            </if>
+            <if test="position != null">
+                position = #{position},
+            </if>
+            <if test="workLevel != null">
+                work_level = #{workLevel},
+            </if>
+            <if test="workTime != null">
+                work_time = #{workTime},
+            </if>
+            <if test="monthly != null">
+                monthly = #{monthly},
+            </if>
+            <if test="employeeId != null">
+                employee_id = #{employeeId},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="applyTime != null">
+                apply_time = #{applyTime},
+            </if>
+            <if test="auditTime != null">
+                audit_time = #{auditTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="auditIdea != null">
+                audit_idea = #{auditIdea},
+            </if>
+            <if test="step != null">
+                step = #{step}
+            </if>
+        </set>
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+        </where>
+    </update>
+
+    <update id="xlkai_insertOrUpdate" parameterType="FraternityApply">
+        INSERT INTO t_fraternity_apply (name, sex, nation, birth, mobile, idcard, address, resume, category, work,
+        position, work_level, work_time, monthly, employee_id, dept_id, user_id, apply_time, audit_time, status,
+        audit_idea, step)
+        VALUES (#{name}, #{sex}, #{nation}, #{birth}, #{mobile}, #{idcard}, #{address}, #{resume}, #{category}, #{work},
+        #{position}, #{workLevel}, #{workTime}, #{monthly}, #{employeeId}, #{deptId}, #{userId}, #{applyTime},
+        #{auditTime}, #{status}, #{auditIdea}, #{step})
+        ON DUPLICATE KEY
+        <trim prefix="UPDATE" suffixOverrides=",">
+            <if test="name != null">
+                name = VALUES(name),
+            </if>
+            <if test="sex != null">
+                sex = VALUES(sex),
+            </if>
+            <if test="nation != null">
+                nation = VALUES(nation),
+            </if>
+            <if test="birth != null">
+                birth = VALUES(birth),
+            </if>
+            <if test="mobile != null">
+                mobile = VALUES(mobile),
+            </if>
+            <if test="idcard != null">
+                idcard = VALUES(idcard),
+            </if>
+            <if test="address != null">
+                address = VALUES(address),
+            </if>
+            <if test="resume != null">
+                resume = VALUES(resume),
+            </if>
+            <if test="category != null">
+                category = VALUES(category),
+            </if>
+            <if test="work != null">
+                work = VALUES(work),
+            </if>
+            <if test="position != null">
+                position = VALUES(position),
+            </if>
+            <if test="workLevel != null">
+                work_level = VALUES(work_level),
+            </if>
+            <if test="workTime != null">
+                work_time = VALUES(work_time),
+            </if>
+            <if test="monthly != null">
+                monthly = VALUES(monthly),
+            </if>
+            <if test="employeeId != null">
+                employee_id = VALUES(employee_id),
+            </if>
+            <if test="deptId != null">
+                dept_id = VALUES(dept_id),
+            </if>
+            <if test="userId != null">
+                user_id = VALUES(user_id),
+            </if>
+            <if test="applyTime != null">
+                apply_time = VALUES(apply_time),
+            </if>
+            <if test="auditTime != null">
+                audit_time = VALUES(audit_time),
+            </if>
+            <if test="status != null">
+                status = VALUES(status),
+            </if>
+            <if test="auditIdea != null">
+                audit_idea = VALUES(audit_idea),
+            </if>
+            <if test="step != null">
+                step = VALUES(step)
+            </if>
+        </trim>
+    </update>
+
+    <select id="getFAs" parameterType="String" resultType="FraternityApply">
+        SELECT * FROM t_fraternity_apply WHERE `user_id` = #{VALUE}
+    </select>
+
+    <delete id="del" parameterType="Integer">
+        DELETE FROM  t_fraternity_apply WHERE `id` = #{VALUE}
+    </delete>
+
+    <update id="apply" parameterType="wxgh.data.FAShenheData">
+        UPDATE t_fraternity_apply SET `status` = #{status}, `audit_time` = #{auditTime}, `audit_idea` = #{auditIdea} WHERE `id` = #{id}
+    </update>
+
+    <select id="getCount" parameterType="wxgh.param.common.fraternity.ApplyParam" resultType="Integer">
+        SELECT count(*) FROM t_fraternity_apply
+        <where>
+            <if test="status != null">
+                `status` = #{status}
+            </if>
+            <if test="step != null">
+               AND `step` = #{step}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="applyListRefresh" parameterType="wxgh.param.common.fraternity.ApplyParam" resultType="FraternityApply">
+        SELECT fa.*, wd.name AS deptName, u.`avatar` AS avatar
+        FROM t_fraternity_apply fa
+        LEFT JOIN t_dept wd ON wd.id = fa.dept_id
+        JOIN t_user u ON  u.`userid` = fa.`user_id`
+        <where>
+            <if test="status != null">
+                AND fa.`status` = #{status}
+            </if>
+            <if test="step != null">
+                AND fa.`step` = #{step}
+            </if>
+        </where>
+        ORDER BY fa.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" parameterType="wxgh.param.common.fraternity.ApplyParam" resultType="FraternityApply">
+        SELECT fa.*, wd.name AS deptName, u.`avatar` AS avatar
+        FROM t_fraternity_apply fa
+        JOIN t_dept wd ON wd.id = fa.dept_id
+        JOIN t_user u ON  u.`userid` = fa.`user_id`
+        <where>
+            <if test="fraternityOldestId != null">
+                fa.`id` &lt; #{fraternityOldestId}
+            </if>
+            <if test="status != null">
+                AND fa.`status` = #{status}
+            </if>
+            <if test="step != null">
+                AND fa.`step` = #{step}
+            </if>
+        </where>
+        ORDER BY fa.`id` DESC limit 0, 15
+    </select>
+
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd"
+       default-lazy-init="false">
+
+
+    <context:property-placeholder
+            location="classpath:sys.properties,classpath:weixin.properties"
+            ignore-resource-not-found="false"/>
+    <!--spring加载完成事件 -->
+    <bean id="beanDefine" class="wxgh.app.sys.app.listener.BeanDefineEvent" lazy-init="false"/>
+
+    <!--微信配置 -->
+    <bean id="weixinConfig" class="com.weixin.config.WeixinConfigBean" lazy-init="false">
+        <property name="appid" value="${wx.appid}"/>
+        <property name="secret" value="${wx.secret}"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="debug" value="true"/>
+    </bean>
+
+    <!--字段缓存 -->
+    <bean id="tableCache" class="pub.dao.jdbc.bean.TableCacheBean" init-method="init" lazy-init="false">
+        <property name="entityPackages" value="wxgh.entity.**"/>
+        <property name="tablePrefix" value="t_"/>
+    </bean>
+
+    <!-- dao -->
+    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="jdbcUrl" value="${jdbc_url}"/>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="lazyInit" value="true"/>
+        <property name="partitionCount" value="2"/>
+        <property name="minConnectionsPerPartition" value="1"/>
+        <property name="maxConnectionsPerPartition" value="88"/>
+        <property name="poolAvailabilityThreshold" value="0"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="transactionRecoveryEnabled" value="false"/>
+        <!--<property name="idleConnectionTestPeriodInMinutes" value="10"/>-->
+        <property name="idleConnectionTestPeriodInSeconds" value="${idleConnectionTestPeriodInSeconds}"/>
+        <property name="connectionTestStatement" value="/* ping */ select 1"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <context:annotation-config/>
+
+    <bean id="jobFactory" class="pub.web.task.JobFactory"/>
+
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobFactory" ref="jobFactory"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="pub.dao.mybatis.support.MySqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:/sql/**/*.xml"/>
+        <property name="entityPackages" value="wxgh.entity.**"/>
+    </bean>
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="pubDao" class="pub.dao.jdbc.impl.PubDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <task:annotation-driven/>
+
+    <context:component-scan base-package="wxgh.**.sys" name-generator="pub.spring.bean.ClassNameGenerator">
+    </context:component-scan>
+
+</beans>

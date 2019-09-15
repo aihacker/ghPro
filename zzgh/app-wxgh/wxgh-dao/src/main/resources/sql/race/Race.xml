@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.union.race.Race">
+
+    <sql id="querySql">
+        <where>
+            <if test="status != null">
+                r.status = #{status}
+            </if>
+            <if test="userid != null">
+                AND r.userid = #{userid}
+            </if>
+            <if test="endIs">
+                AND r.end_time &lt;= #{today}
+            </if>
+            <if test="ingIs">
+                AND start_time &lt;= #{today}
+                AND r.end_time &gt;= #{today}
+            </if>
+            <if test="noEnd">
+                AND r.end_time &gt;= #{today}
+            </if>
+            <if test="baoming">
+                AND r.entry_time &gt;= #{today}
+            </if>
+            <if test="bianpaiIs != null">
+                AND r.bianpai_is = #{bianpaiIs}
+            </if>
+        </where>
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </sql>
+
+    <select id="xlkai_queryRace" parameterType="wxgh.param.union.race.RaceQuery" resultType="Race">
+        SELECT r.*
+        <if test="hasJoin">, u.name as username</if>
+        FROM t_race r
+        <if test="hasJoin">
+            JOIN t_user u ON u.userid = r.userid
+        </if>
+        <include refid="querySql"/>
+    </select>
+
+    <select id="xlkai_queryCount" parameterType="wxgh.param.union.race.RaceQuery" resultType="int">
+        SELECT count(*) FROM t_race r
+        <include refid="querySql"/>
+    </select>
+
+</mapper>

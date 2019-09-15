@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.beauty.Work">
+
+    <select id="getOne" parameterType="Integer" resultType="wxgh.entity.party.beauty.Work">
+        SELECT w.*,u.name AS username,u.avatar AS avatar
+        FROM t_work w
+        JOIN t_user u ON u.userid = w.user_id
+        WHERE w.id = #{id}
+    </select>
+
+    <select id="getWorkList" parameterType="Integer" resultType="Work">
+        SELECT w.* FROM t_work w
+        WHERE w.`type` = #{type}
+    </select>
+
+    <sql id="whereSql">
+        <where>
+            <if test="status != null">
+                w.status = #{status}
+            </if>
+            <if test="type != null">
+                AND w.type = #{type}
+            </if>
+        </where>
+    </sql>
+    <select id="xlkai_getWorks" parameterType="wxgh.param.party.beauty.WorkQuery" resultType="Work">
+        select w.id, w.user_id, w.name, w.type, w.remark, w.add_time, w.`status`,
+        f.thumb as previewImage, f.path as files from t_work w
+        join t_work_file f on w.id = f.work_id
+        join t_user u on u.userid = w.user_id
+        <include refid="whereSql"/>
+        GROUP BY w.id
+        ORDER BY w.add_time DESC
+        <if test="pageIs">
+            LIMIT #{pagestart}, #{rowsPerPage}
+        </if>
+    </select>
+    <select id="xlkai_count" parameterType="wxgh.param.party.beauty.WorkQuery" resultType="int">
+        select count(DISTINCT w.id) from t_work w
+        join t_work_file f on w.id = f.work_id
+        join t_user u on u.userid = w.user_id
+        <include refid="whereSql"/>
+    </select>
+</mapper>

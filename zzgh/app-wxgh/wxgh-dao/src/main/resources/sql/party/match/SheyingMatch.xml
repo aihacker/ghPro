@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.match.SheyingMatch">
+
+    <select id="getData" parameterType="SheyingMatch" resultType="SheyingMatch">
+        SELECT * FROM t_sheying_match
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+</mapper>

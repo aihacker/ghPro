@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.place.PlaceGuding">
+
+    <update id="xlkai_update" parameterType="PlaceGuding">
+        UPDATE t_place_guding
+        <set>
+            <if test="timeId != null">
+                time_id = #{timeId},
+            </if>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="deptname != null">
+                deptname = #{deptname},
+            </if>
+            <if test="userid != null">
+                userid = #{userid},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

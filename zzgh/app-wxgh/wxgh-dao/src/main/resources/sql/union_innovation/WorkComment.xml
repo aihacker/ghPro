@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.beauty.WorkComment">
+
+    <select id="getComCount" parameterType="Integer" resultType="Integer">
+        SELECT count(*) FROM t_work_comment wc
+        JOIN t_work w ON w.id = wc.work_id
+        JOIN t_user u ON u.userid = wc.user_id
+        WHERE wc.work_id = #{id}
+    </select>
+
+    <select id="getComList" parameterType="Integer" resultType="WorkComment">
+        SELECT wc.*,u.name AS username,u.avatar AS avatar
+        FROM t_work_comment wc
+        JOIN t_work w ON w.id = wc.work_id
+        JOIN t_user u ON u.userid = wc.user_id
+        WHERE wc.work_id = #{id}
+        ORDER BY wc.id DESC
+    </select>
+</mapper>

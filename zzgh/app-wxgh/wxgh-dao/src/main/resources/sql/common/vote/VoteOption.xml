@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.vote.VoteOption">
+
+    <!--查询详细选项-->
+    <select id="getVoteOptionById" parameterType="Integer" resultType="VoteOption">
+        SELECT vo.* FROM t_voted_option vo,t_voted v WHERE 1=1 AND vo.voteId = #{id} AND vo.voteId = v.id;
+    </select>
+
+    <select id="getVoteOptionBy" parameterType="Integer" resultType="VoteOption">
+        SELECT vo.* FROM t_voted_option vo WHERE vo.id = #{id};
+    </select>
+
+    <update id="updateTicket" parameterType="VoteOption">
+        UPDATE t_voted_option vo SET vo.ticketNum = #{ticketNum} WHERE vo.id = #{id};
+    </update>
+
+    <update id="xlkai_updateOption" parameterType="VoteOption">
+        UPDATE t_voted_option
+        <set>
+            <if test="voteid != null">
+                voteId = #{voteid},
+            </if>
+            <if test="ticketNum != null">
+                ticketNum = ticketNum+1
+            </if>
+        </set>
+    </update>
+
+    <insert id="xlkai_addOptions" parameterType="List">
+        INSERT INTO t_voted_option (voteId, options, ticketNum, create_time, isdel) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.voteid}, #{item.options}, #{item.ticketNum}, #{item.createTime}, #{item.isdel})
+        </foreach>
+    </insert>
+
+</mapper>

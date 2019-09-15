@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.UserFamily">
+
+    <insert id="xlkai_addFamilys" parameterType="List">
+        INSERT INTO t_user_family (name, relation, work_unit, position, monthly, remark, user_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name}, #{item.relation}, #{item.workUnit}, #{item.position}, #{item.monthly}, #{item.remark},
+            #{item.userId})
+        </foreach>
+    </insert>
+
+    <select id="getUFs" parameterType="String" resultType="UserFamily">
+        SELECT uf.*, u.name AS userName FROM t_user_family uf JOIN t_user u ON u.userid = uf.user_id WHERE `user_id` = #{VALUE}
+    </select>
+
+    <select id="xlkai_getFamily" parameterType="wxgh.param.common.fraternity.FamilyQuery" resultType="UserFamily">
+        SELECT * FROM t_user_family
+        <where>
+            <if test="userid != null">
+                user_id = #{userid}
+            </if>
+            <if test="relation != null">
+                AND relation = #{relation}
+            </if>
+        </where>
+    </select>
+
+</mapper>

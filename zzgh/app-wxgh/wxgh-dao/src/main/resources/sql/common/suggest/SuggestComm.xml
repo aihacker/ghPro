@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.suggest.SuggestComm">
+
+    <select id="xlkai_getComms" parameterType="wxgh.param.common.suggest.CommentQuery" resultType="SuggestComm">
+        SELECT s.*, u.name AS username, u.avatar FROM t_suggest_comm s
+        JOIN t_user u ON u.userid = s.userid
+        <where>
+            <if test="status != null">
+                s.status = #{status}
+            </if>
+            <if test="sugId != null">
+                AND s.sug_id = #{sugId}
+            </if>
+            <if test="parentid != null">
+                AND s.parentid = #{parentid}
+            </if>
+        </where>
+        ORDER BY #{orderBy}
+    </select>
+
+</mapper>

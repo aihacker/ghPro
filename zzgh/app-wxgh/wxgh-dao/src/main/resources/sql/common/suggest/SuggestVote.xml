@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.suggest.SuggestVote">
+
+    <select id="getSuggestVoteBySugId" parameterType="Integer" resultType="SuggestVote">
+        SELECT sv.approve,sv.opposition,sv.neutral FROM t_suggest_vote sv where sv.sug_id = #{sugid};
+    </select>
+
+</mapper>

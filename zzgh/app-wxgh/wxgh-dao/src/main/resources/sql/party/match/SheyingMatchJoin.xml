@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.party.match.SheyingMatchJoin">
+
+    <select id="getData" parameterType="SheyingMatchJoin" resultType="SheyingMatchJoin">
+        SELECT tsmj.*, tu.name AS username, tu.avatar AS avatar
+        FROM t_sheying_match_join tsmj
+        JOIN t_user tu ON tu.userid = tsmj.userid
+        <where>
+            <if test="mid != null">
+                tsmj.mid = #{mid}
+            </if>
+            <if test="userid != null">
+                AND tsmj.userid = #{userid}
+            </if>
+        </where>
+        ORDER BY tsmj.id DESC
+    </select>
+
+    <select id="xlkai_getJoins" parameterType="wxgh.param.party.match.JoinQuery" resultType="SheyingMatchJoin">
+        select j.*,u.name as username, !ISNULL((select v.id from t_sheying_match_join_vote v where v.userid = #{curUserid}
+        and v.join_id=j.id)) as isVote,
+        (select count(DISTINCT userid) from t_sheying_match_join_vote where join_id = j.id) as voteCount
+        from t_sheying_match_join j
+        join t_user u on j.userid = u.userid
+        <where>
+            <if test="mid != null">
+                j.mid = #{mid}
+            </if>
+            <if test="userid != null">
+                AND j.userid = #{userid}
+            </if>
+            <if test="status != null">
+                AND j.status = #{status}
+            </if>
+            <if test="type != null">
+                AND j.type = #{type}
+            </if>
+        </where>
+        ORDER BY voteCount DESC
+    </select>
+
+    <update id="xlkai_update" parameterType="SheyingMatchJoin">
+        UPDATE t_sheying_match_join
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="type != null">
+                type = #{type}
+            </if>
+        </set>
+        <where>
+            <if test="mid != null">
+                mid = #{mid}
+            </if>
+            <if test="userid != null">
+                AND userid = #{userid}
+            </if>
+            <if test="id != null">
+                AND id = #{id}
+            </if>
+        </where>
+    </update>
+
+</mapper>

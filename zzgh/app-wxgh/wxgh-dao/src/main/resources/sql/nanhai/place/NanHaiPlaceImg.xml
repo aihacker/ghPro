@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.nanhai.place.NanHaiPlaceImg">
+
+    <insert id="xlkai_addImgs" parameterType="List">
+        INSERT INTO t_nanhai_place_img (img_path, add_time, status, place_id) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.imgPath}, #{item.addTime}, #{item.status}, #{item.placeId})
+        </foreach>
+    </insert>
+
+    <select id="getData" parameterType="wxgh.param.entertain.place.PlaceImgParam" resultType="NanHaiPlaceImg">
+        SELECT pi.* FROM t_nanhai_place_img pi
+        JOIN t_nanhai_place p ON pi.place_id = p.id
+        <where>
+            <if test="placeId != null">
+                pi.place_id = #{placeId}
+            </if>
+            <if test="id != null">
+                AND pi.id = #{id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

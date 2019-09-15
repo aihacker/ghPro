@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.pub.UserInfo">
+
+
+    <update id="xlkai_insertOrUpdate" parameterType="UserInfo">
+        INSERT INTO t_user_info (user_id,birth, address, nation, salary, politics, education, work_unit, job,
+        native_place, resume, idea, remark, photo, add_time, idcard)
+        VALUES (#{userId}, #{birth}, #{address}, #{nation}, #{salary}, #{politics}, #{education}, #{workUnit}, #{job},
+        #{nativePlace}, #{resume}, #{idea}, #{remark}, #{photo}, #{addTime}, #{idcard})
+        ON DUPLICATE KEY
+        <trim prefix="UPDATE" suffixOverrides=",">
+            <if test="userId != null">
+                user_id = VALUES(user_id),
+            </if>
+            <if test="birth != null">
+                birth = VALUES(birth),
+            </if>
+            <if test="address != null">
+                address = VALUES(address),
+            </if>
+            <if test="nation != null">
+                nation = VALUES(nation),
+            </if>
+            <if test="salary != null">
+                salary = VALUES(salary),
+            </if>
+            <if test="politics != null">
+                politics = VALUES(politics),
+            </if>
+            <if test="education != null">
+                education = VALUES(education),
+            </if>
+            <if test="workUnit != null">
+                work_unit = VALUES(work_unit),
+            </if>
+            <if test="job != null">
+                job = VALUES(job),
+            </if>
+            <if test="nativePlace != null">
+                native_place = VALUES(native_place),
+            </if>
+            <if test="resume != null">
+                resume = VALUES(resume),
+            </if>
+            <if test="idea != null">
+                idea = VALUES(idea),
+            </if>
+            <if test="remark != null">
+                remark = VALUES(remark),
+            </if>
+
+            <if test="photo != null">
+                photo = VALUES(photo),
+            </if>
+            <if test="addTime != null">
+                add_time = VALUES(add_time)
+            </if>
+            <if test="idcard != null">
+                idcard = VALUES(idcard)
+            </if>
+        </trim>
+    </update>
+
+
+    <select id="get_applyList" parameterType="wxgh.param.pub.user.UserInfoQuery" resultMap="applyListMap">
+        SELECT ui.*, u.* FROM t_user u
+        JOIN t_user_info ui ON u.userid = ui.user_id
+        <where>
+            <if test="applyStatus != null">
+                apply_status = #{applyStatus}
+            </if>
+            <if test="stepNumb != null">
+                AND step_numb = #{stepNumb}
+            </if>
+        </where>
+        <if test="start != null">
+            <if test="num != null">
+                limit #{start}, #{num}
+            </if>
+        </if>
+    </select>
+
+    <select id="getUserInfoByUid" parameterType="String" resultMap="applyListMap">
+        SELECT ui.*, u.* FROM t_user u
+        JOIN t_user_info ui ON u.userid = ui.user_id WHERE `userid` = #{VALUE}
+    </select>
+
+    <resultMap id="applyListMap" type="UserInfo">
+
+        <id property="infoId" column="info_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="birth" column="birth"/>
+        <result property="address" column="address"/>
+        <result property="nation" column="nation"/>
+        <result property="salary" column="salary"/>
+        <result property="politics" column="politics"/>
+        <result property="education" column="education"/>
+        <result property="workUnit" column="work_unit"/>
+        <result property="job" column="job"/>
+        <result property="nativePlace" column="native_place"/>
+        <result property="resume" column="resume"/>
+        <result property="idea" column="idea"/>
+        <result property="remark" column="remark"/>
+        <result property="photo" column="photo"/>
+        <result property="addTime" column="add_time"/>
+        <result property="idcard" column="idcard"/>
+
+        <association property="user" javaType="wxgh.entity.pub.User">
+            <id property="id" column="id"/>
+            <result property="userid" column="userid"/>
+            <result property="name" column="name"/>
+            <result property="mobile" column="mobile"/>
+            <result property="gender" column="gender"/>
+            <result property="avatar" column="avatar"/>
+            <result property="status" column="status"/>
+            <result property="position" column="position"/>
+            <result property="email" column="email"/>
+            <result property="weixinid" column="weixinid"/>
+            <result property="companyid" column="companyid"/>
+            <result property="areaid" column="areaid"/>
+            <result property="applyStatus" column="apply_status"/>
+            <result property="applyTime" column="apply_time"/>
+            <result property="stepNumb" column="step_numb"/>
+            <result property="openid" column="openid"/>
+            <result property="oldDeptid" column="old_deptid"/>
+            <result property="isApply" column="is_apply"/>
+            <result property="deptid" column="deptid"/>
+        </association>
+
+    </resultMap>
+
+    <delete id="delUserInfo" parameterType="String">
+        DELETE FROM t_user_info WHERE `user_id` = #{VALUE}
+    </delete>
+
+    <select id="applyListRefresh" parameterType="wxgh.param.pub.user.UserInfoQuery" resultMap="applyListMap">
+        SELECT ui.*, u.* FROM t_user u
+        JOIN t_user_info ui ON u.userid = ui.user_id
+        <where>
+            <if test="applyStatus != null">
+                apply_status = #{applyStatus}
+            </if>
+            <if test="stepNumb != null">
+                AND step_numb = #{stepNumb}
+            </if>
+        </where>
+        ORDER BY u.`id` DESC limit 0, 15
+    </select>
+
+    <select id="applyListMore" parameterType="wxgh.param.pub.user.UserInfoQuery" resultMap="applyListMap">
+        SELECT ui.*, u.* FROM t_user u
+        JOIN t_user_info ui ON u.userid = ui.user_id
+        <where>
+            <if test="applyStatus != null">
+                apply_status = #{applyStatus}
+            </if>
+            <if test="stepNumb != null">
+                AND step_numb = #{stepNumb}
+            </if>
+            <if test="userOldestId != null">
+                AND id &lt; #{userOldestId}
+            </if>
+        </where>
+        ORDER BY u.`id` DESC limit 0, 15
+    </select>
+
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.four.FourSmall">
+
+    <select id="xlkai_getSmall" parameterType="wxgh.param.four.FourSmallParam" resultType="FourSmall">
+        SELECT f.*, d.name AS deptName FROM t_four_small f
+        JOIN t_dept d ON f.dept_id = d.id
+        <where>
+            <if test="deptId != null">
+                f.dept_id = #{deptId}
+            </if>
+            <if test="depts != null">
+                AND f.dept_id IN
+                <foreach collection="depts" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="id != null">
+                AND f.id = #{id}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getFourSmallList" resultType="FourSmall">
+        SELECT * FROM t_four_small limit 20
+    </select>
+
+    <update id="shenhe" parameterType="Integer">
+        UPDATE t_four_small SET status = 1 WHERE id = #{VALUE}
+    </update>
+
+    <update id="updateFourSmall" parameterType="wxgh.data.four.FoursmallData">
+        UPDATE t_four_small SET `dept_id` = #{deptId}, `name` = #{name}, `content` = #{content}, `brand` = #{brand}, `model_name` = #{modelName}, `remark` = #{remark}, `budget` = #{budget}, `suggest` = #{suggest}, `user_id` = #{userId} WHERE id = #{id}
+    </update>
+
+    <delete id="del" parameterType="Integer">
+          DELETE FROM t_four_small WHERE `id` = #{VALUE}
+    </delete>
+</mapper>

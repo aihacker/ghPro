@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.common.disease.DiseaseJy">
+
+    <insert id="xlkai_addJys" parameterType="List">
+        INSERT INTO t_disease_jy (relation, name, birth, school, grade, xuezhi, tuition, reason, add_time, userid,
+        apply_id)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.relation}, #{item.name}, #{item.birth}, #{item.school},#{item.grade}, #{item.xuezhi},
+            #{item.tuition}, #{item.reason}, #{item.addTime}, #{item.userid}, #{item.applyId})
+        </foreach>
+    </insert>
+
+    <select id="getJY" parameterType="wxgh.param.common.disease.QueryDisease" resultType="DiseaseJy">
+        SELECT * FROM t_disease_jy
+        <where>
+            <if test="applyId != null">
+                `apply_id` = #{applyId}
+            </if>
+            <if test="id != null">
+                AND `id` = #{id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

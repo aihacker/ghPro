@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wxgh.entity.entertain.nanhai.place.NanHaiPlaceSchedule">
+
+    <delete id="delPlaceSchedule" parameterType="Integer">
+        DELETE FROM t_nanhai_place_schedule WHERE `id` = #{VALUE}
+    </delete>
+
+    <select id="getPlaceSchedules" parameterType="wxgh.param.QueryPlaceScheduleParam" resultMap="placeMap">
+        SELECT ps.*, p.* FROM t_nanhai_place_schedule ps JOIN t_nanhai_place p ON p.id = ps.pid
+        <where>
+            <if test="pid != null">
+                ps.`pid` = #{pid}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="placeMap" type="NanHaiPlaceSchedule">
+
+        <association property="place" javaType="NanHaiPlace">
+
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="lat" column="lat"/>
+            <result property="lng" column="lng"/>
+            <result property="url" column="url"/>
+            <result property="address" column="address"/>
+            <result property="province" column="province"/>
+            <result property="city" column="city"/>
+            <result property="phone" column="phone"/>
+            <result property="typeName" column="typeName"/>
+            <result property="placeType" column="placeType"/>
+            <result property="geohash" column="geohash"/>
+            <result property="geohash" column="geohash"/>
+            <result property="price" column="price"/>
+
+        </association>
+
+    </resultMap>
+
+    <select id="getPSs" parameterType="wxgh.param.QueryPlaceScheduleParam" resultType="NanHaiPlaceSchedule">
+        SELECT ps.*, p.* FROM t_nanhai_place_schedule ps JOIN t_nanhai_place p ON p.id = ps.pid
+        <where>
+            <if test="pid != null">
+                ps.`pid` = #{pid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addPlaceSchedule" parameterType="NanHaiPlaceSchedule">
+        INSERT INTO t_nanhai_place_schedule (`pid`, `start_time`, `end_time`, `admin_id`, `week`)
+        VALUES (#{pid}, #{startTime}, #{endTime}, #{adminId}, #{week})
+    </insert>
+
+    <select id="xlkai_getSchedule" parameterType="wxgh.param.QueryPlaceScheduleParam" resultType="NanHaiPlaceSchedule">
+        SELECT * FROM t_nanhai_place_schedule
+        <where>
+            <if test="pid != null">
+                pid = #{pid}
+            </if>
+            <if test="week != null">
+                AND week = #{week}
+            </if>
+        </where>
+        ORDER BY week ASC
+    </select>
+
+</mapper>
